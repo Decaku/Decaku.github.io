@@ -193,13 +193,12 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>有n个人排成一列，一共有m种势力，每个人可能属于一个势力，相邻的人势力相同则不合法，一共有多少种可能的不合法状态。</p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>有n个人排成一列，一共有m种势力，每个人可能属于一个势力，相邻的人势力相同则不合法，一共有多少种可能的不合法状态。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
-<p>所有的状态是$ m^{n} <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo separator="true">,</mo><mi mathvariant="normal">正</mi><mi mathvariant="normal">面</mi><mi mathvariant="normal">很</mi><mi mathvariant="normal">难</mi><mi mathvariant="normal">求</mi><mi mathvariant="normal">不</mi><mi mathvariant="normal">合</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">状</mi><mi mathvariant="normal">态</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">以</mi><mi mathvariant="normal">想</mi><mi mathvariant="normal">到</mi><mi mathvariant="normal">先</mi><mi mathvariant="normal">求</mi><mi mathvariant="normal">合</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">状</mi><mi mathvariant="normal">态</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">第</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">人</mi><mi mathvariant="normal">有</mi></mrow><annotation encoding="application/x-tex">,正面很难求不合法的状态，所以想到先求合法状态，第一个人有</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3em;vertical-align:-0.19444em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">正</span><span class="mord cjk_fallback">面</span><span class="mord cjk_fallback">很</span><span class="mord cjk_fallback">难</span><span class="mord cjk_fallback">求</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">合</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">状</span><span class="mord cjk_fallback">态</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">想</span><span class="mord cjk_fallback">到</span><span class="mord cjk_fallback">先</span><span class="mord cjk_fallback">求</span><span class="mord cjk_fallback">合</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">状</span><span class="mord cjk_fallback">态</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">第</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">人</span><span class="mord cjk_fallback">有</span></span></span></span> m <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">种</mi><mi mathvariant="normal">选</mi><mi mathvariant="normal">择</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">剩</mi><mi mathvariant="normal">下</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">人</mi><mi mathvariant="normal">都</mi><mi mathvariant="normal">只</mi><mi mathvariant="normal">有</mi></mrow><annotation encoding="application/x-tex">种选择，剩下的人都只有</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">种</span><span class="mord cjk_fallback">选</span><span class="mord cjk_fallback">择</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">剩</span><span class="mord cjk_fallback">下</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">人</span><span class="mord cjk_fallback">都</span><span class="mord cjk_fallback">只</span><span class="mord cjk_fallback">有</span></span></span></span> m-1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">种</mi><mi mathvariant="normal">选</mi><mi mathvariant="normal">择</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">以</mi><mi mathvariant="normal">答</mi><mi mathvariant="normal">案</mi><mi mathvariant="normal">就</mi><mi mathvariant="normal">是</mi></mrow><annotation encoding="application/x-tex">种选择，所以答案就是</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">种</span><span class="mord cjk_fallback">选</span><span class="mord cjk_fallback">择</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">答</span><span class="mord cjk_fallback">案</span><span class="mord cjk_fallback">就</span><span class="mord cjk_fallback">是</span></span></span></span> m^{n} -m*(m-1)^{n-1} $。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>所有的状态是$m^{n}$,正面很难求不合法的状态，所以想到先求合法状态，第一个人有$m$种选择，剩下的人都只有$m-1$种选择，所以答案就是$m^{n}-m*(m-1)^{n-1}$。</p>
 <hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const ll mod=100003;</span><br><span class="line">ll m,n;</span><br><span class="line">ll quick_pow(ll a,ll b)</span><br><span class="line">&#123;</span><br><span class="line">    ll res=1;</span><br><span class="line">    while(b)</span><br><span class="line">    &#123;</span><br><span class="line">        if(b&amp;1) res=(res*a)%mod;</span><br><span class="line">        a=a*a%mod;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(~scanf(&quot;%lld %lld&quot;,&amp;m,&amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        ll ans=(quick_pow(m,n)-(m*quick_pow(m-1,n-1))%mod+mod)%mod;</span><br><span class="line">        printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 </div>
@@ -371,7 +370,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
@@ -387,12 +386,12 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/dp/">#dp</a>
         </div>
         
