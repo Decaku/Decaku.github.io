@@ -12,7 +12,7 @@
     
     
     
-    <title>归档 | Decaku &#39;s Blog</title>
+    <title>bzoj 1008 越狱 | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,47 +174,75 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <style>
-    @media(max-width: 768px) {
-        body {
-            background-color: #fff!important;
-        }
-    }
-</style>
-<div class="cube-archives">
+            <div class="cube-article">
+    <h1 class="title">bzoj 1008 越狱</h1>
     
-        
-        <div class="cube-archive" style="margin-top: 0;">
-            
-                
-                   
-                            <h1 class="title">2019</h1>
-                            <ul class="posts">
-                   
-                            <li class="post">
-                                <a href="/2019/02/04/bzoj-1008-越狱/">bzoj 1008 越狱</a>
-                            </li>
-                
-            
-                
-                   
-                            <li class="post">
-                                <a href="/2019/02/04/bzoj1003-预处理最短路-区间dp/">bzoj1003 预处理最短路+区间dp</a>
-                            </li>
-                
-            
-                
-                   
-                            <li class="post">
-                                <a href="/2019/01/31/hello-world/">Hello World</a>
-                            </li>
-                
-            
-                    </ul>
-                        </div>
-        
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-02-04
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/组合数学/">#组合数学</a>
     
 </div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
+<p>有n个人排成一列，一共有m种势力，每个人可能属于一个势力，相邻的人势力相同则不合法，一共有多少种可能的不合法状态。</p>
+<hr>
+<a id="more"></a>
+<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
+<p>所有的状态是$ m^{n} <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo separator="true">,</mo><mi mathvariant="normal">正</mi><mi mathvariant="normal">面</mi><mi mathvariant="normal">很</mi><mi mathvariant="normal">难</mi><mi mathvariant="normal">求</mi><mi mathvariant="normal">不</mi><mi mathvariant="normal">合</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">状</mi><mi mathvariant="normal">态</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">以</mi><mi mathvariant="normal">想</mi><mi mathvariant="normal">到</mi><mi mathvariant="normal">先</mi><mi mathvariant="normal">求</mi><mi mathvariant="normal">合</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">状</mi><mi mathvariant="normal">态</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">第</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">人</mi><mi mathvariant="normal">有</mi></mrow><annotation encoding="application/x-tex">,正面很难求不合法的状态，所以想到先求合法状态，第一个人有</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3em;vertical-align:-0.19444em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">正</span><span class="mord cjk_fallback">面</span><span class="mord cjk_fallback">很</span><span class="mord cjk_fallback">难</span><span class="mord cjk_fallback">求</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">合</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">状</span><span class="mord cjk_fallback">态</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">想</span><span class="mord cjk_fallback">到</span><span class="mord cjk_fallback">先</span><span class="mord cjk_fallback">求</span><span class="mord cjk_fallback">合</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">状</span><span class="mord cjk_fallback">态</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">第</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">人</span><span class="mord cjk_fallback">有</span></span></span></span> m <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">种</mi><mi mathvariant="normal">选</mi><mi mathvariant="normal">择</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">剩</mi><mi mathvariant="normal">下</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">人</mi><mi mathvariant="normal">都</mi><mi mathvariant="normal">只</mi><mi mathvariant="normal">有</mi></mrow><annotation encoding="application/x-tex">种选择，剩下的人都只有</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">种</span><span class="mord cjk_fallback">选</span><span class="mord cjk_fallback">择</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">剩</span><span class="mord cjk_fallback">下</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">人</span><span class="mord cjk_fallback">都</span><span class="mord cjk_fallback">只</span><span class="mord cjk_fallback">有</span></span></span></span> m-1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">种</mi><mi mathvariant="normal">选</mi><mi mathvariant="normal">择</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">以</mi><mi mathvariant="normal">答</mi><mi mathvariant="normal">案</mi><mi mathvariant="normal">就</mi><mi mathvariant="normal">是</mi></mrow><annotation encoding="application/x-tex">种选择，所以答案就是</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">种</span><span class="mord cjk_fallback">选</span><span class="mord cjk_fallback">择</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">答</span><span class="mord cjk_fallback">案</span><span class="mord cjk_fallback">就</span><span class="mord cjk_fallback">是</span></span></span></span> m^{n} -m*(m-1)^{n-1} $。</p>
+<hr>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2019/02/04/bzoj1003-预处理最短路-区间dp/">
+                bzoj1003 预处理最短路+区间dp
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+    <!-- 因为gitment里面也有gitment-container，所以这里就改为gitment-comment -->
+<div class="gitment-comment">
+    <div id="container"></div>
+</div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id default is location.href
+		id: decodeURI(window.location.pathname),
+        owner: 'Decaku',
+        repo: 'Decaku.github.io',
+        oauth: {
+            client_id: 'e960fb048feed78b74fd',
+            client_secret: '88a0ad8483178c3ff4522aff167e0654afa6bb28',
+        },
+    })
+    gitment.render('container')
+</script>
+    
+
+
         </div>
         <div class="cube-right">
             
@@ -359,7 +387,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
