@@ -12,7 +12,7 @@
     
     
     
-    <title>分类: 动态规划 | Decaku &#39;s Blog</title>
+    <title>Hdu 1116 Play on Words 并查集+有向图的欧拉路 | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,29 +174,79 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <style>
-    @media(max-width: 768px) {
-        body {
-            background-color: #fff!important;
-        }
-    }
-</style>
-<div class="cube-archives">
+            <div class="cube-article">
+    <h1 class="title">Hdu 1116 Play on Words 并查集+有向图的欧拉路</h1>
     
-    <div class="cube-archive" style="margin-top: 0;">
-        <h1 class="title">动态规划</h1>
-        
-        <ul class="posts">
-            
-            <li class="post">
-                <a href="/2019/02/04/bzoj1003-预处理最短路-区间dp/">bzoj1003 预处理最短路+区间dp</a>
-            </li>
-            
-        </ul>
-        
-    </div>
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-02-04
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/并查集/">#并查集</a>
+    
+    <a href="/tags/欧拉路/">#欧拉路</a>
     
 </div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
+<p>类似于成语接龙，给若干个单词，问能否组成一个排列，使得一个单词的尾字母和后面一个单词的首字母相同。例如acm，malform，mouse这三个单词就满足题意。</p>
+<hr>
+<a id="more"></a>
+<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
+<p>把每个单词看成一条边，取首字母和尾字母，作为起点和终点。建图，图上有26个点，每输入一个单词，就在对应的两点间建立一条有向边。要判断输入的单词是否满足题意，其实就是判断图中是否存在一条欧拉路径。如果这个图不只包含一个连通分量，那么一定不满足题意。连通分量用并查集维护。</p>
+<p>下面的问题就是判断有向图的欧拉路径。如果不是回路，那么图中只有一个点的出度比入度大1（起点），一个点的出度比入度小1（终点），其它点出度等于入度。如果是欧拉回路，则所有的点出度等于入度。并且如果存在出度入度的差值大于1的点也一定不能形成欧拉路。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int p[30];</span><br><span class="line"></span><br><span class="line">int Find(int x)</span><br><span class="line">&#123;</span><br><span class="line">    if(x!=p[x])</span><br><span class="line">        p[x]=Find(p[x]);</span><br><span class="line">    return p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void join(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">    if(Find(a)!=Find(b))</span><br><span class="line">        p[Find(a)]=Find(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">    int t,num,num1,num2;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    int indeg[30],outdeg[30];</span><br><span class="line">    bool vis[30],flag;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        num=num1=num2=0;</span><br><span class="line">        flag=true;</span><br><span class="line">        int n;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        char str[1000];</span><br><span class="line">        for(int i=0; i&lt;26; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            p[i]=i;</span><br><span class="line">            vis[i]=false;</span><br><span class="line">            outdeg[i]=indeg[i]=0;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin&gt;&gt;str;</span><br><span class="line">            join(str[0]-&apos;a&apos;,str[strlen(str)-1]-&apos;a&apos;);</span><br><span class="line">            indeg[str[0]-&apos;a&apos;]++;</span><br><span class="line">            outdeg[str[strlen(str)-1]-&apos;a&apos;]++;</span><br><span class="line">            vis[str[0]-&apos;a&apos;]=true;</span><br><span class="line">            vis[str[strlen(str)-1]-&apos;a&apos;]=true;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i=0; i&lt;26; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(p[i]==i&amp;&amp;vis[i])</span><br><span class="line">                num++;</span><br><span class="line">            if(indeg[i]-outdeg[i]==1)</span><br><span class="line">                num1++;</span><br><span class="line">            if(outdeg[i]-indeg[i]==1)</span><br><span class="line">                num2++;</span><br><span class="line">            if(indeg[i]-outdeg[i]&gt;1||outdeg[i]-indeg[i]&gt;1)</span><br><span class="line">                flag=false;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(flag==true&amp;&amp;num==1&amp;&amp;(num1==num2==0||num1==num2==1))</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;&quot;Ordering is possible.&quot;&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">        else cout&lt;&lt;&quot;The door cannot be opened.&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2019/02/04/bzoj-1036-树的统计-树链剖分/">
+                bzoj 1036 树的统计 树链剖分
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+    <!-- 因为gitment里面也有gitment-container，所以这里就改为gitment-comment -->
+<div class="gitment-comment">
+    <div id="container"></div>
+</div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id default is location.href
+		id: decodeURI(window.location.pathname),
+        owner: 'Decaku',
+        repo: 'Decaku.github.io',
+        oauth: {
+            client_id: 'e960fb048feed78b74fd',
+            client_secret: '88a0ad8483178c3ff4522aff167e0654afa6bb28',
+        },
+    })
+    gitment.render('container')
+</script>
+    
+
+
         </div>
         <div class="cube-right">
             
@@ -392,7 +442,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
