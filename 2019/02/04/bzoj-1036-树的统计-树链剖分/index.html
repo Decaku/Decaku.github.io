@@ -195,12 +195,10 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>三种操作，一是修改树上某结点的权，二是询问结点x到y路径上的最大点的权，三是询问结点x到y路径上所有点的权值和。</p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>三种操作，一是修改树上某结点的权，二是询问结点x到y路径上的最大点的权，三是询问结点x到y路径上所有点的权值和。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
-<p>先对树进行重链剖分，然后用线段树维护连续区间的最大值和区间和。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>先对树进行重链剖分，然后用线段树维护连续区间的最大值和区间和。</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=30005;</span><br><span class="line">const int maxm=60005;</span><br><span class="line">const int inf=1e9;</span><br><span class="line">int cnt,tot,n,q;</span><br><span class="line">int head[maxn],siz[maxn],dep[maxn],pre[maxn],fa[maxn],wson[maxn],dfn[maxn],top[maxn];</span><br><span class="line">int value[maxn];</span><br><span class="line">struct Tree</span><br><span class="line">&#123;</span><br><span class="line">    int l,r,sum,mx;</span><br><span class="line">&#125; tree[4*maxn];</span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int nex,to;</span><br><span class="line">&#125; edge[maxm];</span><br><span class="line"></span><br><span class="line">void add_edge(int u,int v)</span><br><span class="line">&#123;</span><br><span class="line">    edge[++cnt].to=v;</span><br><span class="line">    edge[cnt].nex=head[u];</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dfs1(int u,int f)</span><br><span class="line">&#123;</span><br><span class="line">    siz[u]=1;</span><br><span class="line">    for(int i=head[u]; i!=-1; i=edge[i].nex)</span><br><span class="line">    &#123;</span><br><span class="line">        int v=edge[i].to;</span><br><span class="line">        if(v==fa[u])</span><br><span class="line">            continue;</span><br><span class="line">        dep[v]=dep[u]+1;</span><br><span class="line">        fa[v]=u;</span><br><span class="line">        dfs1(v,u);</span><br><span class="line">        siz[u]+=siz[v];</span><br><span class="line">        if(siz[wson[u]]&lt;siz[v])</span><br><span class="line">            wson[u]=v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dfs2(int u,int tp)</span><br><span class="line">&#123;</span><br><span class="line">    dfn[u]=++tot;</span><br><span class="line">    pre[tot]=u;</span><br><span class="line">    top[u]=tp;</span><br><span class="line">    if(wson[u])</span><br><span class="line">        dfs2(wson[u],tp);</span><br><span class="line">    for(int i=head[u]; i!=-1; i=edge[i].nex)</span><br><span class="line">    &#123;</span><br><span class="line">        int v=edge[i].to;</span><br><span class="line">        if(v!=fa[u]&amp;&amp;v!=wson[u])</span><br><span class="line">            dfs2(v,v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void build(int k,int l,int r)</span><br><span class="line">&#123;</span><br><span class="line">    tree[k].l=l,tree[k].r=r;</span><br><span class="line">    if(l==r)</span><br><span class="line">        return ;</span><br><span class="line">    int mid=l+r&gt;&gt;1;</span><br><span class="line">    build(k&lt;&lt;1,l,mid);</span><br><span class="line">    build(k&lt;&lt;1|1,mid+1,r);</span><br><span class="line">&#125;</span><br><span class="line">void change(int k,int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    int l=tree[k].l,r=tree[k].r,mid=l+r&gt;&gt;1;</span><br><span class="line">    if(l==r)</span><br><span class="line">    &#123;</span><br><span class="line">        tree[k].sum=tree[k].mx=y;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    if(x&lt;=mid)</span><br><span class="line">        change(k&lt;&lt;1,x,y);</span><br><span class="line">    else</span><br><span class="line">        change(k&lt;&lt;1|1,x,y);</span><br><span class="line">    tree[k].sum=tree[k&lt;&lt;1].sum+tree[k&lt;&lt;1|1].sum;</span><br><span class="line">    tree[k].mx=max(tree[k&lt;&lt;1].mx,tree[k&lt;&lt;1|1].mx);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int querysum(int k,int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    int l=tree[k].l,r=tree[k].r,mid=l+r&gt;&gt;1;</span><br><span class="line">    if(l==x&amp;&amp;r==y)</span><br><span class="line">        return tree[k].sum;</span><br><span class="line">    if(y&lt;=mid)</span><br><span class="line">        return querysum(k&lt;&lt;1,x,y);</span><br><span class="line">    else if(x&gt;mid)</span><br><span class="line">        return querysum(k&lt;&lt;1|1,x,y);</span><br><span class="line">    else</span><br><span class="line">        return querysum(k&lt;&lt;1,x,mid)+querysum(k&lt;&lt;1|1,mid+1,y);</span><br><span class="line">&#125;</span><br><span class="line">int querymax(int k,int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    int l=tree[k].l,r=tree[k].r,mid=l+r&gt;&gt;1;</span><br><span class="line">    if(l==x&amp;&amp;r==y)</span><br><span class="line">        return tree[k].mx;</span><br><span class="line">    if(y&lt;=mid)</span><br><span class="line">        return querymax(k&lt;&lt;1,x,y);</span><br><span class="line">    else if(x&gt;mid)</span><br><span class="line">        return querymax(k&lt;&lt;1|1,x,y);</span><br><span class="line">    else</span><br><span class="line">        return max(querymax(k&lt;&lt;1,x,mid),querymax(k&lt;&lt;1|1,mid+1,y));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int solvesum(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    int sum=0;</span><br><span class="line">    while(top[x]!=top[y])</span><br><span class="line">    &#123;</span><br><span class="line">        if(dep[top[x]]&lt;dep[top[y]])</span><br><span class="line">            swap(x,y);</span><br><span class="line">        sum+=querysum(1,dfn[top[x]],dfn[x]);</span><br><span class="line">        x=fa[top[x]];</span><br><span class="line">    &#125;</span><br><span class="line">    if(dfn[x]&gt;dfn[y])</span><br><span class="line">        swap(x,y);</span><br><span class="line">    sum+=querysum(1,dfn[x],dfn[y]);</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line">int solvemax(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    int mx=-inf;</span><br><span class="line">    while(top[x]!=top[y])</span><br><span class="line">    &#123;</span><br><span class="line">        if(dep[top[x]]&lt;dep[top[y]])</span><br><span class="line">            swap(x,y);</span><br><span class="line">        mx=max(mx,querymax(1,dfn[top[x]],dfn[x]));</span><br><span class="line">        x=fa[top[x]];</span><br><span class="line">    &#125;</span><br><span class="line">    if(dfn[x]&gt;dfn[y])</span><br><span class="line">        swap(x,y);</span><br><span class="line">    mx=max(mx,querymax(1,dfn[x],dfn[y]));</span><br><span class="line">    return mx;</span><br><span class="line">&#125;</span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">    build(1,1,n);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">        change(1,dfn[i],value[i]);</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;q);</span><br><span class="line">    char ch[10];</span><br><span class="line">    for(int i=1; i&lt;=q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int x,y;</span><br><span class="line">        scanf(&quot;%s%d%d&quot;,ch,&amp;x,&amp;y);</span><br><span class="line">        if(ch[0]==&apos;C&apos;)</span><br><span class="line">        &#123;</span><br><span class="line">            value[x]=y;</span><br><span class="line">            change(1,dfn[x],y);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            if(ch[1]==&apos;M&apos;)</span><br><span class="line">                printf(&quot;%d\n&quot;,solvemax(x,y));</span><br><span class="line">            else</span><br><span class="line">                printf(&quot;%d\n&quot;,solvesum(x,y));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cnt=-1;</span><br><span class="line">    tot=0;</span><br><span class="line">    memset(head,-1,sizeof(head));</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int i=1; i&lt;n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b;</span><br><span class="line">        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);</span><br><span class="line">        add_edge(a,b);</span><br><span class="line">        add_edge(b,a);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;value[i]);</span><br><span class="line">    dfs1(1,0);</span><br><span class="line">    dfs2(1,1);</span><br><span class="line">    solve();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
@@ -291,9 +289,9 @@
     <a title="天生我材必有用，千金散尽还复来">天生我材必有用，千金散尽还复来</a>
     
     <div class="count">
-        <a class="count articles"><span>6</span>文章</a>
-        <a class="count tags"><span>9</span>标签</a>
-        <a class="count categories"><span>5</span>分类</a>
+        <a class="count articles"><span>7</span>文章</a>
+        <a class="count tags"><span>10</span>标签</a>
+        <a class="count categories"><span>6</span>分类</a>
     </div>
 </div>
 
@@ -330,7 +328,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Hdu1569-洛谷P2774方格取数-状压dp-or-最小割/" title="Hdu1569 洛谷P2774方格取数 状压dp or 最小割">Hdu1569 洛谷P2774方格取数 状压dp or 最小割</a>
+                    <a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/" title="Poj 2135 Farm Tour 费用流">Poj 2135 Farm Tour 费用流</a>
                 </p>
             </div>
             
@@ -344,7 +342,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Hdu-1116-Play-on-Words-并查集-有向图的欧拉路/" title="Hdu 1116 Play on Words 并查集+有向图的欧拉路">Hdu 1116 Play on Words 并查集+有向图的欧拉路</a>
+                    <a href="/2019/02/04/Hdu1569-洛谷P2774方格取数-状压dp-or-最小割/" title="Hdu1569 洛谷P2774方格取数 状压dp or 最小割">Hdu1569 洛谷P2774方格取数 状压dp or 最小割</a>
                 </p>
             </div>
         </li>
@@ -357,7 +355,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/bzoj-1036-树的统计-树链剖分/" title="bzoj 1036 树的统计 树链剖分">bzoj 1036 树的统计 树链剖分</a>
+                    <a href="/2019/02/04/Hdu-1116-Play-on-Words-并查集-有向图的欧拉路/" title="Hdu 1116 Play on Words 并查集+有向图的欧拉路">Hdu 1116 Play on Words 并查集+有向图的欧拉路</a>
                 </p>
             </div>
         </li>
@@ -370,7 +368,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/bzoj-1008-越狱/" title="bzoj 1008 越狱">bzoj 1008 越狱</a>
+                    <a href="/2019/02/04/bzoj-1036-树的统计-树链剖分/" title="bzoj 1036 树的统计 树链剖分">bzoj 1036 树的统计 树链剖分</a>
                 </p>
             </div>
         </li>
@@ -383,7 +381,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/bzoj1003-预处理最短路-区间dp/" title="bzoj1003 预处理最短路+区间dp">bzoj1003 预处理最短路+区间dp</a>
+                    <a href="/2019/02/04/bzoj-1008-越狱/" title="bzoj 1008 越狱">bzoj 1008 越狱</a>
                 </p>
             </div>
         </li>
@@ -406,23 +404,28 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/树链剖分/">#树链剖分</a>
+        <div class="cube-box ">
+            <a href="/categories/费用流/">#费用流</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
     </div>
@@ -437,7 +440,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
@@ -447,7 +450,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/并查集/">#并查集</a>
         </div>
         
@@ -457,13 +460,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/树链剖分/">#树链剖分</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/线段树/">#线段树</a>
+        <div class="cube-box ">
+            <a href="/tags/费用流/">#费用流</a>
         </div>
         
         
@@ -472,13 +470,23 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/dp/">#dp</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最短路/">#最短路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线段树/">#线段树</a>
         </div>
         
     </div>
