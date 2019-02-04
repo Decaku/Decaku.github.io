@@ -12,7 +12,7 @@
     
     
     
-    <title>Hello World | Decaku &#39;s Blog</title>
+    <title>Bzoj 1257 余数之和 | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,31 +174,30 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">Hello World</h1>
+    <h1 class="title">Bzoj 1257 余数之和</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2019-01-31
+            2019-02-05
         </div>
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/整除分块/">#整除分块</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>$求\sum _{i=1}^nk \mod i, i \le n,k \le (10)^9$</p>
+<hr>
+<a id="more"></a>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$原式=\sum _{i=1}^n(k-k/i * i)=n * k-\sum _{i=1}^n(k/i*i) \\<br>k/i只有 \sqrt k个，所以可以整除分块。 \\<br>复杂度是 \sqrt n。<br>$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**************************************************************</span><br><span class="line">    Problem: 1257</span><br><span class="line">    User: Decaku</span><br><span class="line">    Language: C++</span><br><span class="line">    Result: Accepted</span><br><span class="line">    Time:72 ms</span><br><span class="line">    Memory:1288 kb</span><br><span class="line">****************************************************************/</span><br><span class="line"> </span><br><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">ll n,k,sum;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ll ans=0;</span><br><span class="line">    scanf(&quot;%lld %lld&quot;,&amp;n,&amp;k);</span><br><span class="line">    sum=n*k;</span><br><span class="line">    if(n&gt;k) n=k;</span><br><span class="line">    for(ll l=1,r; l&lt;=n; l=r+1)</span><br><span class="line">    &#123;</span><br><span class="line">        r=k/(k/l);</span><br><span class="line">        if(r&gt;n) r=n;</span><br><span class="line">        ll tem=r*(r+1)/2-(l-1)*l/2;</span><br><span class="line">        ans+=tem*(k/l);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;,sum-ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 </div>
@@ -206,13 +205,13 @@
 <div class="cube-article-nav">
     <ul>
         
-        <li class="prev">
-            <a href="/2019/02/04/bzoj1003-预处理最短路-区间dp/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                bzoj1003 预处理最短路+区间dp
+        
+        <li class="next">
+            <a href="/2019/02/05/Poj2796-Feel-Good/">
+                Poj2796 Feel Good
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
-        
         
     </ul>
 </div>
@@ -391,7 +390,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/模拟/">#模拟</a>
         </div>
         
@@ -411,7 +410,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/训练记录/">#训练记录</a>
         </div>
         
@@ -421,7 +420,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/二分/">#二分</a>
         </div>
         
@@ -431,7 +430,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/整除分块/">#整除分块</a>
         </div>
         
@@ -456,7 +455,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数论/">#数论</a>
         </div>
         
@@ -466,7 +465,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
@@ -481,12 +480,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/树状数组/">#树状数组</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最大流/">#最大流</a>
         </div>
         
@@ -496,12 +495,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/单调栈/">#单调栈</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
@@ -522,7 +521,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/尺取法/">#尺取法</a>
         </div>
         
@@ -532,7 +531,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/分层图最短路/">#分层图最短路</a>
         </div>
         
@@ -542,7 +541,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最大生成树/">#最大生成树</a>
         </div>
         
@@ -557,7 +556,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/线段树/">#线段树</a>
         </div>
         
@@ -572,7 +571,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/codeforces/">#codeforces</a>
         </div>
         
@@ -592,7 +591,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
         </div>
         
@@ -602,7 +601,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/费马小定理/">#费马小定理</a>
         </div>
         
@@ -612,12 +611,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/离散化/">#离散化</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/找规律/">#找规律</a>
         </div>
         
@@ -627,7 +626,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/树形dp/">#树形dp</a>
         </div>
         
@@ -642,7 +641,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/费用流/">#费用流</a>
         </div>
         
@@ -652,7 +651,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/归并/">#归并</a>
         </div>
         
@@ -677,7 +676,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最小差值生成树/">#最小差值生成树</a>
         </div>
         
@@ -687,7 +686,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/离线/">#离线</a>
         </div>
         
@@ -697,7 +696,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
