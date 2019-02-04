@@ -12,7 +12,7 @@
     
     
     
-    <title>牛客练习赛22-C简单瞎搞题 bitset+dp | Decaku &#39;s Blog</title>
+    <title>Hdu6060 RXD and dividing | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,7 +174,7 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">牛客练习赛22-C简单瞎搞题 bitset+dp</h1>
+    <h1 class="title">Hdu6060 RXD and dividing</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
@@ -185,23 +185,18 @@
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/dp/">#dp</a>
-    
-    <a href="/tags/bitset/">#bitset</a>
+    <a href="/tags/dfs/">#dfs</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>给出$n$个区间，然后分别给出区间的左右边界，可以在每个区间中选择一个整数，问这$n$个整数的平方和有多少种不同的取值。</p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>$把树上2-n的结点分成k个集合且不能相交,然后每次取出一个集合 \\<br>所有点与1号结点形成连通分量把连通分量里的所有边权相加后加 \\<br>到ans上，求最大的ans。$</p>
 <hr>
-<a id="more"></a>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$ f_i $表示一个bitset，bitset里有几个1，就表示这i个区间所能得到的平方和的取值种数。</p>
-<p>转移方程为 <em>f[i]=f[i] | f[i-1]&lt;&lt;k^k (k from l to r)</em></p>
-<p>状态转移的复杂度是n，每次操作对应的复杂度是l-r。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$一条边对于ans的贡献值应该是min\{k,k的子孙的数量\}*边权, \\<br>然后又是经典的统计子树了。$</p>
 <hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;bitset&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">bitset&lt;1000000+10&gt;f[105];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,l,r;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    f[0][0]=1;</span><br><span class="line">    for (int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d %d&quot;,&amp;l, &amp;r);</span><br><span class="line">        for(int j=l; j&lt;=r; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            f[i]=f[i]|f[i-1]&lt;&lt;j*j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;, f[n].count());</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef long long ll;</span><br><span class="line">const int maxn=1e6+5;</span><br><span class="line"></span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int next,w;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;node&gt;vec[maxn];</span><br><span class="line">node tem;</span><br><span class="line">int son[maxn],p[maxn];</span><br><span class="line"></span><br><span class="line">void dfs(int v,int u)</span><br><span class="line">&#123;</span><br><span class="line">    son[v]=1;</span><br><span class="line">    int len=vec[v].size();</span><br><span class="line">    for(int i=0; i&lt;len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int t=vec[v][i].next;</span><br><span class="line">        p[t]=vec[v][i].w;</span><br><span class="line">        dfs(t,v);</span><br><span class="line">        son[v]+=son[t];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,k,u,v,value;</span><br><span class="line">    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;k))</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=1; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            vec[i].clear();</span><br><span class="line">            son[i]=0;</span><br><span class="line">            p[i]=0;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=1; i&lt;=n-1; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;value);</span><br><span class="line">            tem.next=v;</span><br><span class="line">            tem.w=value;</span><br><span class="line">            vec[u].push_back(tem);</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(1,0);</span><br><span class="line">        ll ans=0;</span><br><span class="line">        for(int i=2;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            ans+=(ll)p[i]*min(son[i],k);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 </div>
@@ -209,17 +204,10 @@
 <div class="cube-article-nav">
     <ul>
         
-        <li class="prev">
-            <a href="/2019/02/04/2018Hdu-多校训练一-Time-Zone/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                2018Hdu 多校训练一 Time Zone
-            </a>
-        </li>
-        
         
         <li class="next">
-            <a href="/2019/02/04/Poj-3281-Dining-最大流/">
-                Poj 3281 Dining 最大流
+            <a href="/2019/02/04/Hdu5901/">
+                Hdu5901
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -406,7 +394,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
@@ -416,7 +404,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/最短路/">#最短路</a>
         </div>
         
@@ -431,12 +419,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/线段树/">#线段树</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
@@ -446,7 +434,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/数论/">#数论</a>
         </div>
         
@@ -456,7 +444,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
         </div>
         
@@ -466,7 +454,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/费用流/">#费用流</a>
         </div>
         
@@ -476,12 +464,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
@@ -497,12 +485,12 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/模拟/">#模拟</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
@@ -542,7 +530,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/欧拉路/">#欧拉路</a>
         </div>
         
@@ -552,17 +540,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最小割/">#最小割</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
         </div>
         
@@ -572,7 +560,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/dfs/">#dfs</a>
         </div>
         
@@ -587,12 +575,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最大流/">#最大流</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
@@ -607,7 +595,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最短路/">#最短路</a>
         </div>
         
