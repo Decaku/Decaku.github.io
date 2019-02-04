@@ -193,12 +193,10 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>给出起点和终点，要求从起点走到终点，再从终点回来，走的路最短，且来回走的路中不能有相同的边。</p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>给出起点和终点，要求从起点走到终点，再从终点回来，走的路最短，且来回走的路中不能有相同的边。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
-<p>不要考虑来回，其实本质就是选择两条路，边权和最小，所以我们可以跑一个最大流是2的费用流。(选n条路就跑最大流是n的费用流)</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>不要考虑来回，其实本质就是选择两条路，边权和最小，所以我们可以跑一个最大流是2的费用流。(选n条路就跑最大流是n的费用流)</p>
 <p>本题所有边都是无向边。</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">//#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int inf=1e9;</span><br><span class="line">const int maxn=2000;</span><br><span class="line">const int maxm=11000;</span><br><span class="line">int n,m,s,t;</span><br><span class="line">int cnt=-1,tot,sum;</span><br><span class="line">int dis[maxn],b[maxn],xb[maxn],flow[maxn],fa[maxn];</span><br><span class="line">int head[maxm];</span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int from,to,dis,nxt,w;</span><br><span class="line">&#125;edge[maxm*4];</span><br><span class="line">void add_edge(int from,int to,int w,int dis)</span><br><span class="line">&#123;</span><br><span class="line">   edge[++cnt].nxt=head[from];</span><br><span class="line">   edge[cnt].from=from;</span><br><span class="line">   edge[cnt].to=to;</span><br><span class="line">   edge[cnt].w=w;</span><br><span class="line">   edge[cnt].dis=dis;</span><br><span class="line">   head[from]=cnt;</span><br><span class="line">&#125;</span><br><span class="line">bool spfa()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=0;i&lt;=maxn;i++)</span><br><span class="line">        dis[i]=inf;</span><br><span class="line">    memset(b,0,sizeof(b));</span><br><span class="line">    queue&lt;int&gt;que;</span><br><span class="line">    while(!que.empty()) que.pop();</span><br><span class="line">    memset(fa,-1,sizeof(fa));</span><br><span class="line">    b[s]=1;</span><br><span class="line">    dis[s]=0;</span><br><span class="line">    fa[s]=0;</span><br><span class="line">    flow[s]=inf;</span><br><span class="line">    que.push(s);</span><br><span class="line">    while(!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        int u=que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        b[u]=0;</span><br><span class="line">        for(int i=head[u];i!=-1;i=edge[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            int v=edge[i].to;</span><br><span class="line">            if(edge[i].w&amp;&amp;dis[v]&gt;dis[u]+edge[i].dis)</span><br><span class="line">            &#123;</span><br><span class="line">                dis[v]=dis[u]+edge[i].dis;</span><br><span class="line">                fa[v]=u;</span><br><span class="line">                xb[v]=i;</span><br><span class="line">                flow[v]=min(flow[u],edge[i].w);</span><br><span class="line">                if(!b[v])</span><br><span class="line">                &#123;</span><br><span class="line">                    b[v]=1;</span><br><span class="line">                    que.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dis[t]&lt;inf;</span><br><span class="line">&#125;</span><br><span class="line">void max_flow()</span><br><span class="line">&#123;</span><br><span class="line">    while(spfa())</span><br><span class="line">    &#123;</span><br><span class="line">        int k=t;</span><br><span class="line">        while(k!=s)</span><br><span class="line">        &#123;</span><br><span class="line">            edge[xb[k]].w-=flow[t];</span><br><span class="line">            edge[xb[k]^1].w+=flow[t];</span><br><span class="line">            k=fa[k];</span><br><span class="line">        &#125;</span><br><span class="line">        tot+=flow[t];</span><br><span class="line">        sum+=flow[t]*dis[t];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    memset(head,-1,sizeof(head));</span><br><span class="line">    cnt=-1;</span><br><span class="line">    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</span><br><span class="line">    s=n+1;</span><br><span class="line">    t=n+2;</span><br><span class="line">    for(int i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">       int a,b,c;</span><br><span class="line">       scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">       add_edge(a,b,1,c);</span><br><span class="line">       add_edge(b,a,0,-c);</span><br><span class="line">       add_edge(b,a,1,c);</span><br><span class="line">       add_edge(a,b,0,-c);</span><br><span class="line">    &#125;</span><br><span class="line">    add_edge(s,1,2,0);</span><br><span class="line">    add_edge(1,s,0,0);</span><br><span class="line">    add_edge(n,t,2,0);</span><br><span class="line">    add_edge(t,n,0,0);</span><br><span class="line">    max_flow();</span><br><span class="line">    printf(&quot;%d\n&quot;,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -291,9 +289,9 @@
     <a title="天生我材必有用，千金散尽还复来">天生我材必有用，千金散尽还复来</a>
     
     <div class="count">
-        <a class="count articles"><span>11</span>文章</a>
-        <a class="count tags"><span>14</span>标签</a>
-        <a class="count categories"><span>8</span>分类</a>
+        <a class="count articles"><span>12</span>文章</a>
+        <a class="count tags"><span>15</span>标签</a>
+        <a class="count categories"><span>9</span>分类</a>
     </div>
 </div>
 
@@ -330,7 +328,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/2018Hud-多校训练一-Time-Zone/" title="2018Hud 多校训练一 Time Zone">2018Hud 多校训练一 Time Zone</a>
+                    <a href="/2019/02/04/2018ICPC北京网络赛D-80days-尺取法/" title="2018ICPC北京网络赛D 80days 尺取法">2018ICPC北京网络赛D 80days 尺取法</a>
                 </p>
             </div>
             
@@ -344,7 +342,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/牛客练习赛22-C简单瞎搞题-bitset-dp/" title="牛客练习赛22-C简单瞎搞题 bitset+dp">牛客练习赛22-C简单瞎搞题 bitset+dp</a>
+                    <a href="/2019/02/04/2018Hud-多校训练一-Time-Zone/" title="2018Hud 多校训练一 Time Zone">2018Hud 多校训练一 Time Zone</a>
                 </p>
             </div>
         </li>
@@ -357,7 +355,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-3281-Dining-最大流/" title="Poj 3281 Dining 最大流">Poj 3281 Dining 最大流</a>
+                    <a href="/2019/02/04/牛客练习赛22-C简单瞎搞题-bitset-dp/" title="牛客练习赛22-C简单瞎搞题 bitset+dp">牛客练习赛22-C简单瞎搞题 bitset+dp</a>
                 </p>
             </div>
         </li>
@@ -370,7 +368,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
+                    <a href="/2019/02/04/Poj-3281-Dining-最大流/" title="Poj 3281 Dining 最大流">Poj 3281 Dining 最大流</a>
                 </p>
             </div>
         </li>
@@ -383,7 +381,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/" title="Poj 2135 Farm Tour 费用流">Poj 2135 Farm Tour 费用流</a>
+                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
                 </p>
             </div>
         </li>
@@ -401,12 +399,17 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/模拟/">#模拟</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
@@ -436,7 +439,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
@@ -458,6 +461,11 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/并查集/">#并查集</a>
         </div>
         
@@ -472,7 +480,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最小割/">#最小割</a>
         </div>
         
@@ -483,16 +491,16 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/最大流/">#最大流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
@@ -502,7 +510,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/线段树/">#线段树</a>
         </div>
         
@@ -512,12 +520,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最短路/">#最短路</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/bitset/">#bitset</a>
         </div>
         

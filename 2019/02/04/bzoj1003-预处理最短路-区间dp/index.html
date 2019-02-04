@@ -195,12 +195,10 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>给一个图，让你跑n次最短路，第i次最短路有若干点是不能使用的，并且更改一次路线就又需要加k的额外花费，问跑完n次以后最小花费。</p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>给一个图，让你跑n次最短路，第i次最短路有若干点是不能使用的，并且更改一次路线就又需要加k的额外花费，问跑完n次以后最小花费。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
-<p>想到把n次最短路分割成多个区间最短路的和，一个区间内最短路是不变的，对于每种最短路，我们可以预处理，因为只有n方的区间，n最大100，点最多只有20个，先跑n方的spfa。设<em>dp[i][j]<em>表示第i次到第j次最短路的所有花费的最小值。那么答案就是</em>dp[1][n]</em>。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>想到把n次最短路分割成多个区间最短路的和，一个区间内最短路是不变的，对于每种最短路，我们可以预处理，因为只有n方的区间，n最大100，点最多只有20个，先跑n方的spfa。设<em>dp[i][j]</em>表示第i次到第j次最短路的所有花费的最小值。那么答案就是<em>dp[1][n]</em>。</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=200;</span><br><span class="line">const int maxm=1000;</span><br><span class="line">int cnt=-1,n,m,k,e;</span><br><span class="line">int head[maxn],use[110][110],dist[maxn],dp[110][110];</span><br><span class="line">bool inq[maxn];</span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int nex;</span><br><span class="line">    int to,w;</span><br><span class="line">&#125; edge[maxm];</span><br><span class="line"></span><br><span class="line">void add_edge(int u,int v,int w)</span><br><span class="line">&#123;</span><br><span class="line">    edge[++cnt].nex=head[u];</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line">bool check(int x,int s,int t)</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=s; i&lt;=t; i++)</span><br><span class="line">        if(!use[x][i])</span><br><span class="line">            return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">int spfa(int s,int t)</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof(dist));</span><br><span class="line">    memset(inq,false,sizeof(inq));</span><br><span class="line">    queue&lt;int&gt;que;</span><br><span class="line">    while(!que.empty())</span><br><span class="line">        que.pop();</span><br><span class="line">    que.push(1);</span><br><span class="line">    dist[1]=0;</span><br><span class="line">    inq[1]=true;</span><br><span class="line">    while(!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        int u=que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        inq[u]=false;</span><br><span class="line">        for(int i=head[u]; i!=-1; i=edge[i].nex)</span><br><span class="line">        &#123;</span><br><span class="line">            int v=edge[i].to;</span><br><span class="line">            if(check(v,s,t)&amp;&amp;dist[v]&gt;dist[u]+edge[i].w)</span><br><span class="line">            &#123;</span><br><span class="line">                dist[v]=dist[u]+edge[i].w;</span><br><span class="line">                if(!inq[v])</span><br><span class="line">                    inq[v]=true,que.push(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dist[m]==0x3f3f3f3f ? 0x3f3f3f3f:dist[m]*(t-s+1);</span><br><span class="line">&#125;</span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=i; j&lt;=n; j++)</span><br><span class="line">            dp[i][j]=spfa(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    int e;</span><br><span class="line">    for(int len=2; len&lt;=n; len++)</span><br><span class="line">        for(int s=1; (e=s+len-1)&lt;=n; s++)</span><br><span class="line">            for(int p=s; p&lt;s+len-1; p++)</span><br><span class="line">            &#123;</span><br><span class="line">                dp[s][e]=min(dp[s][e],dp[s][p]+dp[p+1][e]+k);</span><br><span class="line">            &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,dp[1][n]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(~scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;m,&amp;k,&amp;e))</span><br><span class="line">    &#123;</span><br><span class="line">        memset(head,-1,sizeof(head));</span><br><span class="line">        cnt=-1;</span><br><span class="line">        for(int i=1; i&lt;maxm; i++)</span><br><span class="line">            edge[i].nex=-1;</span><br><span class="line">        for(int i=1; i&lt;=e; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int a,b,c;</span><br><span class="line">            scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">            add_edge(a,b,c);</span><br><span class="line">            add_edge(b,a,c);</span><br><span class="line">        &#125;</span><br><span class="line">        memset(use,1,sizeof(use));</span><br><span class="line">        int tem;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;tem);</span><br><span class="line">        for(int i=1; i&lt;=tem; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int p,a,b;</span><br><span class="line">            scanf(&quot;%d %d %d&quot;,&amp;p,&amp;a,&amp;b);</span><br><span class="line">            for(int j=a; j&lt;=b; j++)</span><br><span class="line">                use[p][j]=0;</span><br><span class="line">        &#125;</span><br><span class="line">        solve();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -292,9 +290,9 @@
     <a title="天生我材必有用，千金散尽还复来">天生我材必有用，千金散尽还复来</a>
     
     <div class="count">
-        <a class="count articles"><span>11</span>文章</a>
-        <a class="count tags"><span>14</span>标签</a>
-        <a class="count categories"><span>8</span>分类</a>
+        <a class="count articles"><span>12</span>文章</a>
+        <a class="count tags"><span>15</span>标签</a>
+        <a class="count categories"><span>9</span>分类</a>
     </div>
 </div>
 
@@ -331,7 +329,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/2018Hud-多校训练一-Time-Zone/" title="2018Hud 多校训练一 Time Zone">2018Hud 多校训练一 Time Zone</a>
+                    <a href="/2019/02/04/2018ICPC北京网络赛D-80days-尺取法/" title="2018ICPC北京网络赛D 80days 尺取法">2018ICPC北京网络赛D 80days 尺取法</a>
                 </p>
             </div>
             
@@ -345,7 +343,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/牛客练习赛22-C简单瞎搞题-bitset-dp/" title="牛客练习赛22-C简单瞎搞题 bitset+dp">牛客练习赛22-C简单瞎搞题 bitset+dp</a>
+                    <a href="/2019/02/04/2018Hud-多校训练一-Time-Zone/" title="2018Hud 多校训练一 Time Zone">2018Hud 多校训练一 Time Zone</a>
                 </p>
             </div>
         </li>
@@ -358,7 +356,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-3281-Dining-最大流/" title="Poj 3281 Dining 最大流">Poj 3281 Dining 最大流</a>
+                    <a href="/2019/02/04/牛客练习赛22-C简单瞎搞题-bitset-dp/" title="牛客练习赛22-C简单瞎搞题 bitset+dp">牛客练习赛22-C简单瞎搞题 bitset+dp</a>
                 </p>
             </div>
         </li>
@@ -371,7 +369,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
+                    <a href="/2019/02/04/Poj-3281-Dining-最大流/" title="Poj 3281 Dining 最大流">Poj 3281 Dining 最大流</a>
                 </p>
             </div>
         </li>
@@ -384,7 +382,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/" title="Poj 2135 Farm Tour 费用流">Poj 2135 Farm Tour 费用流</a>
+                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
                 </p>
             </div>
         </li>
@@ -402,8 +400,13 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/尺取法/">#尺取法</a>
         </div>
         
         
@@ -412,7 +415,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/最小割/">#最小割</a>
         </div>
         
@@ -437,7 +440,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
@@ -458,33 +461,33 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/并查集/">#并查集</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/欧拉路/">#欧拉路</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最小割/">#最小割</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/费用流/">#费用流</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/最大流/">#最大流</a>
+            <a href="/tags/费用流/">#费用流</a>
         </div>
         
         
@@ -494,6 +497,11 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
@@ -513,7 +521,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最短路/">#最短路</a>
         </div>
         

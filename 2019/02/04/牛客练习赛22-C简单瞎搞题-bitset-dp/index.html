@@ -195,12 +195,10 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>给出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个区间，然后分别给出区间的左右边界，可以在每个区间中选择一个整数，问这<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个整数的平方和有多少种不同的取值。</p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>给出$n$个区间，然后分别给出区间的左右边界，可以在每个区间中选择一个整数，问这$n$个整数的平方和有多少种不同的取值。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
-<p>$ f_i $表示一个bitset，bitset里有几个1，就表示这i个区间所能得到的平方和的取值种数。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$ f_i $表示一个bitset，bitset里有几个1，就表示这i个区间所能得到的平方和的取值种数。</p>
 <p>转移方程为 <em>f[i]=f[i] | f[i-1]&lt;&lt;k^k (k from l to r)</em></p>
 <p>状态转移的复杂度是n，每次操作对应的复杂度是l-r。</p>
 <hr>
@@ -294,9 +292,9 @@
     <a title="天生我材必有用，千金散尽还复来">天生我材必有用，千金散尽还复来</a>
     
     <div class="count">
-        <a class="count articles"><span>11</span>文章</a>
-        <a class="count tags"><span>14</span>标签</a>
-        <a class="count categories"><span>8</span>分类</a>
+        <a class="count articles"><span>12</span>文章</a>
+        <a class="count tags"><span>15</span>标签</a>
+        <a class="count categories"><span>9</span>分类</a>
     </div>
 </div>
 
@@ -333,7 +331,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/2018Hud-多校训练一-Time-Zone/" title="2018Hud 多校训练一 Time Zone">2018Hud 多校训练一 Time Zone</a>
+                    <a href="/2019/02/04/2018ICPC北京网络赛D-80days-尺取法/" title="2018ICPC北京网络赛D 80days 尺取法">2018ICPC北京网络赛D 80days 尺取法</a>
                 </p>
             </div>
             
@@ -347,7 +345,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/牛客练习赛22-C简单瞎搞题-bitset-dp/" title="牛客练习赛22-C简单瞎搞题 bitset+dp">牛客练习赛22-C简单瞎搞题 bitset+dp</a>
+                    <a href="/2019/02/04/2018Hud-多校训练一-Time-Zone/" title="2018Hud 多校训练一 Time Zone">2018Hud 多校训练一 Time Zone</a>
                 </p>
             </div>
         </li>
@@ -360,7 +358,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-3281-Dining-最大流/" title="Poj 3281 Dining 最大流">Poj 3281 Dining 最大流</a>
+                    <a href="/2019/02/04/牛客练习赛22-C简单瞎搞题-bitset-dp/" title="牛客练习赛22-C简单瞎搞题 bitset+dp">牛客练习赛22-C简单瞎搞题 bitset+dp</a>
                 </p>
             </div>
         </li>
@@ -373,7 +371,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
+                    <a href="/2019/02/04/Poj-3281-Dining-最大流/" title="Poj 3281 Dining 最大流">Poj 3281 Dining 最大流</a>
                 </p>
             </div>
         </li>
@@ -386,7 +384,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/" title="Poj 2135 Farm Tour 费用流">Poj 2135 Farm Tour 费用流</a>
+                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
                 </p>
             </div>
         </li>
@@ -410,6 +408,11 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
@@ -419,12 +422,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/费用流/">#费用流</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最大流/">#最大流</a>
         </div>
         
@@ -461,11 +464,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/并查集/">#并查集</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/欧拉路/">#欧拉路</a>
         </div>
         
@@ -475,7 +483,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最小割/">#最小割</a>
         </div>
         
@@ -485,13 +493,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/最大流/">#最大流</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
+            <a href="/tags/最大流/">#最大流</a>
         </div>
         
         
@@ -510,7 +518,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/dp/">#dp</a>
         </div>
         
@@ -520,7 +528,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/bitset/">#bitset</a>
         </div>
         

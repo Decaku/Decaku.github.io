@@ -195,12 +195,10 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>给一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>∗</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n*m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>的方格，每个格子里有个正数，要求选择若干数，这些数所在方格不能有相邻的边，要求选择的数的和最大。</p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>给一个$n*m$的方格，每个格子里有个正数，要求选择若干数，这些数所在方格不能有相邻的边，要求选择的数的和最大。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
-<p>状压dp玄学爆过去了,然而复杂度算下来不对。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>状压dp玄学爆过去了,然而复杂度算下来不对。</p>
 <p>正解是网络流。对方格染色，把方格变成二分图，把所有点的权相加，去掉最小割就是我们所要的答案了，所以具体的建图方式为：源点与黑色点连，汇点与白色点连，容量都是点权。然后又因为选了一个点以后会影响它相邻的点，这些边是不会出现在割集中的，所以把这些边的容量置inf。</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int maxn=15000;</span><br><span class="line">const int maxm=50000;</span><br><span class="line">const int inf=1e9;</span><br><span class="line">int cnt=-1,n,m,s,t,sum;</span><br><span class="line">int head[maxn],dep[maxn],cur[maxn];</span><br><span class="line">struct P</span><br><span class="line">&#123;</span><br><span class="line">    int id,w;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;P&gt;_1,_2;</span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int next=-1;</span><br><span class="line">    int to,w;</span><br><span class="line">&#125; edge[maxm*2];</span><br><span class="line"></span><br><span class="line">void add_edge(int u,int v,int w)</span><br><span class="line">&#123;</span><br><span class="line">    //cout&lt;&lt;u&lt;&lt;&quot; &quot;&lt;&lt;v&lt;&lt;&quot; &quot;&lt;&lt;w&lt;&lt;endl;</span><br><span class="line">    edge[++cnt].next=head[u];</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line">bool bfs()</span><br><span class="line">&#123;</span><br><span class="line">    queue&lt;int&gt;que;</span><br><span class="line">    while(!que.empty())que.pop();</span><br><span class="line">    memset(dep,0,sizeof(dep));</span><br><span class="line">    dep[s]=1;</span><br><span class="line">    que.push(s);</span><br><span class="line">    while(!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        int u=que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        for(int i=head[u]; i!=-1; i=edge[i].next)</span><br><span class="line">        &#123;</span><br><span class="line">            int v=edge[i].to;</span><br><span class="line">            if(!dep[v]&amp;&amp;edge[i].w)</span><br><span class="line">            &#123;</span><br><span class="line">                dep[v]=dep[u]+1;</span><br><span class="line">                que.push(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(dep[t]&gt;0)</span><br><span class="line">        return 1;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int dfs(int u,int flow)</span><br><span class="line">&#123;</span><br><span class="line">    if(u==t) return flow;</span><br><span class="line">    for(int &amp;i=cur[u]; i!=-1; i=edge[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        int v=edge[i].to;</span><br><span class="line">        if((dep[v]==dep[u]+1)&amp;&amp;edge[i].w)</span><br><span class="line">        &#123;</span><br><span class="line">            int d=dfs(v,min(flow,edge[i].w));</span><br><span class="line">            if(d&gt;0)</span><br><span class="line">            &#123;</span><br><span class="line">                edge[i].w-=d;</span><br><span class="line">                edge[i^1].w+=d;</span><br><span class="line">                return d;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int Dinic()</span><br><span class="line">&#123;</span><br><span class="line">    int ans=0;</span><br><span class="line">    while(bfs())</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=1; i&lt;=n*m+2; i++)</span><br><span class="line">            cur[i]=head[i];</span><br><span class="line">        while(int d=dfs(s,inf))</span><br><span class="line">        &#123;</span><br><span class="line">            ans+=d;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    //1-n*n n*n+1,n*n+2m</span><br><span class="line">    while(~scanf(&quot;%d %d&quot;,&amp;n,&amp;m))</span><br><span class="line">    &#123;</span><br><span class="line">        _1.clear();</span><br><span class="line">        _2.clear();</span><br><span class="line">        sum=0;</span><br><span class="line">        memset(head,-1,sizeof(head));</span><br><span class="line">        cnt=-1;</span><br><span class="line">        s=n*m+1;</span><br><span class="line">        t=n*m+2;</span><br><span class="line">        int _cnt=0;</span><br><span class="line">        for(int i=1; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=1; j&lt;=m; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                P tem;</span><br><span class="line">                scanf(&quot;%d&quot;,&amp;tem.w);</span><br><span class="line">                sum+=tem.w;</span><br><span class="line">                _cnt++;</span><br><span class="line">                tem.id=_cnt;</span><br><span class="line">                if((i+j)&amp;1) _1.push_back(tem);</span><br><span class="line">                else _2.push_back(tem);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0; i&lt;_1.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            add_edge(s,_1[i].id,_1[i].w);</span><br><span class="line">            add_edge(_1[i].id,s,0);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i=0; i&lt;_2.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            add_edge(_2[i].id,t,_2[i].w);</span><br><span class="line">            add_edge(t,_2[i].id,0);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i=0; i&lt;_1.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(_1[i].id%m!=0)</span><br><span class="line">                add_edge(_1[i].id,_1[i].id+1,inf),add_edge(_1[i].id+1,_1[i].id,0);</span><br><span class="line">            if(_1[i].id%m!=1)</span><br><span class="line">                add_edge(_1[i].id,_1[i].id-1,inf),add_edge(_1[i].id-1,_1[i].id,0);</span><br><span class="line">            if(_1[i].id+m&lt;=n*m)</span><br><span class="line">                add_edge(_1[i].id,_1[i].id+m,inf),add_edge(_1[i].id+m,_1[i].id,0);</span><br><span class="line">            if(_1[i].id-m&gt;=1)</span><br><span class="line">                add_edge(_1[i].id,_1[i].id-m,inf),add_edge(_1[i].id-m,_1[i].id,0);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,sum-Dinic());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -293,9 +291,9 @@
     <a title="天生我材必有用，千金散尽还复来">天生我材必有用，千金散尽还复来</a>
     
     <div class="count">
-        <a class="count articles"><span>11</span>文章</a>
-        <a class="count tags"><span>14</span>标签</a>
-        <a class="count categories"><span>8</span>分类</a>
+        <a class="count articles"><span>12</span>文章</a>
+        <a class="count tags"><span>15</span>标签</a>
+        <a class="count categories"><span>9</span>分类</a>
     </div>
 </div>
 
@@ -332,7 +330,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/2018Hud-多校训练一-Time-Zone/" title="2018Hud 多校训练一 Time Zone">2018Hud 多校训练一 Time Zone</a>
+                    <a href="/2019/02/04/2018ICPC北京网络赛D-80days-尺取法/" title="2018ICPC北京网络赛D 80days 尺取法">2018ICPC北京网络赛D 80days 尺取法</a>
                 </p>
             </div>
             
@@ -346,7 +344,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/牛客练习赛22-C简单瞎搞题-bitset-dp/" title="牛客练习赛22-C简单瞎搞题 bitset+dp">牛客练习赛22-C简单瞎搞题 bitset+dp</a>
+                    <a href="/2019/02/04/2018Hud-多校训练一-Time-Zone/" title="2018Hud 多校训练一 Time Zone">2018Hud 多校训练一 Time Zone</a>
                 </p>
             </div>
         </li>
@@ -359,7 +357,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-3281-Dining-最大流/" title="Poj 3281 Dining 最大流">Poj 3281 Dining 最大流</a>
+                    <a href="/2019/02/04/牛客练习赛22-C简单瞎搞题-bitset-dp/" title="牛客练习赛22-C简单瞎搞题 bitset+dp">牛客练习赛22-C简单瞎搞题 bitset+dp</a>
                 </p>
             </div>
         </li>
@@ -372,7 +370,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
+                    <a href="/2019/02/04/Poj-3281-Dining-最大流/" title="Poj 3281 Dining 最大流">Poj 3281 Dining 最大流</a>
                 </p>
             </div>
         </li>
@@ -385,7 +383,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/" title="Poj 2135 Farm Tour 费用流">Poj 2135 Farm Tour 费用流</a>
+                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
                 </p>
             </div>
         </li>
@@ -403,8 +401,13 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/尺取法/">#尺取法</a>
         </div>
         
         
@@ -423,22 +426,22 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/最大流/">#最大流</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
@@ -460,16 +463,21 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/并查集/">#并查集</a>
+            <a href="/tags/尺取法/">#尺取法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/欧拉路/">#欧拉路</a>
+            <a href="/tags/并查集/">#并查集</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/欧拉路/">#欧拉路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
@@ -485,26 +493,26 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/最大流/">#最大流</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/线段树/">#线段树</a>
         </div>
         
