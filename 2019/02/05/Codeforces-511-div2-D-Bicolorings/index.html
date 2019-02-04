@@ -12,7 +12,7 @@
     
     
     
-    <title>2018牛客国庆集训派对 day3 | Decaku &#39;s Blog</title>
+    <title>Codeforces #511 div2 D. Bicolorings | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,36 +174,30 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">2018牛客国庆集训派对 day3</h1>
+    <h1 class="title">Codeforces #511 div2 D. Bicolorings</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2019-02-04
+            2019-02-05
         </div>
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/训练记录/">#训练记录</a>
+    <a href="/tags/dp/">#dp</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="D"><a href="#D" class="headerlink" title="D:"></a>D:</h1><p>签到。</p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>$ 有个2行n列的格子图,用2种颜色给格子涂色,相邻格子颜色 \\<br>不能相同,求不同的染色方案数。$</p>
 <hr>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,m;</span><br><span class="line">double a[1050];</span><br><span class="line">int b[1050];</span><br><span class="line">bool cmp(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    return x&gt;y;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">        int cnt=0;</span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin&gt;&gt;a[i]&gt;&gt;b[i];</span><br><span class="line">            if(b[i])</span><br><span class="line">                cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(a,a+n,cmp);</span><br><span class="line">        double ans=0;</span><br><span class="line">        cnt=min(cnt,m);</span><br><span class="line">        for(int i=0;i&lt;cnt;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            ans+=a[i]/2;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=cnt;i&lt;n;i++)</span><br><span class="line">            ans+=a[i];</span><br><span class="line">        printf(&quot;%.1f\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$类似状压dp的思路，只有两行，所以每一列只有4个状态, \\<br>所以可以考虑枚举每一列，这样复杂度是O(n^4)，n只有1000, \\<br>题目又要求把方格分成k个连通块，我们在dp中再加一维即可, \\<br>k最大是2n的，所以最多做8 * (10)^6次循环。$</p>
 <hr>
-<h1 id="H"><a href="#H" class="headerlink" title="H:"></a>H:</h1><p>发现和树的结构没有关系，只要考虑如何把树上的结点分成几部分，推完发现是个组合数取模，预处理阶乘，用乘法逆元即可。</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int maxn=1e5+5;</span><br><span class="line">const int mod=1e9+7;</span><br><span class="line">ll fac[maxn];</span><br><span class="line">void init_fac()</span><br><span class="line">&#123;</span><br><span class="line">    fac[0]=fac[1]=1;</span><br><span class="line">    for(int i=2;i&lt;maxn;i++)</span><br><span class="line">       fac[i]=i*fac[i-1]%mod;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">ll quickpow(ll a,ll n)</span><br><span class="line">&#123;</span><br><span class="line">    ll ret=1;</span><br><span class="line">    while(n)</span><br><span class="line">    &#123;</span><br><span class="line">        if(n&amp;1) ret=ret*a%mod;</span><br><span class="line">        a=a*a%mod;</span><br><span class="line">        n&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br><span class="line">ll C(ll a,ll b)</span><br><span class="line">&#123;</span><br><span class="line">    return fac[a]*quickpow(fac[b],mod-2)%mod*quickpow(fac[a-b],mod-2)%mod;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    init_fac();</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        int n,m;</span><br><span class="line">        scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</span><br><span class="line">        for(int i=1;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int x,y;</span><br><span class="line">            scanf(&quot;%d %d&quot;,&amp;x,&amp;y);</span><br><span class="line">        &#125;</span><br><span class="line">        ll ans=C(n-1,m-1)*fac[m]%mod;</span><br><span class="line">        printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="A"><a href="#A" class="headerlink" title="A:"></a>A:</h1><p>马走日问题，因为棋盘太大，可以大范围贪心+小范围暴搜。题解是找规律。</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int x, y, ans;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        x=abs(x);</span><br><span class="line">        y=abs(y);</span><br><span class="line">        if(x&gt;y)swap(x, y);</span><br><span class="line"></span><br><span class="line">        if(y==x*2)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%d\n&quot;, (x+y)/3);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        if(y&lt;=2*x)</span><br><span class="line">        &#123;</span><br><span class="line">            if(x==1&amp;&amp;y==1)</span><br><span class="line">                ans = 2;</span><br><span class="line">            else if(x==2&amp;&amp;y==2)</span><br><span class="line">                ans = 4;</span><br><span class="line">            else</span><br><span class="line">                ans = (x+y)/3+(x+y)%3;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            ans=x;</span><br><span class="line">            int c=(y-2*x)%4;</span><br><span class="line">            ans+=c;</span><br><span class="line">            ans+=(y-2*x-c)/2;</span><br><span class="line">            if(y==1&amp;&amp;x==0)</span><br><span class="line">                ans=3;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int mod=998244353;</span><br><span class="line">long long dp[5][1100][2100];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,k;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    memset(dp,0,sizeof(dp));</span><br><span class="line">    dp[0][1][1]=1;</span><br><span class="line">    dp[1][1][1]=0;</span><br><span class="line">    dp[2][1][1]=0;</span><br><span class="line">    dp[3][1][1]=1;</span><br><span class="line"></span><br><span class="line">    dp[0][1][2]=0;</span><br><span class="line">    dp[1][1][2]=1;</span><br><span class="line">    dp[2][1][2]=1;</span><br><span class="line">    dp[3][1][2]=0;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    for(int j=2; j&lt;=n; j++)</span><br><span class="line">        for(int i=0; i&lt;=3; i++)</span><br><span class="line">            for(int t=1; t&lt;=k; t++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(i==0)</span><br><span class="line">                    dp[i][j][t]=(dp[0][j-1][t]+dp[1][j-1][t]+dp[2][j-1][t]+dp[3][j-1][t-1])%mod;</span><br><span class="line">                else if(i==1)</span><br><span class="line">                    dp[i][j][t]=(dp[0][j-1][t-1]+dp[1][j-1][t]+dp[2][j-1][t-2]+dp[3][j-1][t-1])%mod;</span><br><span class="line">                else if(i==2)</span><br><span class="line">                    dp[i][j][t]=(dp[0][j-1][t-1]+dp[1][j-1][t-2]+dp[2][j-1][t]+dp[3][j-1][t-1])%mod;</span><br><span class="line">                else</span><br><span class="line">                    dp[i][j][t]=(dp[0][j-1][t-1]+dp[1][j-1][t]+dp[2][j-1][t]+dp[3][j-1][t])%mod;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt;(dp[0][n][k]+dp[1][n][k]+dp[2][n][k]+dp[3][n][k])%mod&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 </div>
@@ -211,17 +205,10 @@
 <div class="cube-article-nav">
     <ul>
         
-        <li class="prev">
-            <a href="/2019/02/04/2018牛客国庆训练营-day6/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                2018牛客国庆训练营 day6
-            </a>
-        </li>
-        
         
         <li class="next">
-            <a href="/2019/02/04/2018牛客国庆集训派对day1-J-Princess-Principal/">
-                2018牛客国庆集训派对day1 J Princess Principal
+            <a href="/2019/02/05/Hdu1005-Number-Sequence/">
+                Hdu1005 Number Sequence
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -403,7 +390,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/模拟/">#模拟</a>
         </div>
         
@@ -428,7 +415,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/训练记录/">#训练记录</a>
         </div>
         
@@ -458,7 +445,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最小割/">#最小割</a>
         </div>
         
@@ -468,17 +455,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/费用流/">#费用流</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Tarjan缩点/">#Tarjan缩点</a>
         </div>
         
@@ -488,7 +475,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/最大流/">#最大流</a>
         </div>
         
@@ -524,7 +511,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
@@ -554,27 +541,27 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/01分数规划/">#01分数规划</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/dp/">#dp</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/并查集/">#并查集</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/欧拉路/">#欧拉路</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
         </div>
         
@@ -619,7 +606,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/数论/">#数论</a>
         </div>
         
@@ -629,7 +616,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Tarjan缩点/">#Tarjan缩点</a>
         </div>
         
@@ -639,7 +626,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
@@ -654,7 +641,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/删边/">#删边</a>
         </div>
         
@@ -664,12 +651,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
@@ -679,7 +666,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最短路/">#最短路</a>
         </div>
         
