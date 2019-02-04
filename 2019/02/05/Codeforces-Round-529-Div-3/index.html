@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Decaku">
+    
+    <meta name="description" content="天生我材必有用，千金散尽还复来">
+    
+    
+    
+    
+    
+    
+    <title>Codeforces Round #529 (Div. 3) | Decaku &#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?11e014c56a50287ee4f5b7b12b45b896";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" https://i.loli.net/2019/01/31/5c5277a1f2b4b.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Decaku &#39;s Blog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('https://i.loli.net/2019/01/31/5c5277a1f2b4b.jpg');
+            background-repeat: no-repeat;
+            background-position: center -56px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('https://i.loli.net/2019/01/31/5c5277a1f2b4b.jpg');
+            background-position: center -100px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Decaku &#39;s Blog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '927',
+                height: '539'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">Codeforces Round #529 (Div. 3)</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-02-05
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/codeforces/">#codeforces</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h1 id="A-amp-B"><a href="#A-amp-B" class="headerlink" title="A&amp;B:"></a>A&amp;B:</h1><p>$A模拟,B两个case比较。$</p>
+<hr>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    string str;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    cin&gt;&gt;str;</span><br><span class="line">    string ans=&quot;&quot;;</span><br><span class="line">    int ct=1;</span><br><span class="line">    for(int i=0; i&lt;n; i+=ct)</span><br><span class="line">    &#123;</span><br><span class="line">        ans+=str[i];</span><br><span class="line">        ct++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn=1e5+5;</span><br><span class="line">int a[maxn];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">    sort(a+1,a+n+1);</span><br><span class="line">    int ans=0;</span><br><span class="line">    ans=min(a[n-1]-a[1],a[n]-a[2]);</span><br><span class="line">    printf(&quot;%d\n&quot;,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="C"><a href="#C" class="headerlink" title="C:"></a>C:</h1><p>所有数都是可以拆的,贪心的不断把大数除2直到变成1，特判输入是1,1的情况。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">int n,k;</span><br><span class="line">vector&lt;int&gt;ans,v,t;</span><br><span class="line">void ini()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=1; i&lt;=n; i*=2)</span><br><span class="line">    &#123;</span><br><span class="line">        v.push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool solve()</span><br><span class="line">&#123;</span><br><span class="line">    while(1)</span><br><span class="line">    &#123;</span><br><span class="line">        int tem=*(upper_bound(v.begin(),v.end(),n)-1);</span><br><span class="line">        t.push_back(tem);</span><br><span class="line">        n-=tem;</span><br><span class="line">        if(!n) break;</span><br><span class="line">    &#125;</span><br><span class="line">    if(t.size()&gt;k) return false;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        int sz=t.size();</span><br><span class="line">        while(sz&lt;k)</span><br><span class="line">        &#123;</span><br><span class="line">            t[0]/=2;</span><br><span class="line">            if(t[0]==1)</span><br><span class="line">            &#123;</span><br><span class="line">                ans.push_back(t[0]);</span><br><span class="line">                ans.push_back(t[0]);</span><br><span class="line">                t.erase(t.begin());</span><br><span class="line">                sz++;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                t.push_back(t[0]);</span><br><span class="line">                t.push_back(t[0]);</span><br><span class="line">                t.erase(t.begin());</span><br><span class="line">                sz++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);</span><br><span class="line">    ini();</span><br><span class="line">    if(n&amp;1)</span><br><span class="line">    &#123;</span><br><span class="line">        ans.push_back(1);</span><br><span class="line">        n--;</span><br><span class="line">        k--;</span><br><span class="line">    &#125;</span><br><span class="line">    if(n==0&amp;&amp;k==0)</span><br><span class="line">    &#123;</span><br><span class="line">        puts(&quot;YES&quot;);</span><br><span class="line">        puts(&quot;1&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(k&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        puts(&quot;NO&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        if(!solve())</span><br><span class="line">            puts(&quot;NO&quot;);</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            puts(&quot;YES&quot;);</span><br><span class="line">            for(int i=0; i&lt;ans.size(); i++)</span><br><span class="line">                printf(&quot;%d &quot;,ans[i]);</span><br><span class="line">            for(int i=0; i&lt;t.size(); i++)</span><br><span class="line">                printf(&quot;%d &quot;,t[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="D"><a href="#D" class="headerlink" title="D:"></a>D:</h1><p>$如果i的两个临接数是a和b且i的下一个数就是a,那么a的两个 \\<br>邻接数里一定有b，然后就可以建图了，输出答案一遍dfs即可。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn=4e5+5;</span><br><span class="line">vector&lt;int&gt;v[maxn];</span><br><span class="line">int n;</span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int nex,to;</span><br><span class="line">&#125; e[maxn];</span><br><span class="line">int head[maxn],cnt,vis[maxn];</span><br><span class="line">void ini()</span><br><span class="line">&#123;</span><br><span class="line">    memset(head,-1,sizeof(head));</span><br><span class="line">    memset(vis,0,sizeof(vis));</span><br><span class="line">    cnt=-1;</span><br><span class="line">&#125;</span><br><span class="line">void add_edge(int u,int v)</span><br><span class="line">&#123;</span><br><span class="line">    e[++cnt].nex=head[u];</span><br><span class="line">    e[cnt].to=v;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line">void dfs(int u)</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;%d &quot;,u);</span><br><span class="line">    vis[u]=1;</span><br><span class="line">    for(int i=head[u]; i!=-1; i=e[i].nex)</span><br><span class="line">    &#123;</span><br><span class="line">        int v=e[i].to;</span><br><span class="line">        if(vis[v]) continue;</span><br><span class="line">        dfs(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int x,y;</span><br><span class="line">        scanf(&quot;%d %d&quot;,&amp;x,&amp;y);</span><br><span class="line">        v[i].push_back(x);</span><br><span class="line">        v[i].push_back(y);</span><br><span class="line">    &#125;</span><br><span class="line">    ini();</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int x=v[i][0],y=v[i][1];</span><br><span class="line">        if(v[x][0]==y||v[x][1]==y)</span><br><span class="line">        &#123;</span><br><span class="line">            add_edge(i,x);</span><br><span class="line">            add_edge(x,y);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            add_edge(i,y);</span><br><span class="line">            add_edge(y,x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(1);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="E"><a href="#E" class="headerlink" title="E:"></a>E:</h1><p>正着反着各扫描一遍字符串处理4个数组，然后对于每个位置判断一下把它反转以后是否能使得字符串平衡。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn=1e6+5;</span><br><span class="line">char str[maxn];</span><br><span class="line">int n;</span><br><span class="line">int pre[maxn],prec[maxn],suf[maxn],sufc[maxn];</span><br><span class="line">//pre[i]前i个字符的封闭度</span><br><span class="line">//prec[i]前i个字符是否可以作前缀</span><br><span class="line">//suf[i] i到n的字符封闭度</span><br><span class="line">//sufc[i] i到n的字符是否可以做后缀</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    scanf(&quot;%s&quot;,str+1);</span><br><span class="line">    if(str[1]==&apos;(&apos;)</span><br><span class="line">    &#123;</span><br><span class="line">        pre[1]=1;</span><br><span class="line">        prec[1]=1;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        pre[1]=-1;</span><br><span class="line">        prec[1]=0;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=2; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(str[i]==&apos;(&apos;) pre[i]=pre[i-1]+1;</span><br><span class="line">        else  pre[i]=pre[i-1]-1;</span><br><span class="line">        if(prec[i-1]&amp;&amp;pre[i]&gt;=0) prec[i]=1;</span><br><span class="line">        else  prec[i]=0;</span><br><span class="line">    &#125;</span><br><span class="line">    if(str[n]==&apos;)&apos;)</span><br><span class="line">    &#123;</span><br><span class="line">        suf[n]=1;</span><br><span class="line">        sufc[n]=1;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        suf[n]=-1;</span><br><span class="line">        sufc[n]=0;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=n-1; i&gt;=1; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        if(str[i]==&apos;)&apos;) suf[i]=suf[i+1]+1;</span><br><span class="line">        else suf[i]=suf[i+1]-1;</span><br><span class="line">        if(sufc[i+1]&amp;&amp;suf[i]&gt;=0) sufc[i]=1;</span><br><span class="line">        else sufc[i]=0;</span><br><span class="line">    &#125;</span><br><span class="line">    int ans=0;</span><br><span class="line">    prec[0]=sufc[n+1]=1;</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(prec[i-1]&amp;&amp;sufc[i+1])</span><br><span class="line">        &#123;</span><br><span class="line">            if(str[i]==&apos;)&apos;&amp;&amp;suf[i+1]-pre[i-1]==1)</span><br><span class="line">                ans++;</span><br><span class="line">            if(str[i]==&apos;(&apos;&amp;&amp;pre[i-1]-suf[i+1]==1)</span><br><span class="line">                ans++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,ans);</span><br><span class="line">&#125;</span><br><span class="line">//( ( ( ( ) )</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="F"><a href="#F" class="headerlink" title="F:"></a>F:</h1><p>$直接求MST复杂度会爆炸,但是容易发现只有n条边可能在MST里。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const ll maxn=2e5+5;</span><br><span class="line">ll n,m;</span><br><span class="line">ll f[maxn],W[maxn];</span><br><span class="line">void ini()</span><br><span class="line">&#123;</span><br><span class="line">    for(ll i=0;i&lt;maxn;i++)</span><br><span class="line">        f[i]=i;</span><br><span class="line">&#125;</span><br><span class="line">ll Find(ll x)</span><br><span class="line">&#123;</span><br><span class="line">    return f[x]==x?x:f[x]=Find(f[x]);</span><br><span class="line">&#125;</span><br><span class="line">void join(ll a,ll b)</span><br><span class="line">&#123;</span><br><span class="line">    f[Find(a)]=Find(b);</span><br><span class="line">&#125;</span><br><span class="line">struct edge</span><br><span class="line">&#123;</span><br><span class="line">    ll u,v,w;</span><br><span class="line">&#125; e[maxn&lt;&lt;2];</span><br><span class="line">bool cmp(edge a,edge b)</span><br><span class="line">&#123;</span><br><span class="line">    return a.w&lt;b.w;</span><br><span class="line">&#125;</span><br><span class="line">ll cnt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ini();</span><br><span class="line">    scanf(&quot;%lld %lld&quot;,&amp;n,&amp;m);</span><br><span class="line">    ll pos=1;</span><br><span class="line">    for(ll i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%lld&quot;,&amp;W[i]);</span><br><span class="line">        if(W[i]&lt;W[pos]) pos=i;</span><br><span class="line">    &#125;</span><br><span class="line">    for(ll i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(i!=pos)</span><br><span class="line">        &#123;</span><br><span class="line">            e[++cnt].u=pos;</span><br><span class="line">            e[cnt].v=i;</span><br><span class="line">            e[cnt].w=W[pos]+W[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(ll i=1; i&lt;=m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ll u,v,w;</span><br><span class="line">        scanf(&quot;%lld %lld %lld&quot;,&amp;u,&amp;v,&amp;w);</span><br><span class="line">        e[++cnt].u=u;</span><br><span class="line">        e[cnt].v=v;</span><br><span class="line">        e[cnt].w=w;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(e+1,e+cnt+1,cmp);</span><br><span class="line">    ll ans=0;</span><br><span class="line">    for(ll i=1; i&lt;=cnt; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ll u=e[i].u,v=e[i].v,w=e[i].w;</span><br><span class="line">        if(Find(u)!=Find(v))</span><br><span class="line">        &#123;</span><br><span class="line">            join(u,v);</span><br><span class="line">            ans+=w;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2019/02/05/Poj-2104-Kth-number/">
+                Poj 2104 Kth number
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+    <!-- 因为gitment里面也有gitment-container，所以这里就改为gitment-comment -->
+<div class="gitment-comment">
+    <div id="container"></div>
+</div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id default is location.href
+		id: decodeURI(window.location.pathname),
+        owner: 'Decaku',
+        repo: 'Decaku.github.io',
+        oauth: {
+            client_id: 'e960fb048feed78b74fd',
+            client_secret: '88a0ad8483178c3ff4522aff167e0654afa6bb28',
+        },
+    })
+    gitment.render('container')
+</script>
+    
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Decaku</span>
+    
+    
+    <a title="天生我材必有用，千金散尽还复来">天生我材必有用，千金散尽还复来</a>
+    
+    <div class="count">
+        <a class="count articles"><span>53</span>文章</a>
+        <a class="count tags"><span>43</span>标签</a>
+        <a class="count categories"><span>25</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Codeforces-Round-529-Div-3/" title="Codeforces Round #529 (Div. 3)">Codeforces Round #529 (Div. 3)</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Poj-2104-Kth-number/" title="Poj 2104 Kth number">Poj 2104 Kth number</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Codeforces-Round-521-Div3/" title="Codeforces Round #521 Div3">Codeforces Round #521 Div3</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Bzoj-1069-最大土地面积/" title="Bzoj 1069 最大土地面积">Bzoj 1069 最大土地面积</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Codeforces-Round-522/" title="Codeforces Round #522 ">Codeforces Round #522 </a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/训练记录/">#训练记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最短路/">#最短路</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/LCA/">#LCA</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/二分/">#二分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/codeforces/">#codeforces</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/dfs/">#dfs</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/数论/">#数论</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/组合数学/">#组合数学</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Tarjan缩点/">#Tarjan缩点</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/树状数组/">#树状数组</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最小生成树/">#最小生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/单调栈/">#单调栈</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/树链剖分/">#树链剖分</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/训练记录/">#训练记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/状压dp/">#状压dp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/分层图最短路/">#分层图最短路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最大生成树/">#最大生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LCA/">#LCA</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/01分数规划/">#01分数规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数位dp/">#数位dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/旋转卡壳/">#旋转卡壳</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/dp/">#dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/codeforces/">#codeforces</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/dfs/">#dfs</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/容斥定理/">#容斥定理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/欧拉路/">#欧拉路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/费马小定理/">#费马小定理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树状数组/">#树状数组</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/离散化/">#离散化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/找规律/">#找规律</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/树形dp/">#树形dp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数论/">#数论</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Tarjan缩点/">#Tarjan缩点</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/归并/">#归并</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最小差值生成树/">#最小差值生成树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/次小生成树/">#次小生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单调栈/">#单调栈</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/删边/">#删边</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/离线/">#离线</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/组合数学/">#组合数学</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最短路/">#最短路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/bitset/">#bitset</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/Decaku" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/Coding.png">
+            
+            <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/SF.png">
+            
+            <a href="https://segmentfault.com/u/aonosora" target="_blank">SF社区</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/开发者头条.png">
+            
+            <a href="https://toutiao.io/u/148070" target="_blank">开发者头条</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/micblo.png">
+            <a href="https://blog.micblo.com/" target="_blank">罗大佬</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/DIYgod.jpg">
+            <a href="https://www.anotherhome.net/" target="_blank">DIYgod</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/friend_links.jpg ">
+            <a href="https://aonosora.com/" target="_blank">咪西西の部落格</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Decaku
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
