@@ -195,10 +195,12 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>类似于成语接龙，给若干个单词，问能否组成一个排列，使得一个单词的尾字母和后面一个单词的首字母相同。例如acm，malform，mouse这三个单词就满足题意。</p>
+        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
+<p>类似于成语接龙，给若干个单词，问能否组成一个排列，使得一个单词的尾字母和后面一个单词的首字母相同。例如acm，malform，mouse这三个单词就满足题意。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>把每个单词看成一条边，取首字母和尾字母，作为起点和终点。建图，图上有26个点，每输入一个单词，就在对应的两点间建立一条有向边。要判断输入的单词是否满足题意，其实就是判断图中是否存在一条欧拉路径。如果这个图不只包含一个连通分量，那么一定不满足题意。连通分量用并查集维护。</p>
+<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
+<p>把每个单词看成一条边，取首字母和尾字母，作为起点和终点。建图，图上有26个点，每输入一个单词，就在对应的两点间建立一条有向边。要判断输入的单词是否满足题意，其实就是判断图中是否存在一条欧拉路径。如果这个图不只包含一个连通分量，那么一定不满足题意。连通分量用并查集维护。</p>
 <p>下面的问题就是判断有向图的欧拉路径。如果不是回路，那么图中只有一个点的出度比入度大1（起点），一个点的出度比入度小1（终点），其它点出度等于入度。如果是欧拉回路，则所有的点出度等于入度。并且如果存在出度入度的差值大于1的点也一定不能形成欧拉路。</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int p[30];</span><br><span class="line"></span><br><span class="line">int Find(int x)</span><br><span class="line">&#123;</span><br><span class="line">    if(x!=p[x])</span><br><span class="line">        p[x]=Find(p[x]);</span><br><span class="line">    return p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void join(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">    if(Find(a)!=Find(b))</span><br><span class="line">        p[Find(a)]=Find(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">    int t,num,num1,num2;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    int indeg[30],outdeg[30];</span><br><span class="line">    bool vis[30],flag;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        num=num1=num2=0;</span><br><span class="line">        flag=true;</span><br><span class="line">        int n;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        char str[1000];</span><br><span class="line">        for(int i=0; i&lt;26; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            p[i]=i;</span><br><span class="line">            vis[i]=false;</span><br><span class="line">            outdeg[i]=indeg[i]=0;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin&gt;&gt;str;</span><br><span class="line">            join(str[0]-&apos;a&apos;,str[strlen(str)-1]-&apos;a&apos;);</span><br><span class="line">            indeg[str[0]-&apos;a&apos;]++;</span><br><span class="line">            outdeg[str[strlen(str)-1]-&apos;a&apos;]++;</span><br><span class="line">            vis[str[0]-&apos;a&apos;]=true;</span><br><span class="line">            vis[str[strlen(str)-1]-&apos;a&apos;]=true;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i=0; i&lt;26; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(p[i]==i&amp;&amp;vis[i])</span><br><span class="line">                num++;</span><br><span class="line">            if(indeg[i]-outdeg[i]==1)</span><br><span class="line">                num1++;</span><br><span class="line">            if(outdeg[i]-indeg[i]==1)</span><br><span class="line">                num2++;</span><br><span class="line">            if(indeg[i]-outdeg[i]&gt;1||outdeg[i]-indeg[i]&gt;1)</span><br><span class="line">                flag=false;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(flag==true&amp;&amp;num==1&amp;&amp;(num1==num2==0||num1==num2==1))</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;&quot;Ordering is possible.&quot;&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">        else cout&lt;&lt;&quot;The door cannot be opened.&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -291,9 +293,9 @@
     <a title="天生我材必有用，千金散尽还复来">天生我材必有用，千金散尽还复来</a>
     
     <div class="count">
-        <a class="count articles"><span>7</span>文章</a>
-        <a class="count tags"><span>10</span>标签</a>
-        <a class="count categories"><span>6</span>分类</a>
+        <a class="count articles"><span>8</span>文章</a>
+        <a class="count tags"><span>12</span>标签</a>
+        <a class="count categories"><span>7</span>分类</a>
     </div>
 </div>
 
@@ -330,7 +332,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/" title="Poj 2135 Farm Tour 费用流">Poj 2135 Farm Tour 费用流</a>
+                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
                 </p>
             </div>
             
@@ -344,7 +346,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Hdu1569-洛谷P2774方格取数-状压dp-or-最小割/" title="Hdu1569 洛谷P2774方格取数 状压dp or 最小割">Hdu1569 洛谷P2774方格取数 状压dp or 最小割</a>
+                    <a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/" title="Poj 2135 Farm Tour 费用流">Poj 2135 Farm Tour 费用流</a>
                 </p>
             </div>
         </li>
@@ -357,7 +359,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Hdu-1116-Play-on-Words-并查集-有向图的欧拉路/" title="Hdu 1116 Play on Words 并查集+有向图的欧拉路">Hdu 1116 Play on Words 并查集+有向图的欧拉路</a>
+                    <a href="/2019/02/04/Hdu1569-洛谷P2774方格取数-状压dp-or-最小割/" title="Hdu1569 洛谷P2774方格取数 状压dp or 最小割">Hdu1569 洛谷P2774方格取数 状压dp or 最小割</a>
                 </p>
             </div>
         </li>
@@ -370,7 +372,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/bzoj-1036-树的统计-树链剖分/" title="bzoj 1036 树的统计 树链剖分">bzoj 1036 树的统计 树链剖分</a>
+                    <a href="/2019/02/04/Hdu-1116-Play-on-Words-并查集-有向图的欧拉路/" title="Hdu 1116 Play on Words 并查集+有向图的欧拉路">Hdu 1116 Play on Words 并查集+有向图的欧拉路</a>
                 </p>
             </div>
         </li>
@@ -383,7 +385,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/bzoj-1008-越狱/" title="bzoj 1008 越狱">bzoj 1008 越狱</a>
+                    <a href="/2019/02/04/bzoj-1036-树的统计-树链剖分/" title="bzoj 1036 树的统计 树链剖分">bzoj 1036 树的统计 树链剖分</a>
                 </p>
             </div>
         </li>
@@ -402,32 +404,37 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/最小割/">#最小割</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/费用流/">#费用流</a>
+            <a href="/categories/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最大流/">#最大流</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/动态规划/">#动态规划</a>
+            <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/树链剖分/">#树链剖分</a>
+            <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
     </div>
@@ -443,6 +450,16 @@
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/欧拉路/">#欧拉路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
@@ -452,13 +469,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/并查集/">#并查集</a>
+        <div class="cube-box ">
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/欧拉路/">#欧拉路</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/最大流/">#最大流</a>
         </div>
         
         
@@ -473,22 +490,22 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/dp/">#dp</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/最短路/">#最短路</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/dp/">#dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最短路/">#最短路</a>
         </div>
         
     </div>

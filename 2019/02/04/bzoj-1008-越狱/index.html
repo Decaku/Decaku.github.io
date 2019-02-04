@@ -193,10 +193,12 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>有n个人排成一列，一共有m种势力，每个人可能属于一个势力，相邻的人势力相同则不合法，一共有多少种可能的不合法状态。</p>
+        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
+<p>有n个人排成一列，一共有m种势力，每个人可能属于一个势力，相邻的人势力相同则不合法，一共有多少种可能的不合法状态。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>所有的状态是$m^{n}$,正面很难求不合法的状态，所以想到先求合法状态，第一个人有$m$种选择，剩下的人都只有$m-1$种选择，所以答案就是$m^{n}-m*(m-1)^{n-1}$。</p>
+<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
+<p>所有的状态是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>m</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">m^{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span>,正面很难求不合法的状态，所以想到先求合法状态，第一个人有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>种选择，剩下的人都只有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>种选择，所以答案就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>m</mi><mi>n</mi></msup><mo>−</mo><mi>m</mi><mo>∗</mo><mo>(</mo><mi>m</mi><mo>−</mo><mn>1</mn><msup><mo>)</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">m^{n}-m*(m-1)^{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.747722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>。</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const ll mod=100003;</span><br><span class="line">ll m,n;</span><br><span class="line">ll quick_pow(ll a,ll b)</span><br><span class="line">&#123;</span><br><span class="line">    ll res=1;</span><br><span class="line">    while(b)</span><br><span class="line">    &#123;</span><br><span class="line">        if(b&amp;1) res=(res*a)%mod;</span><br><span class="line">        a=a*a%mod;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(~scanf(&quot;%lld %lld&quot;,&amp;m,&amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        ll ans=(quick_pow(m,n)-(m*quick_pow(m-1,n-1))%mod+mod)%mod;</span><br><span class="line">        printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -288,9 +290,9 @@
     <a title="天生我材必有用，千金散尽还复来">天生我材必有用，千金散尽还复来</a>
     
     <div class="count">
-        <a class="count articles"><span>7</span>文章</a>
-        <a class="count tags"><span>10</span>标签</a>
-        <a class="count categories"><span>6</span>分类</a>
+        <a class="count articles"><span>8</span>文章</a>
+        <a class="count tags"><span>12</span>标签</a>
+        <a class="count categories"><span>7</span>分类</a>
     </div>
 </div>
 
@@ -327,7 +329,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/" title="Poj 2135 Farm Tour 费用流">Poj 2135 Farm Tour 费用流</a>
+                    <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/" title="Poj 3041 Asteroids 最小点覆盖">Poj 3041 Asteroids 最小点覆盖</a>
                 </p>
             </div>
             
@@ -341,7 +343,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Hdu1569-洛谷P2774方格取数-状压dp-or-最小割/" title="Hdu1569 洛谷P2774方格取数 状压dp or 最小割">Hdu1569 洛谷P2774方格取数 状压dp or 最小割</a>
+                    <a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/" title="Poj 2135 Farm Tour 费用流">Poj 2135 Farm Tour 费用流</a>
                 </p>
             </div>
         </li>
@@ -354,7 +356,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/Hdu-1116-Play-on-Words-并查集-有向图的欧拉路/" title="Hdu 1116 Play on Words 并查集+有向图的欧拉路">Hdu 1116 Play on Words 并查集+有向图的欧拉路</a>
+                    <a href="/2019/02/04/Hdu1569-洛谷P2774方格取数-状压dp-or-最小割/" title="Hdu1569 洛谷P2774方格取数 状压dp or 最小割">Hdu1569 洛谷P2774方格取数 状压dp or 最小割</a>
                 </p>
             </div>
         </li>
@@ -367,7 +369,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/bzoj-1036-树的统计-树链剖分/" title="bzoj 1036 树的统计 树链剖分">bzoj 1036 树的统计 树链剖分</a>
+                    <a href="/2019/02/04/Hdu-1116-Play-on-Words-并查集-有向图的欧拉路/" title="Hdu 1116 Play on Words 并查集+有向图的欧拉路">Hdu 1116 Play on Words 并查集+有向图的欧拉路</a>
                 </p>
             </div>
         </li>
@@ -380,7 +382,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/04/bzoj-1008-越狱/" title="bzoj 1008 越狱">bzoj 1008 越狱</a>
+                    <a href="/2019/02/04/bzoj-1036-树的统计-树链剖分/" title="bzoj 1036 树的统计 树链剖分">bzoj 1036 树的统计 树链剖分</a>
                 </p>
             </div>
         </li>
@@ -399,12 +401,17 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/最小割/">#最小割</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/并查集/">#并查集</a>
+            <a href="/categories/最大流/">#最大流</a>
         </div>
         
         
@@ -413,18 +420,18 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/组合数学/">#组合数学</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/动态规划/">#动态规划</a>
+            <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
     </div>
@@ -440,6 +447,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/欧拉路/">#欧拉路</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
@@ -450,12 +467,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/并查集/">#并查集</a>
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/欧拉路/">#欧拉路</a>
+        <div class="cube-box ">
+            <a href="/tags/最大流/">#最大流</a>
         </div>
         
         
@@ -470,22 +487,22 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/dp/">#dp</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/最短路/">#最短路</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/树链剖分/">#树链剖分</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/线段树/">#线段树</a>
         </div>
         
     </div>

@@ -1,3 +1,4 @@
+http://decaku.net/2019/02/04/Poj-3041-Asteroids-最小点覆盖/
 http://decaku.net/2019/02/04/Poj-2135-Farm-Tour-费用流/
 http://decaku.net/2019/02/04/Hdu1569-洛谷P2774方格取数-状压dp-or-最小割/
 http://decaku.net/2019/02/04/Hdu-1116-Play-on-Words-并查集-有向图的欧拉路/
