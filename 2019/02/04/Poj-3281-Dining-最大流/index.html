@@ -12,7 +12,7 @@
     
     
     
-    <title>Decaku &#39;s Blog</title>
+    <title>Poj 3281 Dining 最大流 | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,314 +174,76 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            
-<div class="cube-excerpt" id="cube-excerpt-Poj 3281 Dining 最大流">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/02/04/Poj-3281-Dining-最大流/">Poj 3281 Dining 最大流</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-02-04
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/最大流/" class="cube-excerpt-tag-link">#最大流</a>
-                
-            </div>
+            <div class="cube-article">
+    <h1 class="title">Poj 3281 Dining 最大流</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-02-04
         </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/最大流/">#最大流</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
         
-        
-           <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
+        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
 <p>有一些牛，食物，饮料，每头牛都有一个喜欢吃的食物和饮料集合，要求你找出一个最大匹配，能满足所有牛的需求。</p>
 <hr>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/02/04/Poj-3281-Dining-最大流/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Poj 3041 Asteroids 最小点覆盖">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/">Poj 3041 Asteroids 最小点覆盖</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-02-04
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/最小点覆盖/" class="cube-excerpt-tag-link">#最小点覆盖</a>
-                
-                <a href="/tags/最大流/" class="cube-excerpt-tag-link">#最大流</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>有一个500*500的网格图，格点上有一些点，每次可以消除一行或者一列上所有的点，问消除所有的点最少需要几次。</p>
+<a id="more"></a>
+<p>思路:</p>
+<p>拆点以后跑最大流。</p>
 <hr>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/">阅读全文</a>
-    </footer>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">//#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=500;</span><br><span class="line">const int maxm=210000;</span><br><span class="line">const int inf=1e9;</span><br><span class="line">int cnt=-1,f,d,n,s,t;</span><br><span class="line">int head[maxn],dep[maxn],cur[maxn];</span><br><span class="line"></span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int nxt;</span><br><span class="line">    int to,w;</span><br><span class="line">&#125; edge[maxm*2];</span><br><span class="line"></span><br><span class="line">void add_edge(int u,int v,int w)</span><br><span class="line">&#123;</span><br><span class="line">    edge[++cnt].nxt=head[u];</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line">bool bfs()</span><br><span class="line">&#123;</span><br><span class="line">    queue&lt;int&gt;que;</span><br><span class="line">    while(!que.empty())que.pop();</span><br><span class="line">    memset(dep,0,sizeof(dep));</span><br><span class="line">    dep[s]=1;</span><br><span class="line">    que.push(s);</span><br><span class="line">    while(!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        int u=que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        for(int i=head[u]; i!=-1; i=edge[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            int v=edge[i].to;</span><br><span class="line">            if(!dep[v]&amp;&amp;edge[i].w)</span><br><span class="line">            &#123;</span><br><span class="line">                dep[v]=dep[u]+1;</span><br><span class="line">                que.push(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(dep[t]&gt;0)</span><br><span class="line">        return 1;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int dfs(int u,int flow)</span><br><span class="line">&#123;</span><br><span class="line">    if(u==t) return flow;</span><br><span class="line">    for(int &amp;i=cur[u]; i!=-1; i=edge[i].nxt)</span><br><span class="line">    &#123;</span><br><span class="line">        int v=edge[i].to;</span><br><span class="line">        if((dep[v]==dep[u]+1)&amp;&amp;edge[i].w)</span><br><span class="line">        &#123;</span><br><span class="line">            int d=dfs(v,min(flow,edge[i].w));</span><br><span class="line">            if(d&gt;0)</span><br><span class="line">            &#123;</span><br><span class="line">                edge[i].w-=d;</span><br><span class="line">                edge[i^1].w+=d;</span><br><span class="line">                return d;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int Dinic()</span><br><span class="line">&#123;</span><br><span class="line">    int ans=0;</span><br><span class="line">    while(bfs())</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=1; i&lt;=f+2*n+d+2; i++)</span><br><span class="line">            cur[i]=head[i];</span><br><span class="line">        while(int d=dfs(s,inf))</span><br><span class="line">        &#123;</span><br><span class="line">            ans+=d;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;    </span><br><span class="line">    for(int i=0; i&lt;maxm*2; i++)</span><br><span class="line">        edge[i].nxt=-1;</span><br><span class="line">    memset(head,-1,sizeof(head));</span><br><span class="line">    cnt=-1;</span><br><span class="line">    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;f,&amp;d);</span><br><span class="line">    s=f+2*n+d+1;</span><br><span class="line">    t=f+2*n+d+2;</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,tem;</span><br><span class="line">        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);</span><br><span class="line">        for(int j=1;j&lt;=a;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;tem);</span><br><span class="line">            add_edge(tem,f+i,1);</span><br><span class="line">            add_edge(f+i,tem,0);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int j=1;j&lt;=b;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;tem);</span><br><span class="line">            add_edge(f+n+i,f+2*n+tem,1);</span><br><span class="line">            add_edge(f+2*n+tem,f+n+i,0);</span><br><span class="line">        &#125;</span><br><span class="line">        add_edge(f+i,f+n+i,1);</span><br><span class="line">        add_edge(f+n+i,f+i,0);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1;i&lt;=f;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        add_edge(s,i,1);</span><br><span class="line">        add_edge(i,s,0);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1;i&lt;=d;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        add_edge(f+2*n+i,t,1);</span><br><span class="line">        add_edge(t,f+2*n+i,0);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,Dinic());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Poj 2135 Farm Tour 费用流">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/02/04/Poj-2135-Farm-Tour-费用流/">Poj 2135 Farm Tour 费用流</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-02-04
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/费用流/" class="cube-excerpt-tag-link">#费用流</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
+<div class="cube-article-nav">
+    <ul>
         
         
-           <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>给出起点和终点，要求从起点走到终点，再从终点回来，走的路最短，且来回走的路中不能有相同的边。</p>
-<hr>
+        <li class="next">
+            <a href="/2019/02/04/Poj-3041-Asteroids-最小点覆盖/">
+                Poj 3041 Asteroids 最小点覆盖
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
         
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/02/04/Poj-2135-Farm-Tour-费用流/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Hdu1569 洛谷P2774方格取数 状压dp or 最小割">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/02/04/Hdu1569-洛谷P2774方格取数-状压dp-or-最小割/">Hdu1569 洛谷P2774方格取数 状压dp or 最小割</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-02-04
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/状压dp/" class="cube-excerpt-tag-link">#状压dp</a>
-                
-                <a href="/tags/最小割/" class="cube-excerpt-tag-link">#最小割</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>给一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>∗</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n*m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>的方格，每个格子里有个正数，要求选择若干数，这些数所在方格不能有相邻的边，要求选择的数的和最大。</p>
-<hr>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/02/04/Hdu1569-洛谷P2774方格取数-状压dp-or-最小割/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Hdu 1116 Play on Words 并查集+有向图的欧拉路">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/02/04/Hdu-1116-Play-on-Words-并查集-有向图的欧拉路/">Hdu 1116 Play on Words 并查集+有向图的欧拉路</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-02-04
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/并查集/" class="cube-excerpt-tag-link">#并查集</a>
-                
-                <a href="/tags/欧拉路/" class="cube-excerpt-tag-link">#欧拉路</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>类似于成语接龙，给若干个单词，问能否组成一个排列，使得一个单词的尾字母和后面一个单词的首字母相同。例如acm，malform，mouse这三个单词就满足题意。</p>
-<hr>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/02/04/Hdu-1116-Play-on-Words-并查集-有向图的欧拉路/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-bzoj 1036 树的统计 树链剖分">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/02/04/bzoj-1036-树的统计-树链剖分/">bzoj 1036 树的统计 树链剖分</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-02-04
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/树链剖分/" class="cube-excerpt-tag-link">#树链剖分</a>
-                
-                <a href="/tags/线段树/" class="cube-excerpt-tag-link">#线段树</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>三种操作，一是修改树上某结点的权，二是询问结点x到y路径上的最大点的权，三是询问结点x到y路径上所有点的权值和。</p>
-<hr>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/02/04/bzoj-1036-树的统计-树链剖分/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-bzoj 1008 越狱">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/02/04/bzoj-1008-越狱/">bzoj 1008 越狱</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-02-04
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/组合数学/" class="cube-excerpt-tag-link">#组合数学</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>有n个人排成一列，一共有m种势力，每个人可能属于一个势力，相邻的人势力相同则不合法，一共有多少种可能的不合法状态。</p>
-<hr>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/02/04/bzoj-1008-越狱/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-bzoj1003 预处理最短路+区间dp">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/02/04/bzoj1003-预处理最短路-区间dp/">bzoj1003 预处理最短路+区间dp</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-02-04
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/dp/" class="cube-excerpt-tag-link">#dp</a>
-                
-                <a href="/tags/最短路/" class="cube-excerpt-tag-link">#最短路</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>给一个图，让你跑n次最短路，第i次最短路有若干点是不能使用的，并且更改一次路线就又需要加k的额外花费，问跑完n次以后最小花费。</p>
-<hr>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/02/04/bzoj1003-预处理最短路-区间dp/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Hello World">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/01/31/hello-world/">Hello World</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-01-31
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/01/31/hello-world/">阅读全文</a>
-    </footer>
+    </ul>
 </div>
 
 
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
 
-<ul class="cube-pagination cube-pagination-6">
-    
-    <li class="cube-pagination-prev disabled">
-        <span>« 上一页</span>
-    </li>
-    
-    
-        
-            
-            <li class="cube-pagination-index disabled">
-                <span>1</span>
-            </li>
-            
-        
+    <!-- 因为gitment里面也有gitment-container，所以这里就改为gitment-comment -->
+<div class="gitment-comment">
+    <div id="container"></div>
+</div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id default is location.href
+		id: decodeURI(window.location.pathname),
+        owner: 'Decaku',
+        repo: 'Decaku.github.io',
+        oauth: {
+            client_id: 'e960fb048feed78b74fd',
+            client_secret: '88a0ad8483178c3ff4522aff167e0654afa6bb28',
+        },
+    })
+    gitment.render('container')
+</script>
     
 
-    
-    <li class="cube-pagination-next disabled">
-        <span>下一页 »</span>
-    </li>
-    
-</ul>
 
-<!--其他组件后续添加-->
         </div>
         <div class="cube-right">
             
@@ -631,12 +393,12 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/最小割/">#最小割</a>
         </div>
         
@@ -646,7 +408,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/费用流/">#费用流</a>
         </div>
         
@@ -661,7 +423,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
@@ -682,7 +444,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/欧拉路/">#欧拉路</a>
         </div>
         
@@ -692,7 +454,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最小割/">#最小割</a>
         </div>
         
@@ -707,7 +469,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/费用流/">#费用流</a>
         </div>
         
@@ -732,7 +494,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/线段树/">#线段树</a>
         </div>
         
