@@ -12,7 +12,7 @@
     
     
     
-    <title>2018牛客暑期多校训练四 A gpa 01分数规划 | Decaku &#39;s Blog</title>
+    <title>2018牛客国庆训练营 day6 | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,7 +174,7 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">2018牛客暑期多校训练四 A gpa 01分数规划</h1>
+    <h1 class="title">2018牛客国庆训练营 day6</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
@@ -185,22 +185,22 @@
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/01分数规划/">#01分数规划</a>
+    <a href="/tags/训练记录/">#训练记录</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>$给一个数列a和一个数列b，然后从这两个数列中中最多删除k个项, \\即同时删除a_i和b_i，求剩下来的\sum (a_i*b_i)/\sum a_i最大值。$</p>
+        <h1 id="C-amp-H"><a href="#C-amp-H" class="headerlink" title="C&amp;H"></a>C&amp;H</h1><p>签到。</p>
 <hr>
-<a id="more"></a>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$设\sum (a_i*b_i)/ \sum a_i \ge D $</p>
-<p>$变形\sum (a_i*b_i) \ge (\sum a_i)*D$</p>
-<p>$变形\sum (a_i*(b_i-D)) \ge 0$</p>
-<p>$然后二分D 把s_i排个序，至多删除k项，就把就k小的项都删除，判断 \\剩下来的项的和，把和与0比较进行二分。$</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="G"><a href="#G" class="headerlink" title="G:"></a>G:</h1><p>对方格染色，使得在所有操作后，每种颜色的sum都相同。</p>
 <hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;iomanip&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef long long ll;</span><br><span class="line">typedef long double ld;</span><br><span class="line">const double eps=1e-6;</span><br><span class="line"></span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    double s,c;</span><br><span class="line">&#125; p[100005];</span><br><span class="line">double d[100005];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,k;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    for(int i=0; i&lt;n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;p[i].s;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;p[i].c;</span><br><span class="line">    &#125;</span><br><span class="line">    memset(d,0,sizeof(d));</span><br><span class="line"></span><br><span class="line">    double r=1000;</span><br><span class="line">    double l=0;</span><br><span class="line">    double mid;</span><br><span class="line">    while(r-l&gt;eps)</span><br><span class="line">    &#123;</span><br><span class="line">        double sum=0;</span><br><span class="line">        mid=(r+l)/2;</span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">            d[i]=p[i].s*p[i].c-p[i].s*mid;</span><br><span class="line">        sort(d,d+n);</span><br><span class="line">        for(int i=k; i&lt;n; i++)</span><br><span class="line">            sum+=d[i];</span><br><span class="line">        if(sum&gt;=0) l=mid;</span><br><span class="line">        else  r=mid;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;fixed&lt;&lt;setprecision(7)&lt;&lt;l&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[1005][1005];</span><br><span class="line">int color[1005][1005];</span><br><span class="line">int n,ans,tem,sum;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1; j&lt;=n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;a[i][j]);</span><br><span class="line">            color[i][j]=(i+j)%n;</span><br><span class="line">            if(a[i][j]==-1)</span><br><span class="line">                tem=color[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int _color,_sum=0;</span><br><span class="line">    if(tem==n-1) _color=n-2;</span><br><span class="line">    else _color=n-1;</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1; j&lt;=n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(color[i][j]==_color)</span><br><span class="line">                _sum+=a[i][j];</span><br><span class="line">            if(color[i][j]==tem&amp;&amp;a[i][j]!=-1)</span><br><span class="line">                sum+=a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,_sum-sum);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="A"><a href="#A" class="headerlink" title="A:"></a>A:</h1><p>$拆点以后跑费用流,每个区域拆成n个点，一个蛋糕和第i层连边，其 \\费用是i*i-(i-1)*(i-1)。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int inf=1e9;</span><br><span class="line">const int maxn=5005;</span><br><span class="line">const int maxm=50005;</span><br><span class="line">int s,t;</span><br><span class="line">int num=-1,tot,sum;</span><br><span class="line">int dis[maxn],b[maxn],xb[maxn],flow[maxn],fa[maxn];</span><br><span class="line">int head[maxm];</span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int from,to,dis,nxt,w;</span><br><span class="line">&#125; edge[maxm*2];</span><br><span class="line"></span><br><span class="line">void add_edge(int from,int to,int w,int dis)</span><br><span class="line">&#123;</span><br><span class="line">    edge[++num].nxt=head[from];</span><br><span class="line">    edge[num].from=from;</span><br><span class="line">    edge[num].to=to;</span><br><span class="line">    edge[num].w=w;</span><br><span class="line">    edge[num].dis=dis;</span><br><span class="line">    head[from]=num;</span><br><span class="line">&#125;</span><br><span class="line">bool spfa()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=0; i&lt;=maxn; i++)</span><br><span class="line">        dis[i]=inf;</span><br><span class="line">    memset(b,0,sizeof(b));</span><br><span class="line">    queue&lt;int&gt;que;</span><br><span class="line">    while(!que.empty()) que.pop();</span><br><span class="line">    memset(fa,-1,sizeof(fa));</span><br><span class="line">    b[s]=1;</span><br><span class="line">    dis[s]=0;</span><br><span class="line">    fa[s]=0;</span><br><span class="line">    flow[s]=inf;</span><br><span class="line">    que.push(s);</span><br><span class="line">    while(!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        int u=que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        b[u]=0;</span><br><span class="line">        for(int i=head[u]; i!=-1; i=edge[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            int v=edge[i].to;</span><br><span class="line">            if(edge[i].w&gt;0&amp;&amp;dis[v]&gt;dis[u]+edge[i].dis)</span><br><span class="line">            &#123;</span><br><span class="line">                dis[v]=dis[u]+edge[i].dis;</span><br><span class="line">                fa[v]=u;</span><br><span class="line">                xb[v]=i;</span><br><span class="line">                flow[v]=min(flow[u],edge[i].w);</span><br><span class="line">                if(!b[v])</span><br><span class="line">                &#123;</span><br><span class="line">                    b[v]=1;</span><br><span class="line">                    que.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dis[t]&lt;inf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void max_flow()</span><br><span class="line">&#123;</span><br><span class="line">    while(spfa())</span><br><span class="line">    &#123;</span><br><span class="line">        int k=t;</span><br><span class="line">        while(k!=s)</span><br><span class="line">        &#123;</span><br><span class="line">            edge[xb[k]].w-=flow[t];</span><br><span class="line">            edge[xb[k]^1].w+=flow[t];</span><br><span class="line">            k=fa[k];</span><br><span class="line">        &#125;</span><br><span class="line">        tot+=flow[t];</span><br><span class="line">        sum+=flow[t]*dis[t];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    memset(head,-1,sizeof(head));</span><br><span class="line">    int n,m;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        for(int j=1; j&lt;=n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            add_edge(i,n+(j-1)*m+a,1,2*j-1);</span><br><span class="line">            add_edge(n+(j-1)*m+a,i,0,1-2*j);</span><br><span class="line">            add_edge(i,n+(j-1)*m+b,1,2*j-1);</span><br><span class="line">            add_edge(n+(j-1)*m+b,i,0,1-2*j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        add_edge(0,i,1,0);</span><br><span class="line">        add_edge(i,0,0,0);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=n+1; i&lt;=n+n*m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        add_edge(i,n+n*m+1,1,0);</span><br><span class="line">        add_edge(n+n*m+1,i,0,0);</span><br><span class="line">    &#125;</span><br><span class="line">    s=0;</span><br><span class="line">    t=n+n*m+1;</span><br><span class="line">    max_flow();</span><br><span class="line">    cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 </div>
@@ -208,17 +208,10 @@
 <div class="cube-article-nav">
     <ul>
         
-        <li class="prev">
-            <a href="/2019/02/04/2018牛客国庆集训派对day1-J-Princess-Principal/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                2018牛客国庆集训派对day1 J Princess Principal
-            </a>
-        </li>
-        
         
         <li class="next">
-            <a href="/2019/02/04/2018ICPC南京网络赛-分层图最短路/">
-                2018ICPC南京网络赛 分层图最短路
+            <a href="/2019/02/04/2018牛客国庆集训派对-day3/">
+                2018牛客国庆集训派对 day3
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -415,12 +408,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/训练记录/">#训练记录</a>
         </div>
         
@@ -460,7 +453,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
@@ -481,17 +474,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/尺取法/">#尺取法</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/分层图最短路/">#分层图最短路</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
@@ -526,17 +519,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/费用流/">#费用流</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最大流/">#最大流</a>
         </div>
         
@@ -546,7 +539,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
@@ -556,12 +549,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最短路/">#最短路</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/bitset/">#bitset</a>
         </div>
         
