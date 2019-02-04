@@ -196,7 +196,8 @@
         
         <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>要求删除一些边以后使剩下一棵生成树,并且使得删除的边权和最小,然后询问树上2点的最短距离。</p>
 <hr>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$先求原图的最大生成树，然后求LCA。$</p>
+<a id="more"></a>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$ 先求原图的最大生成树，然后求LCA。$</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long LL;</span><br><span class="line">const int N=250005;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int v,dis,next;</span><br><span class="line">&#125;edges[N&lt;&lt;1];</span><br><span class="line">int head[N],e;</span><br><span class="line">int id[N]; //节点第一次被遍历的顺序</span><br><span class="line">int dis[N]; //节点到根节点的距离</span><br><span class="line">int RMQ[N*3][20];</span><br><span class="line">int curID;</span><br><span class="line">//F[i]表示第i个遍历的节点</span><br><span class="line">//B[i]表示F[i]在树中的深度</span><br><span class="line">int F[N*3],B[N*3];</span><br><span class="line">int root;</span><br><span class="line">void init()</span><br><span class="line">&#123;</span><br><span class="line">    e = 0; curID = 0;</span><br><span class="line">    memset(head,-1,sizeof(head));</span><br><span class="line">&#125;</span><br><span class="line">void Add (int u,int v,int dis)</span><br><span class="line">&#123;</span><br><span class="line">    edges[e].v=v;</span><br><span class="line">    edges[e].dis=dis;</span><br><span class="line">    edges[e].next=head[u];</span><br><span class="line">    head[u]=e++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void DFS (int u,int p,int Dep,int d)</span><br><span class="line">&#123;</span><br><span class="line">    int i,v;</span><br><span class="line">    curID++;</span><br><span class="line">    F[curID]=u;</span><br><span class="line">    B[curID]=Dep;</span><br><span class="line">    id[u]=curID;</span><br><span class="line">    dis[u]=d;</span><br><span class="line">    for (i=head[u];i!=-1;i=edges[i].next)&#123;</span><br><span class="line">        v=edges[i].v;</span><br><span class="line">        if (v==p) continue;</span><br><span class="line">        DFS(v,u,Dep+1,d+1);</span><br><span class="line">        curID++;</span><br><span class="line">        F[curID]=u;</span><br><span class="line">        B[curID]=Dep;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void initRMQ ()</span><br><span class="line">&#123;</span><br><span class="line">    int i,j,x,y;</span><br><span class="line">    for (i=1;i&lt;=curID;i++)</span><br><span class="line">        RMQ[i][0]=i;</span><br><span class="line">    for (j=1;(1&lt;&lt;j)&lt;=curID;j++)</span><br><span class="line">        for (i=1;i+(1&lt;&lt;j)-1&lt;=curID;i++)&#123;</span><br><span class="line">            x=RMQ[i][j-1];</span><br><span class="line">            y=RMQ[i+(1&lt;&lt;(j-1))][j-1];</span><br><span class="line">            RMQ[i][j]=B[x]&lt;B[y]?x:y;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int getLCA (int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">    int k,x,y;</span><br><span class="line">    a=id[a];b=id[b];</span><br><span class="line">    if (a&gt;b)</span><br><span class="line">        k=a,a=b,b=k;</span><br><span class="line">    k=log(1.0+b-a)/log(2.0);</span><br><span class="line">    x=RMQ[a][k];</span><br><span class="line">    y=RMQ[b-(1&lt;&lt;k)+1][k];</span><br><span class="line">    return B[x]&lt;B[y]?F[x]:F[y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int dist(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    return dis[x] +dis[y] - 2*dis[getLCA(x,y)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct Edg&#123;</span><br><span class="line">    int u,v;</span><br><span class="line">    LL dist;</span><br><span class="line">    bool operator&lt;(const Edg &amp;rhs)const&#123;return dist&gt;rhs.dist;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct Kruskal&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    Edg edges[N&lt;&lt;1];</span><br><span class="line">    int fa[N];</span><br><span class="line">    int findset(int x)&#123; return fa[x]==-1?x:fa[x]=findset(fa[x]); &#125;</span><br><span class="line"></span><br><span class="line">    void init(int n)&#123;</span><br><span class="line">        this-&gt;n=n;</span><br><span class="line">        m=0;</span><br><span class="line">        memset(fa,-1,sizeof(fa));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void AddEdge(int u,int v,LL dist)&#123;</span><br><span class="line">        edges[m++] = (Edg)&#123;u,v,dist&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void kruskal()&#123;</span><br><span class="line">        LL sum=0;</span><br><span class="line">        int cnt=0;</span><br><span class="line">        sort(edges,edges+m);</span><br><span class="line">        for(int i=0;i&lt;m;i++)&#123;</span><br><span class="line">            int u=edges[i].u, v=edges[i].v;</span><br><span class="line">            if(findset(u) != findset(v))&#123;</span><br><span class="line">                Add(u,v,1);</span><br><span class="line">                Add(v,u,1);</span><br><span class="line">                sum +=edges[i].dist;</span><br><span class="line">                fa[findset(u)] = findset(v);</span><br><span class="line">                if(++cnt&gt;=n-1) return ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;G;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    char c1,c2;</span><br><span class="line">    LL w1,w2;</span><br><span class="line">    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)==2)&#123;</span><br><span class="line">        init();</span><br><span class="line">        G.init(n*m+1);</span><br><span class="line">        for(int i=1;i&lt;=n;++i)&#123;</span><br><span class="line">            for(int j=1;j&lt;=m;++j)&#123;</span><br><span class="line">                scanf(&quot;\n%c %lld %c %lld&quot;,&amp;c1,&amp;w1,&amp;c2,&amp;w2);</span><br><span class="line">                if(c1==&apos;D&apos;)&#123;</span><br><span class="line">                    G.AddEdge((i-1)*m+j,i*m+j,w1);</span><br><span class="line">                &#125;</span><br><span class="line">                if(c2 == &apos;R&apos;)&#123;</span><br><span class="line">                    G.AddEdge((i-1)*m+j,(i-1)*m+j+1,w2);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        G.kruskal();</span><br><span class="line">        root=1;</span><br><span class="line">        DFS(root,0,0,0);</span><br><span class="line">        initRMQ();</span><br><span class="line">        int Q; scanf(&quot;%d&quot;,&amp;Q);</span><br><span class="line">        int x1,y1,x2,y2;</span><br><span class="line">        while(Q--)&#123;</span><br><span class="line">            scanf(&quot;%d %d %d %d&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2);</span><br><span class="line">            int u = (x1-1)*m+y1, v = (x2-1)*m+y2;</span><br><span class="line">            printf(&quot;%d\n&quot;,dist(u,v));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -391,22 +392,27 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/模拟/">#模拟</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/尺取法/">#尺取法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/动态规划/">#动态规划</a>
+            <a href="/categories/LCA/">#LCA</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最短路/">#最短路</a>
         </div>
         
@@ -417,16 +423,16 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/线段树/">#线段树</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/二分/">#二分</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
@@ -436,28 +442,23 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/费用流/">#费用流</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最大流/">#最大流</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/树链剖分/">#树链剖分</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/LCA/">#LCA</a>
         </div>
         
     </div>
@@ -472,13 +473,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/模拟/">#模拟</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/尺取法/">#尺取法</a>
         </div>
         
         
@@ -488,22 +484,37 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/最大生成树/">#最大生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LCA/">#LCA</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/分层图最短路/">#分层图最短路</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/训练记录/">#训练记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/线段树/">#线段树</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/01分数规划/">#01分数规划</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/线段树/">#线段树</a>
         </div>
         
         
@@ -517,7 +528,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最小割/">#最小割</a>
         </div>
         
@@ -547,7 +558,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/dp/">#dp</a>
         </div>
         
@@ -557,18 +568,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/bitset/">#bitset</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/最大生成树/">#最大生成树</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/LCA/">#LCA</a>
+            <a href="/tags/bitset/">#bitset</a>
         </div>
         
     </div>
@@ -661,5 +662,21 @@ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a
 <script src="/js/script.js"></script>
 <!-- endinject -->
 <div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>
