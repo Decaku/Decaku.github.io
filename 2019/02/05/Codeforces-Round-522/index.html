@@ -12,7 +12,7 @@
     
     
     
-    <title>Codeforces #511 div2 D. Bicolorings | Decaku &#39;s Blog</title>
+    <title>Codeforces Round #522  | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,7 +174,7 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">Codeforces #511 div2 D. Bicolorings</h1>
+    <h1 class="title">Codeforces Round #522 </h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
@@ -185,19 +185,33 @@
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/dp/">#dp</a>
+    <a href="/tags/codeforces/">#codeforces</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>$ 有个2行n列的格子图,用2种颜色给格子涂色,相邻格子颜色 \\<br>不能相同,求不同的染色方案数。$</p>
+        <h1 id="A"><a href="#A" class="headerlink" title="A:"></a>A:</h1><p>贪心。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$类似状压dp的思路，只有两行，所以每一列只有4个状态, \\<br>所以可以考虑枚举每一列，这样复杂度是O(n^4)，n只有1000, \\<br>题目又要求把方格分成k个连通块，我们在dp中再加一维即可, \\<br>k最大是2n的，所以最多做8 * (10)^6次循环。$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int cnt[101];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    memset(cnt,0,sizeof(cnt));</span><br><span class="line">    int n,k;</span><br><span class="line">    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int tem;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;tem);</span><br><span class="line">        cnt[tem]++;</span><br><span class="line">    &#125;</span><br><span class="line">    int _cnt=-1e9;</span><br><span class="line">    for(int i=1; i&lt;=100; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        _cnt=max(_cnt,cnt[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    int tem=ceil(1.0*_cnt/k);</span><br><span class="line">    int ans=0;</span><br><span class="line">    for(int i=1; i&lt;=100; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(!cnt[i]) continue;</span><br><span class="line">        ans+=tem*k-cnt[i];</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int mod=998244353;</span><br><span class="line">long long dp[5][1100][2100];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,k;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    memset(dp,0,sizeof(dp));</span><br><span class="line">    dp[0][1][1]=1;</span><br><span class="line">    dp[1][1][1]=0;</span><br><span class="line">    dp[2][1][1]=0;</span><br><span class="line">    dp[3][1][1]=1;</span><br><span class="line"></span><br><span class="line">    dp[0][1][2]=0;</span><br><span class="line">    dp[1][1][2]=1;</span><br><span class="line">    dp[2][1][2]=1;</span><br><span class="line">    dp[3][1][2]=0;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    for(int j=2; j&lt;=n; j++)</span><br><span class="line">        for(int i=0; i&lt;=3; i++)</span><br><span class="line">            for(int t=1; t&lt;=k; t++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(i==0)</span><br><span class="line">                    dp[i][j][t]=(dp[0][j-1][t]+dp[1][j-1][t]+dp[2][j-1][t]+dp[3][j-1][t-1])%mod;</span><br><span class="line">                else if(i==1)</span><br><span class="line">                    dp[i][j][t]=(dp[0][j-1][t-1]+dp[1][j-1][t]+dp[2][j-1][t-2]+dp[3][j-1][t-1])%mod;</span><br><span class="line">                else if(i==2)</span><br><span class="line">                    dp[i][j][t]=(dp[0][j-1][t-1]+dp[1][j-1][t-2]+dp[2][j-1][t]+dp[3][j-1][t-1])%mod;</span><br><span class="line">                else</span><br><span class="line">                    dp[i][j][t]=(dp[0][j-1][t-1]+dp[1][j-1][t]+dp[2][j-1][t]+dp[3][j-1][t])%mod;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt;(dp[0][n][k]+dp[1][n][k]+dp[2][n][k]+dp[3][n][k])%mod&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="B"><a href="#B" class="headerlink" title="B:"></a>B:</h1><p>贪心。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int inf=1e9;</span><br><span class="line">string str;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;str;</span><br><span class="line">    int len=str.length();</span><br><span class="line">    int _len=len;</span><br><span class="line">    bool ok=false;</span><br><span class="line">    int _1,_2=inf;</span><br><span class="line">    while(1)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=1; i&lt;=len; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(len/i&gt;20||len%i!=0||i&gt;5) //i是组数</span><br><span class="line">                continue;</span><br><span class="line">            else if(i&lt;_2)</span><br><span class="line">            &#123;</span><br><span class="line">                _1=len;</span><br><span class="line">                _2=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(len==100)</span><br><span class="line">            break;</span><br><span class="line">        len++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int a=_1-_len;</span><br><span class="line">    int b=a;</span><br><span class="line">    printf(&quot;%d %d\n&quot;,_2,_1/_2);//_1/_2是每行的长度,_2是行数</span><br><span class="line">    for(int i=1; i&lt;=_2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1; j&lt;=_1/_2; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(j==_1/_2&amp;&amp;a&gt;0)</span><br><span class="line">            &#123;</span><br><span class="line">                cout&lt;&lt;&quot;*&quot;;</span><br><span class="line">                a--;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            int pos=(i-1)*(_1/_2)+j-1-(b-a);</span><br><span class="line">            cout&lt;&lt;str[pos];</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="C"><a href="#C" class="headerlink" title="C:"></a>C:</h1><p>$dp[i][j]代表第i个位置能否放j,直接转移 \\<br>因为要打印路径，再记录一下每个状态的前驱。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=1e5+5;</span><br><span class="line">int n;</span><br><span class="line">int a[maxn],dp[maxn][6],pre[maxn][6];//pre[i][j]保存dp[i][j]的前一个状态</span><br><span class="line"></span><br><span class="line">void dfs(int i,int j)//i个位置选j</span><br><span class="line">&#123;</span><br><span class="line">    if(i==1)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;j&lt;&lt;&quot; &quot;;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(i-1,pre[i][j]);</span><br><span class="line">    cout&lt;&lt;j&lt;&lt;&quot; &quot;;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dp,0,sizeof(dp));</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">    for(int j=1;j&lt;=5;j++) dp[1][j]=1;</span><br><span class="line">    for(int i=2; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(a[i]==a[i-1])</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=1; j&lt;=5; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int k=1; k&lt;=5; k++)//k是前一个</span><br><span class="line">                    if(dp[i-1][k]&amp;&amp;j!=k)</span><br><span class="line">                        dp[i][j]=1, pre[i][j]=k;</span><br><span class="line">                //pre[i][j]=</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(a[i]&gt;a[i-1])</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=1; j&lt;=5; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int k=1; k&lt;=5; k++)</span><br><span class="line">                    if(dp[i-1][k]&amp;&amp;j&gt;k)</span><br><span class="line">                        dp[i][j]=1, pre[i][j]=k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(a[i]&lt;a[i-1])</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=1; j&lt;=5; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int k=1; k&lt;=5; k++)</span><br><span class="line">                    if(dp[i-1][k]&amp;&amp;j&lt;k)</span><br><span class="line">                        dp[i][j]=1, pre[i][j]=k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int ans=0,tem;</span><br><span class="line">    for(int j=1; j&lt;=5; j++)</span><br><span class="line">        if(dp[n][j])</span><br><span class="line">            ans=1,tem=j;</span><br><span class="line">    if(!ans)</span><br><span class="line">        cout&lt;&lt;-1&lt;&lt;endl;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        dfs(n,tem);</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="D"><a href="#D" class="headerlink" title="D:"></a>D:</h1><p>$猜了一下，应该只有五种case,都算出来取最小值即可。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">double a,b,c;</span><br><span class="line">double x_1,y_1,x_2,y_2;</span><br><span class="line">double dis(double a,double b,double c,double d)</span><br><span class="line">&#123;</span><br><span class="line">    return sqrt((a-c)*(a-c)+(b-d)*(b-d));</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%lf %lf %lf&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">    scanf(&quot;%lf %lf %lf %lf&quot;,&amp;x_1,&amp;y_1,&amp;x_2,&amp;y_2);</span><br><span class="line">    double ans=abs(x_1-x_2)+abs(y_1-y_2);</span><br><span class="line">    double p=(-1*c-b*y_1)/a,q=(-1*c-a*x_1)/b,r=(-1*c-b*y_2)/a,s=(-1*c-a*x_2)/b;</span><br><span class="line">    double tem=abs(p-x_1)+abs(r-x_2)+dis(p,y_1,r,y_2);</span><br><span class="line">    ans=min(ans,tem);</span><br><span class="line"></span><br><span class="line">    tem=abs(p-x_1)+abs(s-y_2)+dis(p,y_1,x_2,s);</span><br><span class="line">    ans=min(ans,tem);</span><br><span class="line"></span><br><span class="line">    tem=abs(q-y_1)+abs(r-x_2)+dis(x_1,q,r,y_2);</span><br><span class="line">    ans=min(ans,tem);</span><br><span class="line"></span><br><span class="line">    tem=abs(q-y_1)+abs(s-y_2)+dis(x_1,q,x_2,s);</span><br><span class="line">    ans=min(ans,tem);</span><br><span class="line">    printf(&quot;%.10lf\n&quot;,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="E"><a href="#E" class="headerlink" title="E:"></a>E:</h1><p>$如果只有2种物品，ans最大可能是n，超过两种，能够鉴别出 \\<br>的砝码必须质量都相等。所以可以先做一次背包，求出i个砝码 \\<br>组成质量为j的方案数，有一个优化是dp过程中方案超过2就没意 \\<br>义了，它不可能是答案。然后对每种物品枚举数量，检查方案数 \\<br>是否只有一种，更新答案。要注意的是ans是n的情况要加特判。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,a[110],dp[10005][110];//dp[i][j]表示用j个物品正好装满容量为i的背包的方案数。</span><br><span class="line">map&lt;int,int&gt;m;</span><br><span class="line">vector&lt;pair&lt;int,int&gt; &gt;v;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">        m[a[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    for(map&lt;int,int&gt;::iterator it=m.begin(); it!=m.end(); it++)</span><br><span class="line">    &#123;</span><br><span class="line">        v.push_back(*it);</span><br><span class="line">    &#125;</span><br><span class="line">    dp[0][0]=1;</span><br><span class="line"></span><br><span class="line">    for(vector&lt;pair&lt;int,int&gt; &gt;::iterator it=v.begin(); it!=v.end(); it++)</span><br><span class="line">    &#123;</span><br><span class="line">        int tem=it-&gt;first;</span><br><span class="line">        int cnt=it-&gt;second;</span><br><span class="line">        for(int v=10000; v&gt;0; v--)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int i=1; i&lt;=n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int t=1; t&lt;=cnt&amp;&amp;t&lt;=i&amp;&amp;v-tem*t&gt;=0; t++)</span><br><span class="line">                    dp[v][i]+=dp[v-tem*t][i-t],dp[v][i]=min(dp[v][i],2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int ans=1;</span><br><span class="line">    for(vector&lt;pair&lt;int,int&gt; &gt;::iterator it=v.begin(); it!=v.end(); it++)</span><br><span class="line">    &#123;</span><br><span class="line">        int tem=it-&gt;first;</span><br><span class="line">        int cnt=it-&gt;second;</span><br><span class="line">        for(int t=1; t&lt;=cnt; t++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(dp[tem*t][t]==1)</span><br><span class="line">            &#123;</span><br><span class="line">                if(v.size()==2&amp;&amp;t==cnt)</span><br><span class="line">                &#123;</span><br><span class="line">                    printf(&quot;%d\n&quot;,n);</span><br><span class="line">                    return 0;</span><br><span class="line">                &#125;</span><br><span class="line">                else ans=max(ans,t);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 </div>
@@ -205,17 +219,10 @@
 <div class="cube-article-nav">
     <ul>
         
-        <li class="prev">
-            <a href="/2019/02/05/Codeforces-Round＃498（Div-3）E/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Codeforces Round＃498 E
-            </a>
-        </li>
-        
         
         <li class="next">
-            <a href="/2019/02/05/Hdu1005-Number-Sequence/">
-                Hdu1005 Number Sequence
+            <a href="/2019/02/05/2014-ICPC-北京站/">
+                2014 ICPC 北京站
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -417,17 +424,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/最短路/">#最短路</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/LCA/">#LCA</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/线段树/">#线段树</a>
         </div>
         
@@ -437,12 +444,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/整除分块/">#整除分块</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/codeforces/">#codeforces</a>
         </div>
         
@@ -467,17 +474,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最小割/">#最小割</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/费用流/">#费用流</a>
         </div>
         
@@ -502,7 +509,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/单调栈/">#单调栈</a>
         </div>
         
@@ -558,12 +565,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/线段树/">#线段树</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/01分数规划/">#01分数规划</a>
         </div>
         
@@ -573,12 +580,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/数位dp/">#数位dp</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/codeforces/">#codeforces</a>
         </div>
         
@@ -613,7 +620,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/树形dp/">#树形dp</a>
         </div>
         
@@ -633,7 +640,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/离散化/">#离散化</a>
         </div>
         
@@ -663,27 +670,27 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/归并/">#归并</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最大流/">#最大流</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最小差值生成树/">#最小差值生成树</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/次小生成树/">#次小生成树</a>
         </div>
         
@@ -718,7 +725,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/bitset/">#bitset</a>
         </div>
         
