@@ -68,7 +68,6 @@
 </script>
 
     
-	<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
 </head></html>
 <body>
 <div class="cube-body">
@@ -195,12 +194,10 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述:</h1>
-<p>给出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个区间，然后分别给出区间的左右边界，可以在每个区间中选择一个整数，问这<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个整数的平方和有多少种不同的取值。</p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>给出$n$个区间，然后分别给出区间的左右边界，可以在每个区间中选择一个整数，问这$n$个整数的平方和有多少种不同的取值。</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h1>
-<p>$ f_i $表示一个bitset，bitset里有几个1，就表示这i个区间所能得到的平方和的取值种数。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>$ f_i $表示一个bitset，bitset里有几个1，就表示这i个区间所能得到的平方和的取值种数。</p>
 <p>转移方程为 <em>f[i]=f[i] | f[i-1]&lt;&lt;k^k (k from l to r)</em></p>
 <p>状态转移的复杂度是n，每次操作对应的复杂度是l-r。</p>
 <hr>
@@ -404,18 +401,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/categories/模拟/">#模拟</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/动态规划/">#动态规划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/并查集/">#并查集</a>
+            <a href="/categories/模拟/">#模拟</a>
         </div>
         
         
@@ -425,12 +412,17 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/最小割/">#最小割</a>
+            <a href="/categories/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/并查集/">#并查集</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/最大流/">#最大流</a>
+            <a href="/categories/最小割/">#最小割</a>
         </div>
         
         
@@ -440,12 +432,17 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/树链剖分/">#树链剖分</a>
+            <a href="/categories/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/组合数学/">#组合数学</a>
+            <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
     </div>
@@ -460,8 +457,13 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/尺取法/">#尺取法</a>
         </div>
         
         
@@ -470,7 +472,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/并查集/">#并查集</a>
         </div>
         
@@ -480,23 +482,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/尺取法/">#尺取法</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最小割/">#最小割</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/最大流/">#最大流</a>
         </div>
         
         
@@ -506,16 +493,16 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/树链剖分/">#树链剖分</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/线段树/">#线段树</a>
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
@@ -525,12 +512,22 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最短路/">#最短路</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/bitset/">#bitset</a>
         </div>
         
