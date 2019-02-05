@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://decaku.net/2019/02/05/Bzoj-1-31-%E5%AD%97%E7%AC%A6%E5%8A%A0%E5%AF%86/</loc>
+    <loc>http://decaku.net/2019/02/05/SPOJ-DISUBSTR/</loc>
+    <lastmod>2019-02-05</lastmod>
+  </url>  <url>
+    <loc>http://decaku.net/2019/02/05/Bzoj-1031-%E5%AD%97%E7%AC%A6%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2019-02-05</lastmod>
   </url>  <url>
     <loc>http://decaku.net/2019/02/05/Codeforces-Round-533-Div2/</loc>
