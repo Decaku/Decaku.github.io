@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Decaku">
+    
+    <meta name="description" content="天生我材必有用，千金散尽还复来">
+    
+    
+    
+    
+    
+    
+    <title>Codeforces Round 533 Div2 | Decaku &#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?11e014c56a50287ee4f5b7b12b45b896";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" https://i.loli.net/2019/01/31/5c5277a1f2b4b.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Decaku &#39;s Blog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('https://i.loli.net/2019/01/31/5c5277a1f2b4b.jpg');
+            background-repeat: no-repeat;
+            background-position: center -56px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('https://i.loli.net/2019/01/31/5c5277a1f2b4b.jpg');
+            background-position: center -100px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Decaku &#39;s Blog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '927',
+                height: '539'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">Codeforces Round 533 Div2</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-02-05
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/codeforces/">#codeforces</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h1 id="A"><a href="#A" class="headerlink" title="A:"></a>A:</h1><p>暴力。</p>
+<hr>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">int a[1005];</span><br><span class="line">int n;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line"></span><br><span class="line">    int t,ans=1e9;</span><br><span class="line">    for(int i=1;i&lt;=100;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int p=0;</span><br><span class="line">        for(int j=1;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">             if(a[j]&lt;i-1)</span><br><span class="line">                p+=i-1-a[j];</span><br><span class="line">             else if(a[j]&gt;i+1)</span><br><span class="line">                p+=a[j]-(i+1);</span><br><span class="line">        &#125;</span><br><span class="line">        if(p&lt;ans)</span><br><span class="line">        &#123;</span><br><span class="line">            ans=p;</span><br><span class="line">            t=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d %d\n&quot;,t,ans);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="B"><a href="#B" class="headerlink" title="B:"></a>B:</h1><p>$统计26个字母的level，然后比较。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn=2e5+5;</span><br><span class="line">int cnt[30];</span><br><span class="line">char str[maxn];</span><br><span class="line">int n,k;</span><br><span class="line">vector&lt;char&gt;v;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    memset(cnt,0,sizeof(cnt));</span><br><span class="line">    v.clear();</span><br><span class="line">    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);</span><br><span class="line">    scanf(&quot;%s&quot;,str);</span><br><span class="line">    //int tem=0;</span><br><span class="line">    for(int i=0; i&lt;n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        //tem++;</span><br><span class="line">        //v.push_back(str[i]);</span><br><span class="line">        if(v.empty()||v[0]==str[i])</span><br><span class="line">        &#123;</span><br><span class="line">            v.push_back(str[i]);</span><br><span class="line">            if(v.size()==k)</span><br><span class="line">            &#123;</span><br><span class="line">                cnt[v[0]-&apos;a&apos;]++;</span><br><span class="line">                v.clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(v[0]!=str[i])</span><br><span class="line">        &#123;</span><br><span class="line">            v.clear();</span><br><span class="line">            v.push_back(str[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int ans=-1;</span><br><span class="line">    for(int i=0; i&lt;=26; i++)</span><br><span class="line">        ans=max(ans,cnt[i]);</span><br><span class="line">    printf(&quot;%d\n&quot;,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="D"><a href="#D" class="headerlink" title="D:"></a>D:</h1><p>$计数dp，dp[i][j]表示前i个数的和模3等于j的方案数，答案是dp[n][0]。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn=2e5+5;</span><br><span class="line">const int mod=1e9+7;</span><br><span class="line">ll a[maxn],n,l,r;</span><br><span class="line">ll dp[maxn][3];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   scanf(&quot;%lld %lld %lld&quot;,&amp;n,&amp;l,&amp;r);</span><br><span class="line">   ll a=r/3-(l-1)/3;</span><br><span class="line">   ll b=(r+2)/3-(l+2-1)/3;</span><br><span class="line">   ll c=(r+1)/3-(l+1-1)/3;</span><br><span class="line">   dp[1][0]=a;</span><br><span class="line">   dp[1][1]=b;</span><br><span class="line">   dp[1][2]=c;</span><br><span class="line">   for(int i=2;i&lt;=n;i++)</span><br><span class="line">   &#123;</span><br><span class="line">      dp[i][0]=(dp[i-1][0]*a%mod+dp[i-1][1]*c%mod+dp[i-1][2]*b%mod)%mod;</span><br><span class="line">      dp[i][1]=(dp[i-1][0]*b%mod+dp[i-1][1]*a%mod+dp[i-1][2]*c%mod)%mod;</span><br><span class="line">      dp[i][2]=(dp[i-1][0]*c%mod+dp[i-1][1]*b%mod+dp[i-1][2]*a%mod)%mod;</span><br><span class="line">   &#125;</span><br><span class="line">   printf(&quot;%lld&quot;,dp[n][0]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="D-1"><a href="#D-1" class="headerlink" title="D:"></a>D:</h1><p>$bfs,用vector[i]维护第i个人走了第j步以后增加的格子。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,m,p;</span><br><span class="line">int s[11],a[1100][1100];</span><br><span class="line">int d[4][2]= &#123;1,0, -1,0, 0,1, 0,-1&#125;;</span><br><span class="line">char str[1100];</span><br><span class="line">vector&lt;pair&lt;int,int&gt; &gt;v[1100],t;</span><br><span class="line">int ans[11];</span><br><span class="line">bool bfs(int x)</span><br><span class="line">&#123;</span><br><span class="line">    t.clear();</span><br><span class="line">    for(int i=0; i&lt;v[x].size(); i++)</span><br><span class="line">        t.push_back(v[x][i]);</span><br><span class="line">    v[x].clear();</span><br><span class="line">    int sz=t.size();</span><br><span class="line">    for(int i=0; i&lt;sz; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=0; j&lt;4; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            int X=t[i].first,Y=t[i].second;</span><br><span class="line">            if(X+d[j][0]&lt;1||X+d[j][0]&gt;n) continue;</span><br><span class="line">            if(Y+d[j][1]&lt;1||Y+d[j][1]&gt;m) continue;</span><br><span class="line">            if(a[X+d[j][0]][Y+d[j][1]]==0)</span><br><span class="line">            &#123;</span><br><span class="line">                a[X+d[j][0]][Y+d[j][1]]=x;</span><br><span class="line">                v[x].push_back(make_pair(X+d[j][0],Y+d[j][1]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(!v[x].size()) return 0;</span><br><span class="line">    return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    memset(a,0,sizeof(a));</span><br><span class="line">    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;p);</span><br><span class="line">    for(int i=1; i&lt;=p; i++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;s[i]);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%s&quot;,str+1);</span><br><span class="line">        for(int j=1; j&lt;=m; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(str[j]==&apos;#&apos;)</span><br><span class="line">                a[i][j]=-1;</span><br><span class="line">            else if(str[j]!=&apos;.&apos;)</span><br><span class="line">            &#123;</span><br><span class="line">                a[i][j]=str[j]-&apos;0&apos;;</span><br><span class="line">                v[str[j]-&apos;0&apos;].push_back(make_pair(i,j));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    while(1)</span><br><span class="line">    &#123;</span><br><span class="line">        bool ok=false;</span><br><span class="line">        for(int i=1; i&lt;=p; i++)</span><br><span class="line">            for(int j=1; j&lt;=s[i]; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(!bfs(i)) break; //只要有一次为真 就会为真</span><br><span class="line">                else ok=true;</span><br><span class="line">            &#125;</span><br><span class="line">        if(!ok) break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1; j&lt;=m; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(a[i][j]&gt;0) ans[a[i][j]]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1; i&lt;=p; i++)</span><br><span class="line">        printf(&quot;%d &quot;,ans[i]);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="E"><a href="#E" class="headerlink" title="E:"></a>E:</h1><p>$对于两个type1之间的朋友，只会选择一个朋友去修改名字，那么 \\<br>可以把朋友作为结点，对于两个type1之间的结点，两两之间建立无 \\<br>向边，最后即求尽量多的点，之间没有边，问题转化为最大独立集。 \\<br>最大独立集等于补图最大团。$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=45;</span><br><span class="line">int g[maxn][maxn];</span><br><span class="line">int ans,cnt[maxn],group[maxn],n,m,vis[maxn];</span><br><span class="line">bool dfs(int u,int pos)</span><br><span class="line">&#123;</span><br><span class="line">    int i,j;</span><br><span class="line">    for( i=u+1; i&lt;=m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(cnt[i]+pos&lt;=ans)</span><br><span class="line">            return 0;</span><br><span class="line">        if(g[u][i])</span><br><span class="line">        &#123;</span><br><span class="line">            for( j=0; j&lt;pos; j++)</span><br><span class="line">                if(!g[i][vis[j]])</span><br><span class="line">                    break;</span><br><span class="line">            if(j==pos)</span><br><span class="line">            &#123;</span><br><span class="line">                vis[pos]=i;</span><br><span class="line">                if(dfs(i,pos+1))</span><br><span class="line">                    return 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(pos&gt;ans)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=0; i&lt;pos; i++)</span><br><span class="line">            group[i]=vis[i];</span><br><span class="line">        ans=pos;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void maxclique()</span><br><span class="line">&#123;</span><br><span class="line">    ans=-1;</span><br><span class="line">    for(int i=m; i&gt;0; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        vis[0]=i;</span><br><span class="line">        dfs(i,1);</span><br><span class="line">        cnt[i]=ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector&lt;string&gt;v;</span><br><span class="line">map&lt;string,int&gt; mp;</span><br><span class="line">int tot;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int type;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;type);</span><br><span class="line">        if(type==2)</span><br><span class="line">        &#123;</span><br><span class="line">            string str;</span><br><span class="line">            cin&gt;&gt;str;</span><br><span class="line">            v.push_back(str);</span><br><span class="line">            if(mp[str]==0) mp[str]=++tot;</span><br><span class="line">            //mp[str]=++tot;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            for(int i=0; i&lt;v.size(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int j=0; j&lt;i; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    g[mp[v[i]]][mp[v[j]]]=1;</span><br><span class="line">                    g[mp[v[j]]][mp[v[i]]]=1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            v.clear();</span><br><span class="line">            //mp.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(v.size())</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=0; i&lt;v.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=0; j&lt;i; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                g[mp[v[i]]][mp[v[j]]]=1;</span><br><span class="line">                g[mp[v[j]]][mp[v[i]]]=1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   /*for(int i=1; i&lt;=m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1; j&lt;=m; j++)</span><br><span class="line">            cout&lt;&lt;g[i][j]&lt;&lt;&quot; &quot;;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">   // return 0;</span><br><span class="line">*/</span><br><span class="line">    for(int i=1; i&lt;=m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1; j&lt;=m; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(i!=j)</span><br><span class="line">                g[i][j]^=1;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    maxclique();</span><br><span class="line">    printf(&quot;%d\n&quot;,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2019/02/05/Bzoj-2115/">
+                Bzoj 2115
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+    <!-- 因为gitment里面也有gitment-container，所以这里就改为gitment-comment -->
+<div class="gitment-comment">
+    <div id="container"></div>
+</div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id default is location.href
+		id: decodeURI(window.location.pathname),
+        owner: 'Decaku',
+        repo: 'Decaku.github.io',
+        oauth: {
+            client_id: 'e960fb048feed78b74fd',
+            client_secret: '88a0ad8483178c3ff4522aff167e0654afa6bb28',
+        },
+    })
+    gitment.render('container')
+</script>
+    
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Decaku</span>
+    
+    
+    <a title="天生我材必有用，千金散尽还复来">天生我材必有用，千金散尽还复来</a>
+    
+    <div class="count">
+        <a class="count articles"><span>55</span>文章</a>
+        <a class="count tags"><span>44</span>标签</a>
+        <a class="count categories"><span>26</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Codeforces-Round-533-Div2/" title="Codeforces Round 533 Div2">Codeforces Round 533 Div2</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Bzoj-2115/" title="Bzoj 2115">Bzoj 2115</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Codeforces-Round-529-Div-3/" title="Codeforces Round #529 (Div. 3)">Codeforces Round #529 (Div. 3)</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Poj-2104-Kth-number/" title="Poj 2104 Kth number">Poj 2104 Kth number</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/02/05/Codeforces-Round-521-Div3/" title="Codeforces Round #521 Div3">Codeforces Round #521 Div3</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/训练记录/">#训练记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/最短路/">#最短路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/LCA/">#LCA</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/二分/">#二分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/线性基/">#线性基</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/codeforces/">#codeforces</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/dfs/">#dfs</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数论/">#数论</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/组合数学/">#组合数学</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Tarjan缩点/">#Tarjan缩点</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/树状数组/">#树状数组</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最小生成树/">#最小生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/单调栈/">#单调栈</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/树链剖分/">#树链剖分</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/训练记录/">#训练记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/状压dp/">#状压dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/分层图最短路/">#分层图最短路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最大生成树/">#最大生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LCA/">#LCA</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/01分数规划/">#01分数规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数位dp/">#数位dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/旋转卡壳/">#旋转卡壳</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线性基/">#线性基</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/codeforces/">#codeforces</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/dp/">#dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/dfs/">#dfs</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/欧拉路/">#欧拉路</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/容斥定理/">#容斥定理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/费马小定理/">#费马小定理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树状数组/">#树状数组</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/离散化/">#离散化</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/找规律/">#找规律</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树形dp/">#树形dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数论/">#数论</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Tarjan缩点/">#Tarjan缩点</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/归并/">#归并</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最小差值生成树/">#最小差值生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/次小生成树/">#次小生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单调栈/">#单调栈</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/删边/">#删边</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/离线/">#离线</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/组合数学/">#组合数学</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最短路/">#最短路</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/bitset/">#bitset</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/Decaku" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/Coding.png">
+            
+            <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/SF.png">
+            
+            <a href="https://segmentfault.com/u/aonosora" target="_blank">SF社区</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/开发者头条.png">
+            
+            <a href="https://toutiao.io/u/148070" target="_blank">开发者头条</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/micblo.png">
+            <a href="https://blog.micblo.com/" target="_blank">罗大佬</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/DIYgod.jpg">
+            <a href="https://www.anotherhome.net/" target="_blank">DIYgod</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/friend_links.jpg ">
+            <a href="https://aonosora.com/" target="_blank">咪西西の部落格</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Decaku
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
