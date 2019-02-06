@@ -1,3 +1,4 @@
+http://decaku.net/2019/02/07/Bzoj-1717-产奶的模式/
 http://decaku.net/2019/02/05/SPOJ-DISUBSTR/
 http://decaku.net/2019/02/05/Bzoj-1031-字符加密/
 http://decaku.net/2019/02/05/Codeforces-Round-533-Div2/
