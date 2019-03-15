@@ -174,6 +174,43 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-偏序问题以及CDQ分治">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/03/15/偏序问题以及CDQ分治/">偏序问题以及CDQ分治</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-03-15
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/随笔/" class="cube-excerpt-tag-link">#随笔</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="前置技能："><a href="#前置技能：" class="headerlink" title="前置技能："></a>前置技能：</h2><p>$归并排序，分治，树状数组，逆序对$</p>
+<h2 id="一维偏序："><a href="#一维偏序：" class="headerlink" title="一维偏序："></a>一维偏序：</h2><p>$一维偏序只需排序即可解决$</p>
+<hr>
+<h2 id="二维偏序："><a href="#二维偏序：" class="headerlink" title="二维偏序："></a>二维偏序：</h2><p>$第一维排序，第二维使用数据结构维护，具体过程是：先对x排序， \\<br>然后动态的把点的第二维加入树状数组或权值线段树里，因为当枚 \\<br>举到i时，已经保证[1,i-1]里的点x都比i小,所以只需统计i之前的 \\<br>点里y比i小的点个数即可。$</p>
+<p>$例题：Hdu1541$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=200000;</span><br><span class="line">struct star</span><br><span class="line">&#123;</span><br><span class="line">    int x,y;</span><br><span class="line">    bool operator&lt;(const star&amp; t)const</span><br><span class="line">    &#123;</span><br><span class="line">        if(x==t.x)</span><br><span class="line">            return y&lt;t.y;</span><br><span class="line">        return x&lt;t.x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; a[maxn];</span><br><span class="line">int n,c[maxn],cnt[maxn];</span><br><span class="line">int lowbit(int x)</span><br><span class="line">&#123;</span><br><span class="line">    return x&amp;(-x);</span><br><span class="line">&#125;</span><br><span class="line">int sum(int x)</span><br><span class="line">&#123;</span><br><span class="line">    int res=0;</span><br><span class="line">    while(x&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        res+=c[x];</span><br><span class="line">        x-=lowbit(x);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int add(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    while(x&lt;maxn)</span><br><span class="line">    &#123;</span><br><span class="line">        c[x]+=y;</span><br><span class="line">        x+=lowbit(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        memset(c,0,sizeof(c));</span><br><span class="line">        memset(cnt,0,sizeof(cnt));</span><br><span class="line">        for(int i=1; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d %d&quot;,&amp;a[i].x,&amp;a[i].y);</span><br><span class="line">            a[i].y++; //树状数组里的点都是从1开始编号</span><br><span class="line">        &#125;</span><br><span class="line">        sort(a+1,a+n+1);</span><br><span class="line">        for(int i=1; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int tem=sum(a[i].y);</span><br><span class="line">            cnt[tem]++;</span><br><span class="line">            add(a[i].y,1);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%d\n&quot;,cnt[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="三维偏序："><a href="#三维偏序：" class="headerlink" title="三维偏序："></a>三维偏序：</h2><p>$第一维排序，第二维CDQ分治，第三维使用数据结构维护。 \\<br>当对区间[l,r]按x排完序后，把区间分成[l,mid]和[mid+1,r] \\<br>两部分,此时再对两区间分别按y排序，因为此时一定能保证 \\<br>左区间的x是一定小于右区间,所以可以统计区间merge时对答案 \\<br>的贡献，第三维z仍可使用树状数组来维护。$</p>
+<p>$例题：bzoj3262$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define N 200005</span><br><span class="line"></span><br><span class="line">int n,k,acnt,bcnt,pa,pb,tot;</span><br><span class="line">struct hp&#123;int x,y,z,id,ans;&#125;f[N],a[N],b[N];</span><br><span class="line">int C[N],cnt[N],ch[N];</span><br><span class="line"></span><br><span class="line">int cmp1(hp a,hp b)</span><br><span class="line">&#123;</span><br><span class="line">    return a.x&lt;b.x||(a.x==b.x&amp;&amp;a.y&lt;b.y)||(a.x==b.x&amp;&amp;a.y==b.y&amp;&amp;a.z&lt;b.z);</span><br><span class="line">&#125;</span><br><span class="line">int cmp2(hp a,hp b)</span><br><span class="line">&#123;</span><br><span class="line">    return a.y&lt;b.y;</span><br><span class="line">&#125;</span><br><span class="line">void add(int loc,int val)</span><br><span class="line">&#123;</span><br><span class="line">    if (!loc) return;</span><br><span class="line">    for (int i=loc;i&lt;=k;i+=i&amp;(-i))</span><br><span class="line">        C[i]+=val;</span><br><span class="line">&#125;</span><br><span class="line">int query(int loc)</span><br><span class="line">&#123;</span><br><span class="line">    int ans=0;</span><br><span class="line">    for (int i=loc;i&gt;=1;i-=i&amp;(-i))</span><br><span class="line">        ans+=C[i];</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line">void cdq(int l,int r)</span><br><span class="line">&#123;</span><br><span class="line">    if (l&gt;=r) return;</span><br><span class="line">    int mid=(l+r)&gt;&gt;1;</span><br><span class="line">    cdq(l,mid);</span><br><span class="line"></span><br><span class="line">    acnt=0;</span><br><span class="line">    for (int i=l;i&lt;=mid;++i) a[++acnt]=f[i];</span><br><span class="line">    sort(a+1,a+acnt+1,cmp2);</span><br><span class="line">    bcnt=0;</span><br><span class="line">    for (int i=mid+1;i&lt;=r;++i) b[++bcnt]=f[i];</span><br><span class="line">    sort(b+1,b+bcnt+1,cmp2);</span><br><span class="line">    pa=pb=1;tot=0;</span><br><span class="line">    while (pb&lt;=bcnt)</span><br><span class="line">    &#123;</span><br><span class="line">        while (pa&lt;=acnt&amp;&amp;a[pa].y&lt;=b[pb].y)</span><br><span class="line">        &#123;</span><br><span class="line">            add(a[pa].z,1);</span><br><span class="line">            ch[++tot]=a[pa].z;</span><br><span class="line">            ++pa;</span><br><span class="line">        &#125;</span><br><span class="line">        f[b[pb].id].ans+=query(b[pb].z);</span><br><span class="line">        ++pb;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i=1;i&lt;=tot;++i)</span><br><span class="line">        add(ch[i],-1);</span><br><span class="line"></span><br><span class="line">    cdq(mid+1,r);</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;k);</span><br><span class="line">    for (int i=1;i&lt;=n;++i)</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;f[i].x,&amp;f[i].y,&amp;f[i].z);</span><br><span class="line">    sort(f+1,f+n+1,cmp1);</span><br><span class="line">    for (int i=1;i&lt;=n;++i) f[i].id=i;</span><br><span class="line">    cdq(1,n);</span><br><span class="line">    for (int i=n-1;i&gt;=1;--i)</span><br><span class="line">        if (f[i].x==f[i+1].x&amp;&amp;f[i].y==f[i+1].y&amp;&amp;f[i].z==f[i+1].z)</span><br><span class="line">            f[i].ans=max(f[i].ans,f[i+1].ans);</span><br><span class="line">    for (int i=1;i&lt;=n;++i)</span><br><span class="line">        ++cnt[f[i].ans];</span><br><span class="line">    for (int i=0;i&lt;n;++i)</span><br><span class="line">        printf(&quot;%d\n&quot;,cnt[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><p>$对于高维偏序问题，可以采取CDQ套CDQ的方式来解决，但当维度 \\<br>高于五维时，CDQ分治的效率会差于n^2暴力，此外，CDQ分治无法 \\<br>解决强制在线的题目，此时只能写树套树了。$</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/03/15/偏序问题以及CDQ分治/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Bzoj4919 [Lydsy1706月赛]大根堆">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/02/20/Bzoj4919-Lydsy1706月赛-大根堆/">Bzoj4919 [Lydsy1706月赛]大根堆</a></h1>
@@ -429,34 +466,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Poj 2104 Kth number">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/02/05/Poj-2104-Kth-number/">Poj 2104 Kth number</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-02-05
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/划分树/" class="cube-excerpt-tag-link">#划分树</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>$多组询问，每次求给定区间里第k小的数。$</p>
-<hr>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/02/05/Poj-2104-Kth-number/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-9">
@@ -572,7 +581,7 @@
     <a title="如果人生的路有很长，愿你的荣耀永不退场。">如果人生的路有很长，愿你的荣耀永不退场。</a>
     
     <div class="count">
-        <a class="count articles"><span>61</span>文章</a>
+        <a class="count articles"><span>62</span>文章</a>
         <a class="count tags"><span>48</span>标签</a>
         <a class="count categories"><span>29</span>分类</a>
     </div>
@@ -611,7 +620,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/20/Bzoj4919-Lydsy1706月赛-大根堆/" title="Bzoj4919 [Lydsy1706月赛]大根堆">Bzoj4919 [Lydsy1706月赛]大根堆</a>
+                    <a href="/2019/03/15/偏序问题以及CDQ分治/" title="偏序问题以及CDQ分治">偏序问题以及CDQ分治</a>
                 </p>
             </div>
             
@@ -625,7 +634,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/20/关于最长上升子序列nlogn做法的证明/" title="关于最长上升子序列nlogn做法的证明">关于最长上升子序列nlogn做法的证明</a>
+                    <a href="/2019/02/20/Bzoj4919-Lydsy1706月赛-大根堆/" title="Bzoj4919 [Lydsy1706月赛]大根堆">Bzoj4919 [Lydsy1706月赛]大根堆</a>
                 </p>
             </div>
         </li>
@@ -638,7 +647,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/08/2018-ICPC-南京站/" title="2018 ICPC 南京站">2018 ICPC 南京站</a>
+                    <a href="/2019/02/20/关于最长上升子序列nlogn做法的证明/" title="关于最长上升子序列nlogn做法的证明">关于最长上升子序列nlogn做法的证明</a>
                 </p>
             </div>
         </li>
@@ -651,7 +660,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/07/Bzoj-1717-产奶的模式/" title="Bzoj 1717 产奶的模式">Bzoj 1717 产奶的模式</a>
+                    <a href="/2019/02/08/2018-ICPC-南京站/" title="2018 ICPC 南京站">2018 ICPC 南京站</a>
                 </p>
             </div>
         </li>
@@ -664,7 +673,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/02/05/SPOJ-DISUBSTR/" title="SPOJ - DISUBSTR">SPOJ - DISUBSTR</a>
+                    <a href="/2019/02/07/Bzoj-1717-产奶的模式/" title="Bzoj 1717 产奶的模式">Bzoj 1717 产奶的模式</a>
                 </p>
             </div>
         </li>
@@ -688,11 +697,6 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/模拟/">#模拟</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/尺取法/">#尺取法</a>
         </div>
         
@@ -702,8 +706,13 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/模拟/">#模拟</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/categories/最短路/">#最短路</a>
+            <a href="/categories/LCA/">#LCA</a>
         </div>
         
         
@@ -713,7 +722,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/二分/">#二分</a>
+            <a href="/categories/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最短路/">#最短路</a>
         </div>
         
         
@@ -722,33 +736,23 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/凸包/">#凸包</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/整除分块/">#整除分块</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/categories/启发式合并/">#启发式合并</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/线性基/">#线性基</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/二分/">#二分</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/codeforces/">#codeforces</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/dfs/">#dfs</a>
+            <a href="/categories/线性基/">#线性基</a>
         </div>
         
         
@@ -758,7 +762,7 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+            <a href="/categories/整除分块/">#整除分块</a>
         </div>
         
         
@@ -768,7 +772,22 @@
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/dfs/">#dfs</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/划分树/">#划分树</a>
         </div>
         
         
@@ -777,8 +796,18 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/树状数组/">#树状数组</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/categories/划分树/">#划分树</a>
+            <a href="/categories/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/单调栈/">#单调栈</a>
         </div>
         
         
@@ -793,27 +822,7 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/最大流/">#最大流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/树状数组/">#树状数组</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/最小生成树/">#最小生成树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/单调栈/">#单调栈</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
         
@@ -823,7 +832,7 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/LCA/">#LCA</a>
+            <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
     </div>
@@ -838,23 +847,53 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/训练记录/">#训练记录</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
+            <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/状压dp/">#状压dp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/模拟/">#模拟</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/尺取法/">#尺取法</a>
+            <a href="/tags/最大生成树/">#最大生成树</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/状压dp/">#状压dp</a>
+            <a href="/tags/LCA/">#LCA</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/旋转卡壳/">#旋转卡壳</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数位dp/">#数位dp</a>
         </div>
         
         
@@ -864,46 +903,16 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/线段树/">#线段树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/01分数规划/">#01分数规划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/数位dp/">#数位dp</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/后缀数组/">#后缀数组</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/凸包/">#凸包</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/旋转卡壳/">#旋转卡壳</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/整除分块/">#整除分块</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/单调栈/">#单调栈</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/启发式合并/">#启发式合并</a>
         </div>
         
@@ -913,8 +922,8 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/线性基/">#线性基</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/01分数规划/">#01分数规划</a>
         </div>
         
         
@@ -924,12 +933,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/dp/">#dp</a>
+            <a href="/tags/线性基/">#线性基</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/dfs/">#dfs</a>
+            <a href="/tags/dp/">#dp</a>
         </div>
         
         
@@ -944,6 +953,36 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/费马小定理/">#费马小定理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/树状数组/">#树状数组</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/离散化/">#离散化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/dfs/">#dfs</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
         </div>
         
@@ -954,21 +993,11 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/费马小定理/">#费马小定理</a>
+            <a href="/tags/最小割/">#最小割</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/树状数组/">#树状数组</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/离散化/">#离散化</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/树形dp/">#树形dp</a>
         </div>
         
@@ -979,22 +1008,22 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/最小割/">#最小割</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/数论/">#数论</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/归并/">#归并</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最大流/">#最大流</a>
         </div>
         
         
@@ -1014,27 +1043,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/最大流/">#最大流</a>
+            <a href="/tags/最短路/">#最短路</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/归并/">#归并</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/次小生成树/">#次小生成树</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/最小差值生成树/">#最小差值生成树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
         
@@ -1049,16 +1068,6 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/树链剖分/">#树链剖分</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/最短路/">#最短路</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/随笔/">#随笔</a>
         </div>
         
@@ -1068,13 +1077,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/最大生成树/">#最大生成树</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/LCA/">#LCA</a>
+            <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
     </div>
@@ -1149,21 +1158,5 @@ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a
 <script src="/js/script.js"></script>
 <!-- endinject -->
 <div class="cube-loading out"></div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 </html>
