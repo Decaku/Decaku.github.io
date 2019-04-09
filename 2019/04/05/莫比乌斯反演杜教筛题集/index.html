@@ -205,6 +205,14 @@
 <p>$那么g=\mu*f,所以有g(x)=\sum_{p|x}\mu(x/p) 其中p是素数 \\<br>所以要求的\sum_{i=1}^{n}\sum_{j=1}^{m}\sum_{d|i,d|j}g(d) \\<br>又是求和换序 \\<br>=\sum_{d=1}^{min(n,m)}g(d)\lfloor(n/d)\rfloor \lfloor(m/d)\rfloor \\<br>形式和上面一题一样，预处理前缀和以后分块。  \\<br>本题卡常，不要都用long long。 $</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const ll maxn=1e7+5;</span><br><span class="line">int mu[maxn],prime[maxn],t,n,m;</span><br><span class="line">ll g[maxn];</span><br><span class="line">bool vis[maxn];</span><br><span class="line">inline void ini()</span><br><span class="line">&#123;</span><br><span class="line">    //memset(vis,false,sizeof(vis));</span><br><span class="line">    mu[1]=1;</span><br><span class="line">    prime[0]=0;</span><br><span class="line">    for(int i=2; i&lt;maxn; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(!vis[i])</span><br><span class="line">        &#123;</span><br><span class="line">            mu[i]=-1;</span><br><span class="line">            prime[++prime[0]]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int j=1; j&lt;=prime[0]&amp;&amp;i*prime[j]&lt;maxn; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            vis[i*prime[j]]=true;</span><br><span class="line">            if(i%prime[j])</span><br><span class="line">                mu[i*prime[j]]=-mu[i];</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                mu[i*prime[j]]=0;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1; i&lt;=prime[0]; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1; j*prime[i]&lt;maxn; j++)</span><br><span class="line">            g[j*prime[i]]+=mu[j];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1; i&lt;maxn; i++)</span><br><span class="line">        g[i]+=g[i-1];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ini();</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        ll ans=0;</span><br><span class="line">        scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</span><br><span class="line">        int up=min(n,m);</span><br><span class="line">        for(int l = 1, r; l &lt;= up; l = r+1)</span><br><span class="line">        &#123;</span><br><span class="line">            r = min(n/(n/l), m/(m/l));</span><br><span class="line">            ans += 1LL*(n/l)*(m/l)*(g[r]-g[l-1]);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="描述-2"><a href="#描述-2" class="headerlink" title="描述:"></a>描述:</h1><p>$bzoj 3994 \\<br>求\sum_{i=1}^{m}\sum_{j=1}^{m}d(ij),d(x)表示x的因子个数。$ </p>
+<hr>
+<h1 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h1><p>$有个神奇的结论 d(i,j)=\sum_{x|i}\sum_{y|j}[gcd(x,y)=1]  \\<br>原式=\sum_{i=1}^{n}\sum_{j=1}^{m}\sum_{x|i}\sum_{y|j}[gcd(x,y)=1]  $</p>
+<p>$设f(x)=\begin{cases}1 (x=1) \\0 (x\neq1)\end{cases}，找一个g使得f=1*g $</p>
+<p>$g=\mu*f,发现g(x)=\mu(x) \\<br>所以原式=\sum_{x=1}^{n}\sum_{y=1}^{m} \lfloor n/x \rfloor \lfloor m/y \rfloor \sum_{d|x,d|y}\mu(d) \\<br>然后又是求和换序，继续化简一波就是 \\<br>\sum_{d=1}^{min(n,m)}\mu(d) \sum_{x=1}^{n/d} \sum_{y=1}^{m/d}\lfloor n/dx \rfloor \lfloor m/dy \rfloor \\<br>预处理前缀和以后数学分块<br>$</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// bzoj3994</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdlib&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#define LL long long</span><br><span class="line">#define inf 2147483640</span><br><span class="line">#define Pi acos(-1.0)</span><br><span class="line">#define free(a) freopen(a&quot;.in&quot;,&quot;r&quot;,stdin),freopen(a&quot;.out&quot;,&quot;w&quot;,stdout);</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">const int maxn=50010;</span><br><span class="line">LL n,m,s[maxn],mu[maxn],f[maxn];</span><br><span class="line">int p[maxn],vis[maxn];</span><br><span class="line"> </span><br><span class="line">int main() &#123;</span><br><span class="line">    int T;scanf(&quot;%d&quot;,&amp;T);</span><br><span class="line">    s[1]=mu[1]=1;</span><br><span class="line">    for (int i=2;i&lt;maxn;i++) &#123;</span><br><span class="line">        if (!vis[i]) p[++p[0]]=i,mu[i]=-1;</span><br><span class="line">        for (int j=1;j&lt;=p[0] &amp;&amp; p[j]*i&lt;maxn;j++) &#123;</span><br><span class="line">            vis[i*p[j]]=1;</span><br><span class="line">            if (i%p[j]==0) &#123;mu[i*p[j]]=0;break;&#125;</span><br><span class="line">            else mu[i*p[j]]=-mu[i];</span><br><span class="line">        &#125;</span><br><span class="line">        s[i]=s[i-1]+mu[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i=1;i&lt;maxn;i++)</span><br><span class="line">        for (int j=1,k;j&lt;=i;j=k+1) &#123;</span><br><span class="line">            k=i/(i/j);</span><br><span class="line">            f[i]+=(LL)(k-j+1)*(i/j);</span><br><span class="line">        &#125;</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        scanf(&quot;%lld%lld&quot;,&amp;n,&amp;m);</span><br><span class="line">        if (n&gt;m) swap(n,m);</span><br><span class="line">        LL ans=0;</span><br><span class="line">        for (int i=1,j;i&lt;=n;i=j+1) &#123;</span><br><span class="line">            j=min(n/(n/i),m/(m/i));</span><br><span class="line">            ans+=f[n/i]*f[m/i]*(s[j]-s[i-1]);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 </div>
@@ -421,8 +429,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/最短路/">#最短路</a>
+        <div class="cube-box ">
+            <a href="/categories/训练记录/">#训练记录</a>
         </div>
         
         
@@ -431,13 +439,8 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/尺取法/">#尺取法</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/训练记录/">#训练记录</a>
+            <a href="/categories/尺取法/">#尺取法</a>
         </div>
         
         
@@ -447,22 +450,27 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/线段树/">#线段树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/LCA/">#LCA</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/后缀数组/">#后缀数组</a>
+            <a href="/categories/最短路/">#最短路</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/线段树/">#线段树</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/二分/">#二分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/后缀数组/">#后缀数组</a>
         </div>
         
         
@@ -476,28 +484,23 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/codeforces/">#codeforces</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/categories/线性基/">#线性基</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/整除分块/">#整除分块</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/dfs/">#dfs</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/codeforces/">#codeforces</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/dfs/">#dfs</a>
         </div>
         
         
@@ -507,12 +510,22 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/数论/">#数论</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/组合数学/">#组合数学</a>
         </div>
         
         
@@ -521,8 +534,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最大流/">#最大流</a>
         </div>
         
         
@@ -532,17 +550,7 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/组合数学/">#组合数学</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/树状数组/">#树状数组</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/最大流/">#最大流</a>
         </div>
         
         
@@ -561,7 +569,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/随笔/">#随笔</a>
         </div>
         
@@ -578,12 +586,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/模拟/">#模拟</a>
+            <a href="/tags/训练记录/">#训练记录</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/分层图最短路/">#分层图最短路</a>
+            <a href="/tags/模拟/">#模拟</a>
         </div>
         
         
@@ -593,31 +601,36 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/训练记录/">#训练记录</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/线段树/">#线段树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最大生成树/">#最大生成树</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/LCA/">#LCA</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/分层图最短路/">#分层图最短路</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/01分数规划/">#01分数规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/数位dp/">#数位dp</a>
         </div>
         
@@ -628,17 +641,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/01分数规划/">#01分数规划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/凸包/">#凸包</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/旋转卡壳/">#旋转卡壳</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单调栈/">#单调栈</a>
         </div>
         
         
@@ -652,23 +665,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/单调栈/">#单调栈</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/codeforces/">#codeforces</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/线性基/">#线性基</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/dp/">#dp</a>
         </div>
         
         
@@ -678,17 +676,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/dfs/">#dfs</a>
+            <a href="/tags/dp/">#dp</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
+            <a href="/tags/codeforces/">#codeforces</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/容斥定理/">#容斥定理</a>
+        <div class="cube-box ">
+            <a href="/tags/dfs/">#dfs</a>
         </div>
         
         
@@ -708,21 +706,26 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/贪心/">#贪心</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/容斥定理/">#容斥定理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/费马小定理/">#费马小定理</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/树形dp/">#树形dp</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/找规律/">#找规律</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/树状数组/">#树状数组</a>
         </div>
         
@@ -733,22 +736,27 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/找规律/">#找规律</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/最小割/">#最小割</a>
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/树形dp/">#树形dp</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/tags/贪心/">#贪心</a>
+            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/数论/">#数论</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
         </div>
         
         
@@ -763,6 +771,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Tarjan缩点/">#Tarjan缩点</a>
         </div>
         
@@ -773,26 +791,21 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/最大流/">#最大流</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/最小差值生成树/">#最小差值生成树</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/次小生成树/">#次小生成树</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/组合数学/">#组合数学</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/删边/">#删边</a>
         </div>
         
@@ -802,23 +815,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最短路/">#最短路</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/随笔/">#随笔</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
         
