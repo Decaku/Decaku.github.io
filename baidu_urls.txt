@@ -1,3 +1,4 @@
+http://decaku.net/2019/04/15/Bzoj-4892-DNA/
 http://decaku.net/2019/04/05/莫比乌斯反演杜教筛题集/
 http://decaku.net/2019/04/03/CometOJ-contest-0-B/
 http://decaku.net/2019/04/03/Codeforces-Round-550-Div-3-G/
