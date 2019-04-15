@@ -195,26 +195,9 @@
         <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4892" target="_blank" rel="noopener">传送门</a></p>
 <hr>
 <a id="more"></a>
-<h1 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h1><p>$在第一个串里枚举每个位置,能匹配就向后跳lcp个单位，不能<br>匹配就向后跳一个单位并记录一下不匹配的次数，因为不匹配<br>次数是3就可以break了，所以复杂度十分优秀，lcp的话把两个<br>串拼接起来求SA然后rmq预处理以后可以O1查询$</p>
+<h1 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h1><p>$在第一个串里枚举每个位置,能匹配就向后跳lcp个单位，不能 \\<br>匹配就向后跳一个单位并记录一下不匹配的次数，因为不匹配 \\<br>次数是3就可以break了，所以复杂度十分优秀，lcp的话把两个 \\<br>串拼接起来求SA然后rmq预处理以后可以O1查询。$</p>
 <hr>
-<p>```<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>    Problem: 4892<br>    User: Decaku<br>    Language: C++<br>    Result: Accepted<br>    Time:7540 ms<br>    Memory:22788 kb<br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
-<h1 id="include"><a href="#include" class="headerlink" title="include"></a>include<bits stdc++.h=""></bits></h1><p>using namespace std;<br>const int maxn=2e5+100;<br>int n,m;<br>int x[maxn],y[maxn],t[maxn],sa[maxn],rk[maxn],hg[20][maxn],lg[maxn];<br>char s[maxn],s1[maxn];<br>int a[maxn];</p>
-<p>bool cmp(int i,int j,int k)<br>{<br>    return y[i]==y[j]&amp;&amp;y[i+k]==y[j+k];<br>}</p>
-<p>void get_sa()<br>{<br>    for(int i=0;i&lt;=m;i++) t[i]=0; //多样例注意清空<br>    for(int i=1;i&lt;=n;i++) t[x[i]=a[i]]++;<br>    for(int i=1;i&lt;=m;i++) t[i]+=t[i-1];<br>    for(int i=n;i&gt;=1;i—) sa[t[x[i]]—]=i;<br>    for(int k=1;k&lt;=n;k&lt;&lt;=1)<br>    {<br>        int p=0;<br>        for(int i=0;i&lt;=m;i++)<br>            y[i]=0;<br>        for(int i=n-k+1;i&lt;=n;i++)<br>            y[++p]=i;<br>        for(int i=1;i&lt;=n;i++)<br>            if(sa[i]&gt;k) y[++p]=sa[i]-k;<br>        for(int i=0;i&lt;=m;i++) t[i]=0;<br>        for(int i=1;i&lt;=n;i++) t[x[y[i]]]++;<br>        for(int i=1;i&lt;=m;i++) t[i]+=t[i-1];<br>        for(int i=n;i&gt;=1;i—) sa[t[x[y[i]]]—]=y[i];<br>        swap(x,y);<br>        x[sa[1]]=p=1;<br>        for(int i=2;i&lt;=n;i++) x[sa[i]]=cmp(sa[i],sa[i-1],k)?p:++p;<br>        if(p&gt;=n) break;<br>        m=p;<br>    }<br>}<br>void get_rk()<br>{<br>    for(int i=1;i&lt;=n;i++) rk[sa[i]]=i;<br>}</p>
-<p>void get_height()<br>{<br>    for(int i=2;i<maxn;i++) lg[i]="lg[i">&gt;1]+1;</maxn;i++)></p>
-<pre><code>for(int i=1,j=0;i&lt;=n;i++)
-{
-    if(j) --j;
-    while(a[i+j]==a[sa[rk[i]-1]+j]) ++j;
-    hg[0][rk[i]]=j;
-}
-for(int j=1;j&lt;=lg[n];++j)
-    for(int i=1;i+(1&lt;&lt;j)-1&lt;=n;i++)
-    hg[j][i]=min(hg[j-1][i],hg[j-1][i+(1&lt;&lt;(j-1))]);
-</code></pre><p>}</p>
-<p>int lcp(int i,int j)<br>{<br>    i=rk[i];j=rk[j];if(i&gt;j) swap(i,j);<br>    if(i==j) return 1e9;++i;<br>    int l=lg[j-i+1];<br>    return min(hg[l][i],hg[l][j-(1&lt;&lt;l)+1]);<br>}</p>
-<p>int main()<br>{<br>    int T;<br>    scanf(“%d”,&amp;T);<br>    while(T—)<br>    {<br>        scanf(“%s”,s+1);<br>        scanf(“%s”,s1+1);<br>        int lens=strlen(s+1);<br>        int lent=strlen(s1+1);<br>        for(int i=1;i&lt;=lens;i++) a[i]=s[i];<br>        for(int i=1;i&lt;=lent;i++) a[lens+i]=s1[i];<br>        m=300;<br>        n=lens+lent;<br>        get_sa();<br>        get_rk();<br>        get_height();<br>        int ans=0;<br>        for(int i=1;i&lt;=lens-lent+1;i++)<br>        {<br>            int tt=0;<br>            for(int j=1;j&lt;=lent&amp;&amp;tt&lt;=3;)<br>            {<br>                if(a[i+j-1]!=a[lens+j]) tt++,j++;<br>                else j+=lcp(i+j-1,lens+j);<br>            }<br>            ans+=(tt&lt;=3);<br>        }<br>        printf(“%d\n”,ans);<br>    }<br>}</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">/**************************************************************</span><br><span class="line">    Problem: 4892</span><br><span class="line">    User: Decaku</span><br><span class="line">    Language: C++</span><br><span class="line">    Result: Accepted</span><br><span class="line">    Time:7540 ms</span><br><span class="line">    Memory:22788 kb</span><br><span class="line">****************************************************************/</span><br><span class="line"> </span><br><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=2e5+100;</span><br><span class="line">int n,m;</span><br><span class="line">int x[maxn],y[maxn],t[maxn],sa[maxn],rk[maxn],hg[20][maxn],lg[maxn];</span><br><span class="line">char s[maxn],s1[maxn];</span><br><span class="line">int a[maxn];</span><br><span class="line"> </span><br><span class="line">bool cmp(int i,int j,int k)</span><br><span class="line">&#123;</span><br><span class="line">    return y[i]==y[j]&amp;&amp;y[i+k]==y[j+k];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void get_sa()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=0;i&lt;=m;i++) t[i]=0; //多样例注意清空</span><br><span class="line">    for(int i=1;i&lt;=n;i++) t[x[i]=a[i]]++;</span><br><span class="line">    for(int i=1;i&lt;=m;i++) t[i]+=t[i-1];</span><br><span class="line">    for(int i=n;i&gt;=1;i--) sa[t[x[i]]--]=i;</span><br><span class="line">    for(int k=1;k&lt;=n;k&lt;&lt;=1)</span><br><span class="line">    &#123;</span><br><span class="line">        int p=0;</span><br><span class="line">        for(int i=0;i&lt;=m;i++)</span><br><span class="line">            y[i]=0;</span><br><span class="line">        for(int i=n-k+1;i&lt;=n;i++)</span><br><span class="line">            y[++p]=i;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">            if(sa[i]&gt;k) y[++p]=sa[i]-k;</span><br><span class="line">        for(int i=0;i&lt;=m;i++) t[i]=0;</span><br><span class="line">        for(int i=1;i&lt;=n;i++) t[x[y[i]]]++;</span><br><span class="line">        for(int i=1;i&lt;=m;i++) t[i]+=t[i-1];</span><br><span class="line">        for(int i=n;i&gt;=1;i--) sa[t[x[y[i]]]--]=y[i];</span><br><span class="line">        swap(x,y);</span><br><span class="line">        x[sa[1]]=p=1;</span><br><span class="line">        for(int i=2;i&lt;=n;i++) x[sa[i]]=cmp(sa[i],sa[i-1],k)?p:++p;</span><br><span class="line">        if(p&gt;=n) break;</span><br><span class="line">        m=p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void get_rk()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=1;i&lt;=n;i++) rk[sa[i]]=i;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void get_height()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=2;i&lt;maxn;i++) lg[i]=lg[i&gt;&gt;1]+1;</span><br><span class="line"> </span><br><span class="line">    for(int i=1,j=0;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(j) --j;</span><br><span class="line">        while(a[i+j]==a[sa[rk[i]-1]+j]) ++j;</span><br><span class="line">        hg[0][rk[i]]=j;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int j=1;j&lt;=lg[n];++j)</span><br><span class="line">        for(int i=1;i+(1&lt;&lt;j)-1&lt;=n;i++)</span><br><span class="line">        hg[j][i]=min(hg[j-1][i],hg[j-1][i+(1&lt;&lt;(j-1))]);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int lcp(int i,int j)</span><br><span class="line">&#123;</span><br><span class="line">    i=rk[i];j=rk[j];if(i&gt;j) swap(i,j);</span><br><span class="line">    if(i==j) return 1e9;++i;</span><br><span class="line">    int l=lg[j-i+1];</span><br><span class="line">    return min(hg[l][i],hg[l][j-(1&lt;&lt;l)+1]);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int T;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;T);</span><br><span class="line">    while(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%s&quot;,s+1);</span><br><span class="line">        scanf(&quot;%s&quot;,s1+1);</span><br><span class="line">        int lens=strlen(s+1);</span><br><span class="line">        int lent=strlen(s1+1);</span><br><span class="line">        for(int i=1;i&lt;=lens;i++) a[i]=s[i];</span><br><span class="line">        for(int i=1;i&lt;=lent;i++) a[lens+i]=s1[i];</span><br><span class="line">        m=300;</span><br><span class="line">        n=lens+lent;</span><br><span class="line">        get_sa();</span><br><span class="line">        get_rk();</span><br><span class="line">        get_height();</span><br><span class="line">        int ans=0;</span><br><span class="line">        for(int i=1;i&lt;=lens-lent+1;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int tt=0;</span><br><span class="line">            for(int j=1;j&lt;=lent&amp;&amp;tt&lt;=3;)</span><br><span class="line">            &#123;</span><br><span class="line">                if(a[i+j-1]!=a[lens+j]) tt++,j++;</span><br><span class="line">                else j+=lcp(i+j-1,lens+j);</span><br><span class="line">            &#125;</span><br><span class="line">            ans+=(tt&lt;=3);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 </div>
 
@@ -430,13 +413,23 @@ for(int j=1;j&lt;=lg[n];++j)
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/训练记录/">#训练记录</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/尺取法/">#尺取法</a>
         </div>
         
         
@@ -446,27 +439,7 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
-            <a href="/categories/动态规划/">#动态规划</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/尺取法/">#尺取法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/LCA/">#LCA</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/后缀数组/">#后缀数组</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/二分/">#二分</a>
         </div>
         
         
@@ -476,12 +449,27 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
-            <a href="/categories/整除分块/">#整除分块</a>
+            <a href="/categories/二分/">#二分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/后缀数组/">#后缀数组</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/线性基/">#线性基</a>
         </div>
         
         
@@ -496,11 +484,6 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
-            <a href="/categories/线性基/">#线性基</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/dfs/">#dfs</a>
         </div>
         
@@ -510,12 +493,12 @@ for(int j=1;j&lt;=lg[n];++j)
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/数论/">#数论</a>
         </div>
         
@@ -531,12 +514,17 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
+            <a href="/categories/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/费用流/">#费用流</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/划分树/">#划分树</a>
+            <a href="/categories/树状数组/">#树状数组</a>
         </div>
         
         
@@ -545,7 +533,7 @@ for(int j=1;j&lt;=lg[n];++j)
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/最大流/">#最大流</a>
         </div>
         
@@ -556,22 +544,17 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
-            <a href="/categories/树状数组/">#树状数组</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/单调栈/">#单调栈</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/随笔/">#随笔</a>
+            <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/树链剖分/">#树链剖分</a>
+        <div class="cube-box ">
+            <a href="/categories/随笔/">#随笔</a>
         </div>
         
     </div>
@@ -596,18 +579,18 @@ for(int j=1;j&lt;=lg[n];++j)
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/分层图最短路/">#分层图最短路</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/分层图最短路/">#分层图最短路</a>
         </div>
         
         
@@ -622,32 +605,22 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
-            <a href="/tags/数位dp/">#数位dp</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/后缀数组/">#后缀数组</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/单调栈/">#单调栈</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/01分数规划/">#01分数规划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/线段树/">#线段树</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/整除分块/">#整除分块</a>
+            <a href="/tags/01分数规划/">#01分数规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数位dp/">#数位dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/后缀数组/">#后缀数组</a>
         </div>
         
         
@@ -658,6 +631,21 @@ for(int j=1;j&lt;=lg[n];++j)
         
         <div class="cube-box ">
             <a href="/tags/旋转卡壳/">#旋转卡壳</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线性基/">#线性基</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单调栈/">#单调栈</a>
         </div>
         
         
@@ -677,11 +665,6 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
-            <a href="/tags/线性基/">#线性基</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/dp/">#dp</a>
         </div>
         
@@ -691,7 +674,7 @@ for(int j=1;j&lt;=lg[n];++j)
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/dfs/">#dfs</a>
         </div>
         
@@ -701,12 +684,12 @@ for(int j=1;j&lt;=lg[n];++j)
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/容斥定理/">#容斥定理</a>
         </div>
         
@@ -721,18 +704,13 @@ for(int j=1;j&lt;=lg[n];++j)
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/树状数组/">#树状数组</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/离散化/">#离散化</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/找规律/">#找规律</a>
         </div>
         
         
@@ -746,8 +724,28 @@ for(int j=1;j&lt;=lg[n];++j)
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/找规律/">#找规律</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数论/">#数论</a>
         </div>
         
         
@@ -756,18 +754,8 @@ for(int j=1;j&lt;=lg[n];++j)
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/划分树/">#划分树</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/数论/">#数论</a>
+            <a href="/tags/归并/">#归并</a>
         </div>
         
         
@@ -777,12 +765,12 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
-            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
+            <a href="/tags/最大流/">#最大流</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/最大流/">#最大流</a>
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
@@ -797,11 +785,6 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
-            <a href="/tags/归并/">#归并</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/删边/">#删边</a>
         </div>
         
@@ -812,27 +795,27 @@ for(int j=1;j&lt;=lg[n];++j)
         
         
         <div class="cube-box ">
-            <a href="/tags/最短路/">#最短路</a>
+            <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/最短路/">#最短路</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/随笔/">#随笔</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/bitset/">#bitset</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
     </div>
