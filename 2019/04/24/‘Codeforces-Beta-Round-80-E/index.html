@@ -12,7 +12,7 @@
     
     
     
-    <title>Codeforces Beta Round | Decaku &#39;s Blog</title>
+    <title>Codeforces Beta Round 80 E | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,7 +174,7 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">Codeforces Beta Round</h1>
+    <h1 class="title">Codeforces Beta Round 80 E</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
@@ -194,11 +194,11 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4892" target="_blank" rel="noopener">传送门</a></p>
+        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p><a href="https://codeforces.com/contest/104/problem/E" target="_blank" rel="noopener">传送门</a></p>
 <p>$给一个序列s,多组询问,求 \sum_{i=a+k*b}^{i \leq n}s[i], \\<br>a和b也是输入的。$</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h1><p>$这玩意看起来就没法数据结构加速,考虑b \geq \sqrt{n}时， \\<br>可以直接暴力，当b \leq \sqrt{n}时，我们直接预处理 \sqrt{n}种情况 \\<br>然后O(1)就行,但是这样空间时O(n \sqrt{n} )的，因为这题空间 \\<br>卡的紧所以可以离线询问排序后让空间O(n)。$</p>
+<h1 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h1><p>$这玩意看起来就没法数据结构加速,考虑b \geq \sqrt{n}时， \\<br>可以直接暴力，当b \leq \sqrt{n}时，我们直接预处理 \sqrt{n}种情况 \\<br>然后O(1)就行,但是这样空间是O(n \sqrt{n} )的，因为这题空间 \\<br>卡的紧所以可以离线询问排序后让空间O(n)。$</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace  std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn=3e5+5;</span><br><span class="line">ll n,p,a[maxn],sum[maxn],ans[maxn];</span><br><span class="line"></span><br><span class="line">struct Query</span><br><span class="line">&#123;</span><br><span class="line">    ll x,y,id;</span><br><span class="line">&#125; q[maxn];</span><br><span class="line"></span><br><span class="line">bool cmp(Query a,Query b)</span><br><span class="line">&#123;</span><br><span class="line">    if(a.y==b.y)</span><br><span class="line">        return a.id&lt;b.id;</span><br><span class="line">    return a.y&lt;b.y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%lld&quot;,&amp;n);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">        scanf(&quot;%lld&quot;,&amp;a[i]);</span><br><span class="line">    scanf(&quot;%lld&quot;,&amp;p);</span><br><span class="line">    for(int i=1; i&lt;=p; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%lld %lld&quot;,&amp;q[i].x,&amp;q[i].y);</span><br><span class="line">        q[i].id=i;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(q+1,q+p+1,cmp);</span><br><span class="line">    int l=1,r=1;</span><br><span class="line">    while(1)</span><br><span class="line">    &#123;</span><br><span class="line">        if(l&gt;p) break;</span><br><span class="line"></span><br><span class="line">        while(q[r+1].y==q[l].y) r++;</span><br><span class="line">        if(q[r].y&gt;sqrt(n))</span><br><span class="line">        &#123;</span><br><span class="line">            for(int i=l;i&lt;=r;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                ll tem=0;</span><br><span class="line">                for(int j=q[i].x;j&lt;=n;j+=q[i].y)</span><br><span class="line">                &#123;</span><br><span class="line">                    tem+=a[j];</span><br><span class="line">                &#125;</span><br><span class="line">                ans[q[i].id]=tem;</span><br><span class="line">            &#125;</span><br><span class="line">            l=r+1;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        memset(sum,0,sizeof(sum));</span><br><span class="line">        for(int i=n;i&gt;=n-q[l].y+1;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            sum[i]=a[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        for(int i=n-q[l].y;i&gt;=1;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            sum[i]+=sum[i+q[l].y]+a[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i=l; i&lt;=r; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            ans[q[i].id]=sum[q[i].x];</span><br><span class="line">        &#125;</span><br><span class="line">        l=r+1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int i=1; i&lt;=p; i++)</span><br><span class="line">        printf(&quot;%lld\n&quot;,ans[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -346,7 +346,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/24/‘Codeforces-Beta-Round-80-E/" title="Codeforces Beta Round">Codeforces Beta Round</a>
+                    <a href="/2019/04/24/‘Codeforces-Beta-Round-80-E/" title="Codeforces Beta Round 80 E">Codeforces Beta Round 80 E</a>
                 </p>
             </div>
             
@@ -422,18 +422,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/模拟/">#模拟</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/categories/尺取法/">#尺取法</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/动态规划/">#动态规划</a>
+        <div class="cube-box ">
+            <a href="/categories/模拟/">#模拟</a>
         </div>
         
         
@@ -443,17 +438,22 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/LCA/">#LCA</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/线段树/">#线段树</a>
+            <a href="/categories/二分/">#二分</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/二分/">#二分</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/线段树/">#线段树</a>
         </div>
         
         
@@ -467,18 +467,8 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/整除分块/">#整除分块</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/线性基/">#线性基</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/codeforces/">#codeforces</a>
+            <a href="/categories/整除分块/">#整除分块</a>
         </div>
         
         
@@ -488,21 +478,26 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/dfs/">#dfs</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/并查集/">#并查集</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+            <a href="/categories/线性基/">#线性基</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/codeforces/">#codeforces</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/dfs/">#dfs</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/数论/">#数论</a>
         </div>
         
@@ -513,7 +508,22 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/组合数学/">#组合数学</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/树状数组/">#树状数组</a>
         </div>
         
         
@@ -523,7 +533,7 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/费用流/">#费用流</a>
+            <a href="/categories/最大流/">#最大流</a>
         </div>
         
         
@@ -533,27 +543,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/树状数组/">#树状数组</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/最大流/">#最大流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/最小生成树/">#最小生成树</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/单调栈/">#单调栈</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/树链剖分/">#树链剖分</a>
+            <a href="/categories/单调栈/">#单调栈</a>
         </div>
         
         
@@ -563,6 +558,11 @@
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/随笔/">#随笔</a>
         </div>
         
@@ -588,18 +588,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/分层图最短路/">#分层图最短路</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/状压dp/">#状压dp</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/分层图最短路/">#分层图最短路</a>
         </div>
         
         
@@ -614,17 +614,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/线段树/">#线段树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/01分数规划/">#01分数规划</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/数位dp/">#数位dp</a>
+            <a href="/tags/线段树/">#线段树</a>
         </div>
         
         
@@ -633,7 +628,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/凸包/">#凸包</a>
         </div>
         
@@ -644,12 +639,22 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/单调栈/">#单调栈</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/整除分块/">#整除分块</a>
+        <div class="cube-box ">
+            <a href="/tags/启发式合并/">#启发式合并</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最长上升子序列/">#最长上升子序列</a>
         </div>
         
         
@@ -668,48 +673,33 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/启发式合并/">#启发式合并</a>
+        <div class="cube-box ">
+            <a href="/tags/数位dp/">#数位dp</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/最长上升子序列/">#最长上升子序列</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/贪心/">#贪心</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/dfs/">#dfs</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/动态规划/">#动态规划</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/并查集/">#并查集</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/欧拉路/">#欧拉路</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/容斥定理/">#容斥定理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/动态规划/">#动态规划</a>
         </div>
         
         
@@ -723,17 +713,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/离散化/">#离散化</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/找规律/">#找规律</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/树形dp/">#树形dp</a>
         </div>
         
@@ -744,17 +734,22 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/欧拉路/">#欧拉路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/数论/">#数论</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/划分树/">#划分树</a>
         </div>
         
         
@@ -764,12 +759,27 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/归并/">#归并</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Tarjan缩点/">#Tarjan缩点</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/归并/">#归并</a>
+            <a href="/tags/次小生成树/">#次小生成树</a>
         </div>
         
         
@@ -778,17 +788,7 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/最大流/">#最大流</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/次小生成树/">#次小生成树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/最小差值生成树/">#最小差值生成树</a>
         </div>
         
@@ -798,13 +798,18 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/离线/">#离线</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/组合数学/">#组合数学</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/分块/">#分块</a>
         </div>
         
         
@@ -815,11 +820,6 @@
         
         <div class="cube-box ">
             <a href="/tags/最短路/">#最短路</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/分块/">#分块</a>
         </div>
         
         
