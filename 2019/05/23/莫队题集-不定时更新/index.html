@@ -227,7 +227,7 @@
 <hr>
 <h1 id="描述-5"><a href="#描述-5" class="headerlink" title="描述:"></a>描述:</h1><p>$ 洛谷4396$<br><a href="https://www.luogu.org/problemnew/show/P4396" target="_blank" rel="noopener">传送门</a> </p>
 <hr>
-<h1 id="思路：-5"><a href="#思路：-5" class="headerlink" title="思路："></a>思路：</h1><p>$ 统计区间内权值在[u,v]之间的数的个数,在莫队转移的时候 \\<br>把数插进树状数组里即可，复杂度O(nsqrt{n}logn)。 $</p>
+<h1 id="思路：-5"><a href="#思路：-5" class="headerlink" title="思路："></a>思路：</h1><p>$ 统计区间内权值在[u,v]之间的数的个数,在莫队转移的时候 \\<br>把数插进树状数组里即可，复杂度O(n$sqrt{n}$logn)。 $</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">// luogu-judger-enable-o2</span><br><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn=1e5+10;</span><br><span class="line">int n,m,a[maxn],block,b[maxn],tree[maxn],tree2[maxn],cnt[maxn],tem,tem2,mx;</span><br><span class="line"></span><br><span class="line">void change(int x,int d)</span><br><span class="line">&#123;</span><br><span class="line">    while(x&lt;=maxn)</span><br><span class="line">    &#123;</span><br><span class="line">        tree[x]+=d;</span><br><span class="line">        x+=(x&amp;-x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int query(int x)</span><br><span class="line">&#123;</span><br><span class="line">    int res=0;</span><br><span class="line">    while(x&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        res+=tree[x];</span><br><span class="line">        x-=(x&amp;-x);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">void change2(int x,int d)</span><br><span class="line">&#123;</span><br><span class="line">    while(x&lt;=maxn)</span><br><span class="line">    &#123;</span><br><span class="line">        tree2[x]+=d;</span><br><span class="line">        x+=(x&amp;-x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int query2(int x)</span><br><span class="line">&#123;</span><br><span class="line">    int res=0;</span><br><span class="line">    while(x&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        res+=tree2[x];</span><br><span class="line">        x-=(x&amp;-x);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct Query</span><br><span class="line">&#123;</span><br><span class="line">    int l,r,low,high,id;</span><br><span class="line">&#125; q[maxn];</span><br><span class="line"></span><br><span class="line">bool cmp(Query x,Query y)</span><br><span class="line">&#123;</span><br><span class="line">    if(b[x.l]==b[y.l])</span><br><span class="line">        return x.r&lt;y.r;</span><br><span class="line">    return x.l&lt;y.l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct Ans</span><br><span class="line">&#123;</span><br><span class="line">    int ans1,ans2;</span><br><span class="line">&#125; ans[maxn];</span><br><span class="line"></span><br><span class="line">void add(int x)</span><br><span class="line">&#123;</span><br><span class="line">    change(a[x],1);</span><br><span class="line">    cnt[a[x]]++;</span><br><span class="line">    if(cnt[a[x]]==1)</span><br><span class="line">        change2(a[x],1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void rem(int x)</span><br><span class="line">&#123;</span><br><span class="line">    change(a[x],-1);</span><br><span class="line">    cnt[a[x]]--;</span><br><span class="line">    if(cnt[a[x]]==0)</span><br><span class="line">        change2(a[x],-1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</span><br><span class="line">    block=sqrt(n);</span><br><span class="line">    mx=1e9;</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;a[i]),mx=max(a[i],mx);</span><br><span class="line">    for(int i=1; i&lt;=m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d %d %d %d&quot;,&amp;q[i].l,&amp;q[i].r,&amp;q[i].low,&amp;q[i].high);</span><br><span class="line">        q[i].id=i;</span><br><span class="line">        b[i]=(i-1)/block+1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sort(q+1,q+m+1,cmp);</span><br><span class="line">    int l=1,r=0;</span><br><span class="line">    tem=tem2=0;</span><br><span class="line">    for(int i=1; i&lt;=m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        while(q[i].l&lt;l)</span><br><span class="line">            add(--l);</span><br><span class="line">        while(q[i].l&gt;l)</span><br><span class="line">            rem(l++);</span><br><span class="line">        while(q[i].r&lt;r)</span><br><span class="line">            rem(r--);</span><br><span class="line">        while(q[i].r&gt;r)</span><br><span class="line">            add(++r);</span><br><span class="line">        tem=query(q[i].high)-query(q[i].low-1);</span><br><span class="line">        tem2=query2(q[i].high)-query2(q[i].low-1);</span><br><span class="line"></span><br><span class="line">        ans[q[i].id].ans1=tem;</span><br><span class="line">        ans[q[i].id].ans2=tem2;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1; i&lt;=m; i++)</span><br><span class="line">        printf(&quot;%d %d\n&quot;,ans[i].ans1,ans[i].ans2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
@@ -464,13 +464,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/尺取法/">#尺取法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
         
@@ -480,17 +475,22 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/LCA/">#LCA</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/线段树/">#线段树</a>
+            <a href="/categories/二分/">#二分</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/二分/">#二分</a>
+            <a href="/categories/线段树/">#线段树</a>
         </div>
         
         
@@ -509,12 +509,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/线性基/">#线性基</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/启发式合并/">#启发式合并</a>
         </div>
         
@@ -529,12 +529,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
         </div>
         
@@ -554,7 +554,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/划分树/">#划分树</a>
         </div>
         
@@ -569,12 +569,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/树状数组/">#树状数组</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最大流/">#最大流</a>
         </div>
         
@@ -584,12 +584,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/单调栈/">#单调栈</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
@@ -600,16 +600,16 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/随笔/">#随笔</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/主席树/">#主席树</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/随笔/">#随笔</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/莫队/">#莫队</a>
         </div>
         
@@ -630,7 +630,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/模拟/">#模拟</a>
         </div>
         
@@ -640,13 +640,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/状压dp/">#状压dp</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/分层图最短路/">#分层图最短路</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/分层图最短路/">#分层图最短路</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/状压dp/">#状压dp</a>
         </div>
         
         
@@ -661,16 +661,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/01分数规划/">#01分数规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/线段树/">#线段树</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/01分数规划/">#01分数规划</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/数位dp/">#数位dp</a>
         </div>
         
@@ -685,17 +685,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/旋转卡壳/">#旋转卡壳</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/整除分块/">#整除分块</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/单调栈/">#单调栈</a>
         </div>
         
@@ -740,12 +740,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/并查集/">#并查集</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/欧拉路/">#欧拉路</a>
         </div>
         
@@ -761,22 +761,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/费马小定理/">#费马小定理</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/树状数组/">#树状数组</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/离散化/">#离散化</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/树形dp/">#树形dp</a>
+            <a href="/tags/费马小定理/">#费马小定理</a>
         </div>
         
         
@@ -786,12 +781,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/最小割/">#最小割</a>
+            <a href="/tags/树形dp/">#树形dp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
+            <a href="/tags/最小割/">#最小割</a>
         </div>
         
         
@@ -820,13 +820,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/最大流/">#最大流</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
+        <div class="cube-box ">
+            <a href="/tags/最大流/">#最大流</a>
         </div>
         
         
@@ -840,27 +840,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/删边/">#删边</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/离线/">#离线</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/组合数学/">#组合数学</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最短路/">#最短路</a>
         </div>
         
@@ -871,12 +856,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/随笔/">#随笔</a>
+            <a href="/tags/离线/">#离线</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/主席树/">#主席树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/随笔/">#随笔</a>
         </div>
         
         
@@ -887,6 +877,16 @@
         
         <div class="cube-box ">
             <a href="/tags/莫队/">#莫队</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/删边/">#删边</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/组合数学/">#组合数学</a>
         </div>
         
     </div>
