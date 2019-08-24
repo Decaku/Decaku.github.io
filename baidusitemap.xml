@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://decaku.net/2019/08/24/%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-08-24</lastmod>
+  </url>  <url>
     <loc>http://decaku.net/2019/06/09/Codeforces-1175-F/</loc>
     <lastmod>2019-06-08</lastmod>
   </url>  <url>
@@ -211,7 +214,7 @@
     <loc>http://decaku.net/2019/02/04/bzoj1003-%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%80%E7%9F%AD%E8%B7%AF-%E5%8C%BA%E9%97%B4dp/</loc>
     <lastmod>2019-02-03</lastmod>
   </url>  <url>
-    <loc>http://decaku.net/2019/01/31/hello-world/</loc>
+    <loc>http://decaku.net/2019/08/06/hello-world/</loc>
     <lastmod>2019-01-30</lastmod>
   </url>
 </urlset>

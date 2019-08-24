@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://decaku.net/about-me/index.html</loc>
+    
+    <lastmod>2019-08-24T14:13:01.905Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://decaku.net/2019/08/24/%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-08-24T14:10:46.715Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://decaku.net/2019/06/09/Codeforces-1175-F/</loc>
     
     <lastmod>2019-06-08T17:47:26.678Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://decaku.net/2019/06/09/Codeforces-1175-E/</loc>
     
     <lastmod>2019-06-08T17:36:56.818Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://decaku.net/about-me/index.html</loc>
-    
-    <lastmod>2019-05-23T15:59:31.525Z</lastmod>
     
   </url>
   
@@ -520,7 +527,7 @@
   </url>
   
   <url>
-    <loc>http://decaku.net/2019/01/31/hello-world/</loc>
+    <loc>http://decaku.net/2019/08/06/hello-world/</loc>
     
     <lastmod>2019-01-30T21:07:29.819Z</lastmod>
     
