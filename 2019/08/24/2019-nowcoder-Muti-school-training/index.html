@@ -206,6 +206,17 @@
 <p>$\checkmark I:给一些点，每种点有两类属性，要求你把点分成两部分，一部分只贡献第一属性，\\<br>其它贡献第二属性，求最大值。首先满足条件的划分是单调不减的直线，为了方便 \\<br>把它想成折线且轨迹是沿着一类点的边界画的,然后设dp[i]为排序后选到第i个点时 \\<br>的答案,发现dp[i]可以由dp[1]到dp[i-1]转移,然后决策点是区间最值询问,更新需要 \\<br>区间更新,我i们用线段树维护即可。\\$</p>
 <p>$\checkmark J:比较分数大小。交叉相乘即可.\\$</p>
 <hr>
+<h1 id="二"><a href="#二" class="headerlink" title="二"></a>二</h1><p>$\checkmark A:有一个长度为n的环，开始时人在0号点，每次都等概率向左或向右移动一 \\<br>走过所有点后就停下，询问最后停在m号点的概率。可以通过打表发现，一般结论是除了 \\<br>起点以外其它点都是等概率停下的，证明可能较为复杂。\\$</p>
+<p>$\checkmark B:从0号点出发，给出一个k，每次有1/k的概率走1步，2步…k步，询问走到 \\<br>n号点的概率，n很大。设dp[i]表示走到i号点的概率，不难推出dp[i]=\sigma_{j=i-k}^{i-1}dp[j]/k \\<br>这个式子可以用BM线性递推优化，然后打表观察n为无穷大时答案是2/(k+1)。 \\$</p>
+<p>$C:待补。 \\$</p>
+<p>$\checkmark D:有一个点带权的图，求第k大的完全子图，使用优先队列做BFS爆搜，用bitset \\<br>或int128做位压，为了防止搜重复的子图，强制让后加入的点都比当前图里的点编号更大。 $</p>
+<p>$\checkmark E:有一个n行m列的矩阵，m最大10，1表示不可通，0表示可通，每次只能向 \\<br>左，右，下走一步且不可回头，询问从第一行x列走到第n行第y列的方案。设dp[i][j]表示 \\<br>走到第i行j列的方案，发现dp[i][j]=\sigma_{k=l}^{k=r}dp[i-1][k],且必须满足区间[l,r] \\<br>都是0，那把每行看成一个向量，相邻行之间的转移其实是乘了一个矩阵，因为还有单点修改， \\<br>用线段树维护区间的矩阵乘积即可，注意下矩阵乘法的方向，wa惨了。 \\$</p>
+<p>$\checkmark F:把至多28人分成人数相同的两组，不同组之间两两对答案有贡献，求最大贡献。 \\<br>用位压爆搜即可。 \\$</p>
+<p>$\checkmark G:有n条之间，求直线围成的第k大区域的面积。不会。 \\$</p>
+<p>$\checkmark H:有一个01矩阵，求只含1的第二大矩阵的面积。 \\<br>固定下边界，然后就变成了广告牌问题，单调栈扫即可，第二大哈希和优先队列搞搞就好。 \\$</p>
+<p>$I:待补。 \\$</p>
+<p>$\checkmark D:有一个长度为1e9的1和-1序列，给至多1e6个区间都包含1，1的数量总共最多1e7。 \\<br>询问有多少子区间的和大于0。把子序列看成前缀和形式的话，就是看有多少(i,j)，满足i&lt;j且 \\<br>sun[i]&lt;sum[j]，对每个子区间向左和右处理出各自能延展的最长位置，然后扫过去即可。 \\<br>因为和不会很大，所以可以用桶计数。 \\$</p>
+<hr>
 
     </div>
 </div>
@@ -422,7 +433,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/训练记录/">#训练记录</a>
         </div>
         
@@ -433,27 +444,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/动态规划/">#动态规划</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/categories/尺取法/">#尺取法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/categories/最短路/">#最短路</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/LCA/">#LCA</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/线段树/">#线段树</a>
+            <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
         
@@ -463,7 +459,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/二分/">#二分</a>
+            <a href="/categories/LCA/">#LCA</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/尺取法/">#尺取法</a>
         </div>
         
         
@@ -472,8 +473,33 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/categories/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/二分/">#二分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/启发式合并/">#启发式合并</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/倍增/">#倍增</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/st表/">#st表</a>
         </div>
         
         
@@ -487,23 +513,8 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/启发式合并/">#启发式合并</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/倍增/">#倍增</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/codeforces/">#codeforces</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/st表/">#st表</a>
         </div>
         
         
@@ -518,12 +529,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+            <a href="/categories/数论/">#数论</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/数论/">#数论</a>
+            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
         </div>
         
         
@@ -542,16 +553,6 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/费用流/">#费用流</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/Tarjan缩点/">#Tarjan缩点</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
             <a href="/categories/树状数组/">#树状数组</a>
         </div>
@@ -559,6 +560,16 @@
         
         <div class="cube-box ">
             <a href="/categories/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Tarjan缩点/">#Tarjan缩点</a>
         </div>
         
         
@@ -573,16 +584,11 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/树链剖分/">#树链剖分</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/categories/分块/">#分块</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/主席树/">#主席树</a>
         </div>
         
@@ -593,6 +599,11 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/莫队/">#莫队</a>
         </div>
         
@@ -613,18 +624,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/模拟/">#模拟</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/状压dp/">#状压dp</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/尺取法/">#尺取法</a>
         </div>
         
         
@@ -634,6 +635,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/状压dp/">#状压dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/题单/">#题单</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/最大生成树/">#最大生成树</a>
         </div>
         
@@ -644,12 +655,22 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/线段树/">#线段树</a>
+            <a href="/tags/尺取法/">#尺取法</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/题单/">#题单</a>
+            <a href="/tags/数位dp/">#数位dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/后缀数组/">#后缀数组</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线段树/">#线段树</a>
         </div>
         
         
@@ -659,16 +680,21 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/数位dp/">#数位dp</a>
+            <a href="/tags/单调栈/">#单调栈</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/后缀数组/">#后缀数组</a>
+        <div class="cube-box ">
+            <a href="/tags/启发式合并/">#启发式合并</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/最长上升子序列/">#最长上升子序列</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/凸包/">#凸包</a>
         </div>
         
@@ -678,33 +704,23 @@
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/倍增/">#倍增</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/st表/">#st表</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/tags/整除分块/">#整除分块</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/单调栈/">#单调栈</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/线性基/">#线性基</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/启发式合并/">#启发式合并</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/最长上升子序列/">#最长上升子序列</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/倍增/">#倍增</a>
         </div>
         
         
@@ -719,17 +735,7 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/st表/">#st表</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/贪心/">#贪心</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/dfs/">#dfs</a>
         </div>
         
         
@@ -739,22 +745,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/并查集/">#并查集</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/欧拉路/">#欧拉路</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
+            <a href="/tags/dfs/">#dfs</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/容斥定理/">#容斥定理</a>
+            <a href="/tags/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/欧拉路/">#欧拉路</a>
         </div>
         
         
@@ -774,7 +775,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/找规律/">#找规律</a>
+            <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/容斥定理/">#容斥定理</a>
         </div>
         
         
@@ -784,32 +790,27 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/最小割/">#最小割</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/数论/">#数论</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/划分树/">#划分树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/费用流/">#费用流</a>
+            <a href="/tags/找规律/">#找规律</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Tarjan缩点/">#Tarjan缩点</a>
+            <a href="/tags/划分树/">#划分树</a>
         </div>
         
         
@@ -818,7 +819,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/最小点覆盖/">#最小点覆盖</a>
         </div>
         
@@ -829,11 +830,21 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/最小差值生成树/">#最小差值生成树</a>
+            <a href="/tags/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Tarjan缩点/">#Tarjan缩点</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/最小差值生成树/">#最小差值生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/次小生成树/">#次小生成树</a>
         </div>
         
@@ -849,21 +860,6 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/组合数学/">#组合数学</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/树链剖分/">#树链剖分</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/最短路/">#最短路</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/分块/">#分块</a>
         </div>
         
@@ -873,13 +869,23 @@
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/组合数学/">#组合数学</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/随笔/">#随笔</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/快速傅里叶变换学习笔记/">#快速傅里叶变换学习笔记</a>
+            <a href="/tags/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/最短路/">#最短路</a>
         </div>
         
         
@@ -889,6 +895,11 @@
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/快速傅里叶变换学习笔记/">#快速傅里叶变换学习笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/莫队/">#莫队</a>
         </div>
         
