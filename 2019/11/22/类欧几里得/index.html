@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Decaku">
+    
+    <meta name="description" content="菜菜菜">
+    
+    
+    
+    
+    
+    
+    <title>类欧几里得 | Decaku &#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?11e014c56a50287ee4f5b7b12b45b896";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" https://i.loli.net/2019/01/31/5c5277a1f2b4b.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Decaku &#39;s Blog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('https://i.loli.net/2019/01/31/5c5277a1f2b4b.jpg');
+            background-repeat: no-repeat;
+            background-position: center -56px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('https://i.loli.net/2019/01/31/5c5277a1f2b4b.jpg');
+            background-position: center -100px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Decaku &#39;s Blog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '927',
+                height: '539'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">类欧几里得</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-11-22
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/类欧几里得/">#类欧几里得</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>几何意义为求一个梯形内的整点的个数<br>常用的类欧有以下三个<br>$f(a,b,c,n)=\sum_{i=0}^{n}\lfloor (ai+b)/c \rfloor$<br>$g(a,b,c,n)=\sum_{i=0}^{n}i\lfloor(ai+b)/c \rfloor$<br>$h(a,b,c,n)=\sum_{i=0}^{n}\lfloor(ai+b)/c\rfloor^{2}$</p>
+<p>时间复杂度：对于$n=10^{9}$的询问，$f$为$log(n)$,$g$和$h$在$10^{7}$左右。<br>一个常见套路:二进制下判断一个数$x$第$k$位是否为1等价于$x/2^{k}-2（x/2^{k+1}）$。</p>
+<p>一道例题：<br>求$\sum_{i=0}^{n}\sum_{j=0}^{n}(ij) \oplus c $， $c和n$是给定常数<br>分析：假设枚举$i$，则问题其实是求一个等差数列和$c$异或后的值的和，不妨对$c$按位考虑，那么问题其实就是转化成求一个等差数列前n项里(从0开始)第$k$位是0/1的有几项，然后把贡献加到答案里去这题就做完了。<br>根据上面的所讲过的经典套路,一个形如$X=Ai+B$的等差数列第k位是1的个数<br>$Ans_k=\sum_{i=1}^n(\lfloor(Ai+b)/2^k\rfloor-2\lfloor(Ai+b)/2^{k+1}\rfloor) \\=f(A,B,2^k,n)-f(A,B,2^{k+1},n)$</p>
+<p>综上，总复杂度是$nloglog$的。<br>关于求等差数列二进制数位1的个数的题还有$JZOJ3492 数数(count)以及【GDOI2018模拟8.8】超级绵羊异或$。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> F first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> S second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(int i=a;i&lt;=(int)b;++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x)&amp;(-x))</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">f</span><span class="params">(ll a,ll b,ll c,ll n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (n+<span class="number">1</span>)*(b/c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a&lt;c &amp;&amp; b&lt;c)&#123;</span><br><span class="line">        ll m=(a*n+b)/c;</span><br><span class="line">        <span class="keyword">if</span>(m==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> n*m-f(c,c-b<span class="number">-1</span>,a,m<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f(a%c,b%c,c,n)+(n+<span class="number">1</span>)*(b/c)+((n+<span class="number">1</span>)/(<span class="number">1</span>+(n&amp;<span class="number">1</span>)))*(n/(<span class="number">2</span>-(n&amp;<span class="number">1</span>)))*(a/c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll n,c;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;c;</span><br><span class="line">    ll ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(ll i=<span class="number">0</span>; i&lt;=n; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(ll k=<span class="number">0</span>; k&lt;=<span class="number">34</span>; ++k)</span><br><span class="line">        &#123;</span><br><span class="line">            ll tem=f(i,<span class="number">0l</span>l,(<span class="number">1l</span>l&lt;&lt;k),n)<span class="number">-2</span>*f(i,<span class="number">0l</span>l,<span class="number">1l</span>l&lt;&lt;(k+<span class="number">1</span>),n);</span><br><span class="line">            <span class="keyword">if</span>((<span class="number">1l</span>l&lt;&lt;k)&amp;c) &#123;ans+=(n+<span class="number">1</span>-tem)*(<span class="number">1l</span>l&lt;&lt;k)%mod;ans%=mod;&#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;ans+=tem*(<span class="number">1l</span>l&lt;&lt;k)%mod;ans%=mod;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一道难题：bzoj3817<br>求$\sum_{i=1}^{n}(-1)^{\lfloor i \sqrt{r} \rfloor}$,$n有10^9$<br>参考题解：<a href="https://www.luogu.org/problemnew/solution/P5172" target="_blank" rel="noopener">https://www.luogu.org/problemnew/solution/P5172</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gec getchar</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">char</span> ch;</span><br><span class="line"><span class="keyword">bool</span> fl;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span> &amp;a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(fl=<span class="number">0</span>,ch=gec();ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>;ch=gec()) fl|=(ch==<span class="string">'-'</span>);</span><br><span class="line">    <span class="keyword">for</span>(a=<span class="number">0</span>;ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>;ch=gec())a=(a&lt;&lt;<span class="number">3</span>)+(a&lt;&lt;<span class="number">1</span>)+(ch^<span class="string">'0'</span>);</span><br><span class="line">    <span class="keyword">if</span>(fl)a=-a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> b?gcd(b,a%b):a;&#125;</span><br><span class="line"><span class="keyword">int</span> n,R,T;</span><br><span class="line"><span class="keyword">double</span> x;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Solve</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!n)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> tmp=gcd(gcd(a,b),c);</span><br><span class="line">    a/=tmp;b/=tmp;c/=tmp;</span><br><span class="line">    tmp=(b*x+c)/a;c-=tmp*a;</span><br><span class="line">    <span class="keyword">int</span> Sum=((ll)n*(n+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>)*tmp;</span><br><span class="line">    <span class="keyword">int</span> P=(b*x+c)/a*n;</span><br><span class="line">    <span class="keyword">return</span> Sum-Solve(P,b*b*R-c*c,a*b,-a*c)+(ll)P*n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;R);</span><br><span class="line">        x=<span class="built_in">sqrt</span>(R);</span><br><span class="line">        <span class="keyword">int</span> w=x;</span><br><span class="line">        <span class="keyword">if</span>(w*w==R) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,(w&amp;<span class="number">1</span>)?((n&amp;<span class="number">1</span>)?<span class="number">-1</span>:<span class="number">0</span>):n);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,n+(Solve(n,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>)&lt;&lt;<span class="number">2</span>)-(Solve(n,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>)&lt;&lt;<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2019/10/11/后缀自动机学习笔记/">
+                后缀自动机学习笔记
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+    <!-- 因为gitment里面也有gitment-container，所以这里就改为gitment-comment -->
+<div class="gitment-comment">
+    <div id="container"></div>
+</div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id default is location.href
+		id: decodeURI(window.location.pathname),
+        owner: 'Decaku',
+        repo: 'Decaku.github.io',
+        oauth: {
+            client_id: 'e960fb048feed78b74fd',
+            client_secret: '88a0ad8483178c3ff4522aff167e0654afa6bb28',
+        },
+    })
+    gitment.render('container')
+</script>
+    
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="https://i.loli.net/2019/01/31/5c52cf607cd91.jpg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Decaku</span>
+    
+    
+    <a title="菜菜菜">菜菜菜</a>
+    
+    <div class="count">
+        <a class="count articles"><span>75</span>文章</a>
+        <a class="count tags"><span>59</span>标签</a>
+        <a class="count categories"><span>36</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/22/类欧几里得/" title="类欧几里得">类欧几里得</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/10/11/后缀自动机学习笔记/" title="后缀自动机学习笔记">后缀自动机学习笔记</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/24/2019-nowcoder-Muti-school-training/" title="2019 nowcoder Muti-school training">2019 nowcoder Muti-school training</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/24/快速傅里叶变换学习笔记/" title="快速傅里叶变换学习笔记">快速傅里叶变换学习笔记</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/06/hello-world/" title="Hello World">Hello World</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/训练记录/">#训练记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最短路/">#最短路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/LCA/">#LCA</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/二分/">#二分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/后缀数组/">#后缀数组</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/线性基/">#线性基</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/st表/">#st表</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/启发式合并/">#启发式合并</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/倍增/">#倍增</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/codeforces/">#codeforces</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/dfs/">#dfs</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/数论/">#数论</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/题单/">#题单</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/组合数学/">#组合数学</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/最小生成树/">#最小生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/树状数组/">#树状数组</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Tarjan缩点/">#Tarjan缩点</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/单调栈/">#单调栈</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/主席树/">#主席树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/分块/">#分块</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/类欧几里得/">#类欧几里得</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/随笔/">#随笔</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/莫队/">#莫队</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/训练记录/">#训练记录</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/模拟/">#模拟</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/状压dp/">#状压dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/尺取法/">#尺取法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/分层图最短路/">#分层图最短路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最大生成树/">#最大生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/LCA/">#LCA</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/线段树/">#线段树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/数位dp/">#数位dp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/01分数规划/">#01分数规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/后缀数组/">#后缀数组</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/凸包/">#凸包</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/旋转卡壳/">#旋转卡壳</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/整除分块/">#整除分块</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/单调栈/">#单调栈</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/线性基/">#线性基</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/st表/">#st表</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/启发式合并/">#启发式合并</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最长上升子序列/">#最长上升子序列</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/倍增/">#倍增</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/codeforces/">#codeforces</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/dp/">#dp</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/贪心/">#贪心</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/dfs/">#dfs</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/动态规划/">#动态规划</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/并查集/">#并查集</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/欧拉路/">#欧拉路</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/莫比乌斯反演/">#莫比乌斯反演</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/容斥定理/">#容斥定理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/费马小定理/">#费马小定理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树形dp/">#树形dp</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/找规律/">#找规律</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/题单/">#题单</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Meisell-Lehmer/">#Meisell-Lehmer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树状数组/">#树状数组</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/离散化/">#离散化</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/数论/">#数论</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最小割/">#最小割</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/划分树/">#划分树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/次小生成树/">#次小生成树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/归并/">#归并</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最小点覆盖/">#最小点覆盖</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最大流/">#最大流</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/费用流/">#费用流</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Tarjan缩点/">#Tarjan缩点</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/最小差值生成树/">#最小差值生成树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/组合数学/">#组合数学</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树链剖分/">#树链剖分</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/删边/">#删边</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/离线/">#离线</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/最短路/">#最短路</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/主席树/">#主席树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/分块/">#分块</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/类欧几里得/">#类欧几里得</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/随笔/">#随笔</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/bitset/">#bitset</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/快速傅里叶变换学习笔记/">#快速傅里叶变换学习笔记</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/莫队/">#莫队</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/后缀自动机学习笔记/">#后缀自动机学习笔记</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/Decaku" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/friend_links.jpg ">
+            <a href="https://fightinggg.github.io/ACM/" target="_blank">ICPC队友汪神仙</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/friend_links.jpg ">
+            <a href="https://blog.csdn.net/weixin_41863129" target="_blank">ICPC队友YG</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/friend_links.jpg ">
+            <a href="http://hzwer.com/" target="_blank">hzwer</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/friend_links.jpg ">
+            <a href="https://www.cnblogs.com/Cwolf9/" target="_blank">csust_cwolf9</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Decaku
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
