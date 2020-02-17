@@ -12,7 +12,7 @@
     
     
     
-    <title>Edu Codeforces Round 53 | Decaku &#39;s Blog</title>
+    <title>CF #616 E.Prefix Enlightenment | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,13 +174,13 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">Edu Codeforces Round 53</h1>
+    <h1 class="title">CF #616 E.Prefix Enlightenment</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2019-02-05
+            2020-02-17
         </div>
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
@@ -192,42 +192,21 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="A"><a href="#A" class="headerlink" title="A:"></a>A:</h1><p>扫描长度为2的字符串就好。</p>
+        <p>题意：你有n位的01串和k个集合，当选择一个集合时，把该集合元素为下标的所有二进制位取反，<br>输出把前i位变成1所需要选择的最少的集合个数，输出所有的n个答案。题目保证任意三个集合<br>交为空且一定有答案。</p>
 <hr>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[30];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   bool flag=true;</span><br><span class="line">   int n;</span><br><span class="line">   string str;</span><br><span class="line">   cin&gt;&gt;n;</span><br><span class="line">   cin&gt;&gt;str;</span><br><span class="line">   for(int i=0;i&lt;n-1;i++)</span><br><span class="line">   &#123;</span><br><span class="line">       if(str[i]!=str[i+1])</span><br><span class="line">       &#123;</span><br><span class="line">           cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;</span><br><span class="line">           cout&lt;&lt;str[i]&lt;&lt;str[i+1]&lt;&lt;endl;</span><br><span class="line">           flag=false;</span><br><span class="line">           break;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   if(flag) cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="B"><a href="#B" class="headerlink" title="B:"></a>B:</h1><p>用栈模拟。</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[30];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   bool flag=true;</span><br><span class="line">   int n;</span><br><span class="line">   string str;</span><br><span class="line">   cin&gt;&gt;n;</span><br><span class="line">   cin&gt;&gt;str;</span><br><span class="line">   for(int i=0;i&lt;n-1;i++)</span><br><span class="line">   &#123;</span><br><span class="line">       if(str[i]!=str[i+1])</span><br><span class="line">       &#123;</span><br><span class="line">           cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;</span><br><span class="line">           cout&lt;&lt;str[i]&lt;&lt;str[i+1]&lt;&lt;endl;</span><br><span class="line">           flag=false;</span><br><span class="line">           break;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   if(flag) cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="C"><a href="#C" class="headerlink" title="C:"></a>C:</h1><p>$先记录两个数组a,b,a_i表示从起点开始i条指令能到达的位置,b_i \\<br>记录从终点开始对i条指令反向后能够到达的位置。二分修改 \\<br>区间的长度,所以区间左端点扫描,对区间右端点二分,check的时 \\<br>候只要根据区间长度是否比区间首尾的曼哈顿距离大且差值是偶 \\<br>数来二分即可,复杂度是nlog(n)。$</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define maxn 200005</span><br><span class="line">char str[maxn];</span><br><span class="line">struct Point</span><br><span class="line">&#123;</span><br><span class="line">    int x,y;</span><br><span class="line">&#125; s[maxn],e[maxn];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,x,y;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    scanf(&quot;%s&quot;,str);</span><br><span class="line">    scanf(&quot;%d %d&quot;,&amp;x,&amp;y);</span><br><span class="line">    if((abs(x)+abs(y))&gt;n||(n-abs(x)-abs(y))%2!=0)</span><br><span class="line">        printf(&quot;%d\n&quot;,-1);</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        int s_x=0,s_y=0;</span><br><span class="line">        s[0].x=0,s[0].y=0;</span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(str[i]==&apos;U&apos;)</span><br><span class="line">                s_y++, s[i+1].x=s_x, s[i+1].y=s_y;</span><br><span class="line">            if(str[i]==&apos;D&apos;)</span><br><span class="line">                s_y--, s[i+1].x=s_x, s[i+1].y=s_y;</span><br><span class="line">            if(str[i]==&apos;L&apos;)</span><br><span class="line">                s_x--, s[i+1].x=s_x, s[i+1].y=s_y;</span><br><span class="line">            if(str[i]==&apos;R&apos;)</span><br><span class="line">                s_x++, s[i+1].x=s_x, s[i+1].y=s_y;</span><br><span class="line">        &#125;</span><br><span class="line">        if(s[n].x==x&amp;&amp;s[n].y==y)</span><br><span class="line">            printf(&quot;0\n&quot;);</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            s_x=x,s_y=y;</span><br><span class="line">            e[0].x=x,e[0].y=y;</span><br><span class="line">            int cnt=0;</span><br><span class="line">            for(int i=n-1; i&gt;=0; i--)</span><br><span class="line">            &#123;</span><br><span class="line">                if(str[i]==&apos;U&apos;)</span><br><span class="line">                    s_y--, e[++cnt].x=s_x, e[cnt].y=s_y;</span><br><span class="line">                if(str[i]==&apos;D&apos;)</span><br><span class="line">                    s_y++, e[++cnt].x=s_x, e[cnt].y=s_y;</span><br><span class="line">                if(str[i]==&apos;L&apos;)</span><br><span class="line">                    s_x++, e[++cnt].x=s_x, e[cnt].y=s_y;</span><br><span class="line">                if(str[i]==&apos;R&apos;)</span><br><span class="line">                    s_x--, e[++cnt].x=s_x, e[cnt].y=s_y;</span><br><span class="line">            &#125;</span><br><span class="line">            int ans=1e9;</span><br><span class="line">            for(int i=1; i&lt;=n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                int l=i,r=n,mid;</span><br><span class="line">                while(l&lt;r)</span><br><span class="line">                &#123;</span><br><span class="line">                    int mid=(l+r)/2;</span><br><span class="line">                    int p_x=s[i-1].x,p_y=s[i-1].y;</span><br><span class="line">                    int q_x=e[n-mid].x,q_y=e[n-mid].y;</span><br><span class="line">                    int dis=abs(p_x-q_x)+abs(p_y-q_y);</span><br><span class="line">                    if(mid-i+1&gt;=dis&amp;&amp;(mid-i+1-dis)%2==0)</span><br><span class="line">                        r=mid;</span><br><span class="line">                    else</span><br><span class="line">                        l=mid+1;</span><br><span class="line">                &#125;</span><br><span class="line">                int p_x=s[i-1].x,p_y=s[i-1].y;</span><br><span class="line">                int q_x=e[n-l].x,q_y=e[n-l].y;</span><br><span class="line">                int dis=abs(p_x-q_x)+abs(p_y-q_y);</span><br><span class="line">                if(l-i+1&gt;=dis&amp;&amp;(l-i+1-dis)%2==0)</span><br><span class="line">                    ans=min(ans,l-i+1);</span><br><span class="line">            &#125;</span><br><span class="line">            printf(&quot;%d\n&quot;,ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="D"><a href="#D" class="headerlink" title="D:"></a>D:</h1><p>经过一次循环以后可以取模,所以可以暴力莽过去。</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn=2e5+5;</span><br><span class="line">ll n,t,ans,sum,_;</span><br><span class="line">int a[maxn];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%lld %lld&quot;,&amp;n,&amp;t);</span><br><span class="line">    for(int i=1; i&lt;=n; i++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">    while(1)</span><br><span class="line">    &#123;</span><br><span class="line">        ll tem=t,cnt=0,sum=0;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(tem&gt;=a[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cnt++;</span><br><span class="line">                tem-=a[i];</span><br><span class="line">                sum+=a[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(cnt==0) break;</span><br><span class="line">        ans+=t/sum*cnt;</span><br><span class="line">        t%=sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>未完待续。。。</p>
-
+<p>任意三个集合交为空说明每个二进制位最多只被两个集合控制，可以把每个集合<br>拆成两个点，代表选和不选，并且把选择的点权赋值为1，不选的点权赋值为0<br>那么如果第i位二进制是1，假设它被两个集合控制,那两个控制它的集合只能同时<br>选或不选，二进制是0时同理，那么此时有两种情况，较小的连通块点权和就是<br>答案，被一个集合控制时加一个虚点即可，0个集合控制时不用管它，保证答案<br>存在所以不用考虑不合法的连边。因为要求所有答案，所以还需要增量维护答案。<br>以上的所有操作都可以使用并查集来实现。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IOS ios::sync_with_stdio(false);cin.tie(0);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair<span class="meta-string">&lt;ll,ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> F first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> S second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(ll i=a;i&lt;=(ll)b;++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> per(i,a,b) for(ll i=a;i&gt;=(ll)b;--i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x)&amp;(-x))</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">6e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[maxn],n,k,w[maxn];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f[x]==x?x:f[x]=Find(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y=(x&lt;=k)?x+k:x-k;</span><br><span class="line">    x=Find(x);y=Find(y);</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="number">0</span>) <span class="keyword">return</span> w[y];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(y==<span class="number">0</span>) <span class="keyword">return</span> w[x];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> min(w[x],w[y]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    x=Find(x),y=Find(y);</span><br><span class="line">    <span class="keyword">if</span>(y==<span class="number">0</span>) swap(x,y);</span><br><span class="line">    f[y]=x;</span><br><span class="line">    <span class="keyword">if</span>(x!=<span class="number">0</span>) w[x]+=w[y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    IOS</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="built_in">string</span> s;<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">    rep(i,<span class="number">1</span>,k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x;<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">        rep(j,<span class="number">1</span>,x)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> tem;<span class="built_in">cin</span>&gt;&gt;tem;</span><br><span class="line">            v[tem].pb(i);</span><br><span class="line">        &#125;</span><br><span class="line">        f[i]=i;f[i+k]=i+k; w[i+k]=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    rep(i,<span class="number">1</span>,n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(v[i].size()==<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> x=v[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(x)&#123;</span><br><span class="line">                ans-=ask(x);</span><br><span class="line">                <span class="keyword">if</span>(s[i<span class="number">-1</span>]==<span class="string">'1'</span>) f[Find(x+k)]=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">else</span> f[Find(x)]=<span class="number">0</span>;</span><br><span class="line">                ans+=ask(x);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> x=<span class="number">0</span>,y=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(v[i].size()==<span class="number">2</span>) &#123;x=v[i][<span class="number">0</span>],y=v[i][<span class="number">1</span>];&#125;</span><br><span class="line">            <span class="keyword">if</span>(s[i<span class="number">-1</span>]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(Find(x)!=Find(y))</span><br><span class="line">                &#123;</span><br><span class="line">                    ans-=(ask(x)+ask(y));</span><br><span class="line">                    Merge(x,y);Merge(x+k,y+k);</span><br><span class="line">                    ans+=ask(x);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(Find(x+k)!=Find(y))&#123;</span><br><span class="line">                    ans-=(ask(x)+ask(y));</span><br><span class="line">                    Merge(x+k,y);Merge(x,y+k);</span><br><span class="line">                    ans+=ask(x);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 </div>
 
 <div class="cube-article-nav">
     <ul>
         
-        <li class="prev">
-            <a href="/2019/02/05/Bzoj-1026-windy数/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Bzoj 1026 windy数
-            </a>
-        </li>
-        
         
         <li class="next">
-            <a href="/2019/02/05/Codeforces Round 519/">
-                Codeforces Round #519 Div2
+            <a href="/2020/02/11/codeforces-1296E-String-Coloring/">
+                codeforces 1296E String Coloring
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -438,7 +417,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/模拟/">#模拟</a>
         </div>
         
@@ -458,7 +437,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/线段树/">#线段树</a>
         </div>
         
@@ -468,7 +447,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/后缀数组/">#后缀数组</a>
         </div>
         
@@ -478,7 +457,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/凸包/">#凸包</a>
         </div>
         
@@ -493,7 +472,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/线性基/">#线性基</a>
         </div>
         
@@ -503,7 +482,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/st表/">#st表</a>
         </div>
         
@@ -513,12 +492,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/数论/">#数论</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/dfs/">#dfs</a>
         </div>
         
@@ -548,12 +527,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/费用流/">#费用流</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/Tarjan缩点/">#Tarjan缩点</a>
         </div>
         
@@ -563,52 +542,52 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/树状数组/">#树状数组</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最大流/">#最大流</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最小生成树/">#最小生成树</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/单调栈/">#单调栈</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/主席树/">#主席树</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/树链剖分/">#树链剖分</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/随笔/">#随笔</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/分块/">#分块</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/莫队/">#莫队</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/类欧几里得/">#类欧几里得</a>
         </div>
         
@@ -669,7 +648,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/后缀数组/">#后缀数组</a>
         </div>
         
@@ -694,17 +673,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/codeforces/">#codeforces</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/单调栈/">#单调栈</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/线性基/">#线性基</a>
         </div>
         
@@ -734,7 +713,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/贪心/">#贪心</a>
         </div>
         
@@ -749,7 +728,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/dfs/">#dfs</a>
         </div>
         
@@ -764,7 +743,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/并查集/">#并查集</a>
         </div>
         
@@ -789,7 +768,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/树形dp/">#树形dp</a>
         </div>
         
@@ -804,12 +783,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/划分树/">#划分树</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/费用流/">#费用流</a>
         </div>
         
@@ -839,7 +818,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最小差值生成树/">#最小差值生成树</a>
         </div>
         
@@ -859,7 +838,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/离线/">#离线</a>
         </div>
         
@@ -889,12 +868,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/分块/">#分块</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/bitset/">#bitset</a>
         </div>
         
@@ -904,12 +883,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/快速傅里叶变换学习笔记/">#快速傅里叶变换学习笔记</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/莫队/">#莫队</a>
         </div>
         
