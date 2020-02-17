@@ -12,7 +12,7 @@
     
     
     
-    <title>Poj 2104 Kth number | Decaku &#39;s Blog</title>
+    <title>CF #616  F. Coffee Varieties | Decaku &#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -174,48 +174,39 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">Poj 2104 Kth number</h1>
+    <h1 class="title">CF #616  F. Coffee Varieties</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2019-02-05
+            2020-02-17
         </div>
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/划分树/">#划分树</a>
+    <a href="/tags/codeforces/">#codeforces</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <h1 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h1><p>$多组询问，每次求给定区间里第k小的数。$</p>
+        <p>$题意：这是一道交互题，你有n个数和一个队列，队列的最大长度为k， \\<br>你可以询问第i个数，然后交互机会告诉你队列里是否有这个数，询问 \\<br>完后，队列如果没有满就把这个数塞进去，否则从队首弹出一个数后 \\<br>再把这个数塞进去，还有一个操作是把队列清空，要求询问次数不超过 \\<br>n^{2}/2,最后输出一共有多少种不同的数，题目保证n和k都是二的幂次。 \\$</p>
 <hr>
 <a id="more"></a>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h1><p>划分树。</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">//#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=1e5+5;</span><br><span class="line">int tree[20][maxn];</span><br><span class="line">int sorted[maxn];</span><br><span class="line">int toleft[20][maxn];</span><br><span class="line"></span><br><span class="line">void build(int l,int r,int dep)</span><br><span class="line">&#123;</span><br><span class="line">    if(l==r) return;</span><br><span class="line">    int mid=(l+r)&gt;&gt;1;</span><br><span class="line">    int same=mid-l+1;</span><br><span class="line">    for(int i=l; i&lt;=r; i++)</span><br><span class="line">        if(tree[dep][i]&lt;sorted[mid])</span><br><span class="line">            same--;</span><br><span class="line">    int lpos=l;</span><br><span class="line">    int rpos=mid+1;</span><br><span class="line">    for(int i=l; i&lt;=r; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(tree[dep][i]&lt;sorted[mid])</span><br><span class="line">            tree[dep+1][lpos++]=tree[dep][i];</span><br><span class="line">        else if(tree[dep][i]==sorted[mid]&amp;&amp;same&gt;0)</span><br><span class="line">        &#123;</span><br><span class="line">            tree[dep+1][lpos++]=tree[dep][i];</span><br><span class="line">            same--;</span><br><span class="line">        &#125;</span><br><span class="line">        else tree[dep+1][rpos++]=tree[dep][i];</span><br><span class="line">        toleft[dep][i]=toleft[dep][l-1]+lpos-l;</span><br><span class="line">    &#125;</span><br><span class="line">    build(l,mid,dep+1);</span><br><span class="line">    build(mid+1,r,dep+1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int query(int L,int R,int l,int r,int dep,int k)</span><br><span class="line">&#123;</span><br><span class="line">    if(l==r) return tree[dep][l];</span><br><span class="line">    int mid=(L+R)&gt;&gt;1;</span><br><span class="line">    int cnt=toleft[dep][r]-toleft[dep][l-1];</span><br><span class="line">    if(cnt&gt;=k)</span><br><span class="line">    &#123;</span><br><span class="line">        int newl=L+toleft[dep][l-1]-toleft[dep][L-1];</span><br><span class="line">        int newr=newl+cnt-1;</span><br><span class="line">        return query(L,mid,newl,newr,dep+1,k);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        int newr=r+toleft[dep][R]-toleft[dep][r];</span><br><span class="line">        int newl=newr-(r-l-cnt);</span><br><span class="line">        return query(mid+1,R,newl,newr,dep+1,k-cnt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)==2)</span><br><span class="line">    &#123;</span><br><span class="line">        memset(tree,0,sizeof(tree));</span><br><span class="line">        for(int i=1; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;tree[0][i]);</span><br><span class="line">            sorted[i]=tree[0][i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(sorted+1,sorted+n+1);</span><br><span class="line">        build(1,n,0);</span><br><span class="line">        int s,t,k;</span><br><span class="line">        while(m--)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d %d %d&quot;,&amp;s,&amp;t,&amp;k);</span><br><span class="line">            printf(&quot;%d\n&quot;,query(1,n,s,t,0,k));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>$做法是对于数组分块，每块大小为k/2,然后每次你只要先清队列， \\<br>然后拿出两块询问就可以了，这个复杂度比较好算，算下来刚好是 \\<br>题目给的上界，询问次数还能优化，但是我这里已经懒得再写了。$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define IOS ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">#define pii pair&lt;ll,ll&gt;</span><br><span class="line">#define F first</span><br><span class="line">#define S second</span><br><span class="line">#define pb push_back</span><br><span class="line">#define mp make_pair</span><br><span class="line">#define rep(i,a,b) for(ll i=a;i&lt;=(ll)b;++i)</span><br><span class="line">#define per(i,a,b) for(ll i=a;i&gt;=(ll)b;--i)</span><br><span class="line">#define ll long long</span><br><span class="line">#define lowbit(x) ((x)&amp;(-x))</span><br><span class="line"></span><br><span class="line">const int maxn=3e4+100;</span><br><span class="line">int vis[maxn];</span><br><span class="line">bool query(int x)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;&quot;? &quot;&lt;&lt;x&lt;&lt;&quot;\n&quot;;</span><br><span class="line">    string s;cin&gt;&gt;s;</span><br><span class="line">    return (s[0]==&apos;Y&apos;);</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,k;cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    rep(i,1,n) vis[i]=1;</span><br><span class="line">    int sz=k/2,cnt=n/sz;</span><br><span class="line"></span><br><span class="line">    if(k!=1)</span><br><span class="line">    &#123;</span><br><span class="line">        rep(i,1,cnt-1)</span><br><span class="line">        &#123;</span><br><span class="line">            rep(j,i+1,cnt)</span><br><span class="line">            &#123;</span><br><span class="line">                cout&lt;&lt;&quot;R&quot;&lt;&lt;&quot;\n&quot;;</span><br><span class="line">                rep(k,(i-1)*sz+1,i*sz) if(query(k)) vis[k]=0;</span><br><span class="line">                rep(k,(j-1)*sz+1,j*sz) if(query(k)) vis[k]=0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        rep(i,1,n-1)</span><br><span class="line">        &#123;</span><br><span class="line">            rep(j,i+1,n)</span><br><span class="line">            &#123;</span><br><span class="line">                cout&lt;&lt;&quot;R&quot;&lt;&lt;&quot;\n&quot;;</span><br><span class="line">                query(i);</span><br><span class="line">                if(query(j)) vis[i]=0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int ans=0;</span><br><span class="line">    rep(i,1,n) if(vis[i]) ans++;</span><br><span class="line">    cout&lt;&lt;&quot;! &quot;&lt;&lt;ans&lt;&lt;&quot;\n&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 </div>
 
 <div class="cube-article-nav">
     <ul>
         
-        <li class="prev">
-            <a href="/2019/02/05/Codeforces-Round-529-Div-3/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                Codeforces Round #529 (Div. 3)
-            </a>
-        </li>
-        
         
         <li class="next">
-            <a href="/2019/02/05/Codeforces-Round-521-Div3/">
-                Codeforces Round #521 Div3
+            <a href="/2020/02/17/CF-616-E-Prefix-Enlightenment/">
+                CF #616 E.Prefix Enlightenment
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -421,7 +412,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/训练记录/">#训练记录</a>
         </div>
         
@@ -431,12 +422,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/动态规划/">#动态规划</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/尺取法/">#尺取法</a>
         </div>
         
@@ -461,12 +452,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/后缀数组/">#后缀数组</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/题单/">#题单</a>
         </div>
         
@@ -481,7 +472,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/整除分块/">#整除分块</a>
         </div>
         
@@ -496,22 +487,22 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/倍增/">#倍增</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/st表/">#st表</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/dfs/">#dfs</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/并查集/">#并查集</a>
         </div>
         
@@ -526,7 +517,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最小割/">#最小割</a>
         </div>
         
@@ -536,7 +527,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/划分树/">#划分树</a>
         </div>
         
@@ -546,7 +537,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/树状数组/">#树状数组</a>
         </div>
         
@@ -561,7 +552,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/最小生成树/">#最小生成树</a>
         </div>
         
@@ -581,12 +572,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/分块/">#分块</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/随笔/">#随笔</a>
         </div>
         
@@ -647,7 +638,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/线段树/">#线段树</a>
         </div>
         
@@ -657,12 +648,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/数位dp/">#数位dp</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/后缀数组/">#后缀数组</a>
         </div>
         
@@ -692,7 +683,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/整除分块/">#整除分块</a>
         </div>
         
@@ -702,7 +693,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/启发式合并/">#启发式合并</a>
         </div>
         
@@ -737,12 +728,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/并查集/">#并查集</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/欧拉路/">#欧拉路</a>
         </div>
         
@@ -757,17 +748,17 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/动态规划/">#动态规划</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/费马小定理/">#费马小定理</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/树状数组/">#树状数组</a>
         </div>
         
@@ -782,12 +773,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/树形dp/">#树形dp</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/最小割/">#最小割</a>
         </div>
         
@@ -802,7 +793,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/划分树/">#划分树</a>
         </div>
         
@@ -812,12 +803,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/归并/">#归并</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/费用流/">#费用流</a>
         </div>
         
@@ -857,7 +848,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/树链剖分/">#树链剖分</a>
         </div>
         
@@ -867,12 +858,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/主席树/">#主席树</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/分块/">#分块</a>
         </div>
         
@@ -887,7 +878,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/类欧几里得/">#类欧几里得</a>
         </div>
         
