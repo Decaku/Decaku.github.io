@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://decaku.net/2020/03/13/CF-616-E-Sleeping-Schedule/</loc>
+    <lastmod>2020-03-13</lastmod>
+  </url>  <url>
     <loc>http://decaku.net/2020/02/17/CF-616-F-Coffee-Varieties/</loc>
-    <lastmod>2020-02-17</lastmod>
+    <lastmod>2020-03-13</lastmod>
+  </url>  <url>
+    <loc>http://decaku.net/2020/03/13/CF-627-F-Maximum-White-Subtree/</loc>
+    <lastmod>2020-03-13</lastmod>
   </url>  <url>
     <loc>http://decaku.net/2020/02/17/CF-616-E-Prefix-Enlightenment/</loc>
     <lastmod>2020-02-17</lastmod>
@@ -37,7 +43,7 @@
     <loc>http://decaku.net/2019/05/10/%E4%B8%BB%E5%B8%AD%E6%A0%91%E9%A2%98%E9%9B%86-%E4%B8%8D%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0/</loc>
     <lastmod>2019-05-11</lastmod>
   </url>  <url>
-    <loc>http://decaku.net/2019/04/24/%E2%80%98Codeforces-Beta-Round-80-E/</loc>
+    <loc>http://decaku.net/2019/04/24/Codeforces-Beta-Round-80-E%20Sleeping/</loc>
     <lastmod>2019-04-25</lastmod>
   </url>  <url>
     <loc>http://decaku.net/2019/04/15/Bzoj-4892-DNA/</loc>

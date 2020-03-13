@@ -1,3 +1,5 @@
+http://decaku.net/2020/03/13/CF-627-F-Maximum-White-Subtree/
+http://decaku.net/2020/03/13/CF-616-E-Sleeping-Schedule/
 http://decaku.net/2020/02/17/CF-616-F-Coffee-Varieties/
 http://decaku.net/2020/02/17/CF-616-E-Prefix-Enlightenment/
 http://decaku.net/2020/02/11/codeforces-1296E-String-Coloring/
@@ -11,7 +13,7 @@ http://decaku.net/2019/06/09/Codeforces-1175-F/
 http://decaku.net/2019/06/09/Codeforces-1175-E/
 http://decaku.net/2019/05/23/莫队题集-不定时更新/
 http://decaku.net/2019/05/10/主席树题集-不定时更新/
-http://decaku.net/2019/04/24/‘Codeforces-Beta-Round-80-E/
+http://decaku.net/2019/04/24/Codeforces-Beta-Round-80-E Sleeping/
 http://decaku.net/2019/04/15/Bzoj-4892-DNA/
 http://decaku.net/2019/04/05/莫比乌斯反演杜教筛题集/
 http://decaku.net/2019/04/03/CometOJ-contest-0-B/
